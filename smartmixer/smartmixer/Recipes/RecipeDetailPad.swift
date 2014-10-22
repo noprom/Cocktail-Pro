@@ -82,12 +82,12 @@ class RecipeDetailPad : UIViewController {
                 showBt.hidden = true
             }
             self.desc?.text = CurrentData.des
-            self.taste?.selectedSegmentIndex = CurrentData.taste
-            self.skill?.selectedSegmentIndex = CurrentData.skill
-            self.drinkTime?.selectedSegmentIndex = CurrentData.drinktime
-            self.alchol?.progress = CurrentData.alcohol/100
+            self.taste?.selectedSegmentIndex = Int(CurrentData.taste)
+            self.skill?.selectedSegmentIndex = Int(CurrentData.skill)
+            self.drinkTime?.selectedSegmentIndex = Int(CurrentData.drinktime)
+            self.alchol?.progress = Float(CurrentData.alcohol)/100
             self.alcohol?.text = "\(CurrentData.alcohol)°"
-            self.stars?.value = CurrentData.difficulty
+            self.stars?.value = Int(CurrentData.difficulty)
         }
         if(popview == nil){
             popview = PopupView(frame:CGRect(x: 200, y: 10, width: 600, height: 500))
@@ -110,7 +110,7 @@ class RecipeDetailPad : UIViewController {
         if(popview.hidden == true){
             if(recipeIngridients == nil){
                 recipeIngridients = UIStoryboard(name: "Recipes_ipad", bundle: nil).instantiateViewControllerWithIdentifier("recipeIngridients") as RecipeIngridients
-                recipeIngridients.recipeId = CurrentData.id
+                recipeIngridients.recipeId = Int(CurrentData.id)
             }
             if(popview?.currentView != recipeIngridients.view){
                 recipeIngridients.view.frame = CGRect(origin: CGPoint(), size: recipeIngridients.ViewSize)
@@ -153,7 +153,7 @@ class RecipeDetailPad : UIViewController {
     }
     
     @IBAction func clickFaver(sender:UIButton){
-        CurrentData.isFav = !CurrentData.isFav
+        CurrentData.isFav = CurrentData!.isFav
         var error: NSError? = nil
         if !managedObjectContext.save(&error) {
             abort()

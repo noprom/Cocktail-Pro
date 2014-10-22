@@ -104,7 +104,7 @@ class IngridientDetail: UIViewController {
     
     //我有按钮发生了点击
     @IBAction func haveClick(sender:UIButton){
-        ingridient.iHave = !ingridient.iHave
+        ingridient.iHave = ingridient!.iHave
         if(ingridient.iHave == true){
             iHave.image = UIImage(named: "Heartyes.png")
         }else{

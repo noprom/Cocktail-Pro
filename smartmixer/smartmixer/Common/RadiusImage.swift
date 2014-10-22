@@ -72,7 +72,7 @@ import UIKit
         imageView.tag=1;
         imageView.userInteractionEnabled = true
         backgroundView.addSubview(imageView)
-        window.addSubview(backgroundView)
+        window!.addSubview(backgroundView)
         
         var tap = UITapGestureRecognizer(target: self, action: Selector("hideFullscreen:"))
         tap.delegate = self

@@ -53,7 +53,7 @@ class AboutDetail: UIViewController {
         case 2:
             self.view.bringSubviewToFront(contact)
         case 4:
-            var request = NSURLRequest(URL: NSURL(string: "http://www.smarthito.com/feedback"))
+            var request = NSURLRequest(URL: NSURL(string: "http://www.smarthito.com/feedback")!)
             webPage.loadRequest(request)
             self.view.bringSubviewToFront(response)
         case 5:
@@ -68,29 +68,29 @@ class AboutDetail: UIViewController {
     //新浪微博
     @IBAction func openWeibo(sender:UIButton){
         //
-        UIApplication.sharedApplication().openURL(NSURL(string: "http://www.smarthito.com/snscontacts?to=sinaweibo"))
+        UIApplication.sharedApplication().openURL(NSURL(string: "http://www.smarthito.com/snscontacts?to=sinaweibo")!)
     }
     //微信 weixin://qr/%@
     @IBAction func openWeixin(sender:UIButton){
         //
-        UIApplication.sharedApplication().openURL(NSURL(string:"http://www.smarthito.com/snscontacts?to=weixin"))
+        UIApplication.sharedApplication().openURL(NSURL(string:"http://www.smarthito.com/snscontacts?to=weixin")!)
     }
     
     //陌陌 weixin://qr/%@
     @IBAction func openMomo(sender:UIButton){
         //
-        UIApplication.sharedApplication().openURL(NSURL(string: "http://www.smarthito.com/snscontacts?to=momo"))
+        UIApplication.sharedApplication().openURL(NSURL(string: "http://www.smarthito.com/snscontacts?to=momo")!)
     }
     
     //淘宝 weixin://qr/%@
     @IBAction func openTaobao(sender:UIButton){
         //
-        UIApplication.sharedApplication().openURL(NSURL(string: "http://www.smarthito.com/store?to=taobao"))
+        UIApplication.sharedApplication().openURL(NSURL(string: "http://www.smarthito.com/store?to=taobao")!)
     }
     
     //微店 weixin://qr/%@
     @IBAction func openWeidian(sender:UIButton){
         //
-        UIApplication.sharedApplication().openURL(NSURL(string: "http://www.smarthito.com/store?to=weidian"))
+        UIApplication.sharedApplication().openURL(NSURL(string: "http://www.smarthito.com/store?to=weidian")!)
     }
 }

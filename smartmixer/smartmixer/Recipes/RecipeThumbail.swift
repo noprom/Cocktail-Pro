@@ -47,7 +47,7 @@ import UIKit
     }
     
     @IBAction func favClick(sender: UIButton) {
-        CurrentRecipe.isFav = !CurrentRecipe.isFav
+        CurrentRecipe.isFav = CurrentRecipe!.isFav
         var error: NSError? = nil
         if !managedObjectContext.save(&error) {
             abort()
@@ -72,7 +72,7 @@ import UIKit
     
     func SetDataContent(item:Recipe){
         CurrentRecipe = item
-        self.tag = item.id
+        self.tag = Int(item.id)
         self.nameLabel.text = item.name
         self.nameEng.text = item.nameEng
         self.descriptionLabel.text = item.des

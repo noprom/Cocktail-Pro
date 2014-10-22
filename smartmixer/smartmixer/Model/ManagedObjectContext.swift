@@ -66,7 +66,9 @@ let UnitDictory:Dictionary<Int, String> = {
     var units = Dictionary<Int, String>()
     
     for item in items {
-        units[item.id] = item.name as String
+        let id = Int(item.id)
+        let name = item.name
+        units[id] = name
     }
     
     return units

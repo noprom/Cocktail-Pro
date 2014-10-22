@@ -42,7 +42,7 @@ class CategoryMenu: UIViewController {
             var index = NSIndexPath(forRow: indexPath.row-1, inSection: indexPath.section)
             let item = self.fetchedResultsController.objectAtIndexPath(index) as Category
             categoryCell.cellname.text = "\(item.name) \(item.nameEng)"
-            categoryCell.tag = item.id
+            categoryCell.tag = Int(item.id)
         }
 
         return categoryCell

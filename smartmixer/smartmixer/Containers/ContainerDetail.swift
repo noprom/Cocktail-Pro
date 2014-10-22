@@ -94,7 +94,7 @@ class ContainerDetail: UIViewController , UIGestureRecognizerDelegate , NSFetche
     
     //点击收藏与取消收藏
     @IBAction func clickCollect (sender : UIButton){
-        CurrentContainer.possess = !CurrentContainer.possess
+        CurrentContainer.possess = CurrentContainer!.possess
         var error: NSError? = nil
         if !managedObjectContext.save(&error) {
             abort()

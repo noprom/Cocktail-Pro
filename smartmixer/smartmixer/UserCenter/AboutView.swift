@@ -24,7 +24,7 @@ class AboutView: UIViewController {
     //3Z8C4UK6GU.com.smarthito.smartmixer
     func gotoMark(){
         var link = "itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id="+appID
-        UIApplication.sharedApplication().openURL(NSURL(string: link))
+        UIApplication.sharedApplication().openURL(NSURL(string: link)!)
     }
     
     override func viewDidLoad() {
@@ -52,7 +52,7 @@ class AboutView: UIViewController {
     {
         
         var Cell :UITableViewCell = tableView.dequeueReusableCellWithIdentifier("aboutItem") as UITableViewCell
-        Cell.textLabel?.text = items[indexPath.row]
+        Cell.textLabel.text = items[indexPath.row]
         return Cell
     }
     

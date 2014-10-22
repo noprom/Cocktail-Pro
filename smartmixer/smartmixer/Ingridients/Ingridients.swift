@@ -41,7 +41,7 @@ class Ingridients: UIViewController , NSFetchedResultsControllerDelegate {
             var index = NSIndexPath(forRow: 0, inSection: 0)
             let item = self.fetchedResultsController.objectAtIndexPath(index) as Category
             itableView!.selectRowAtIndexPath(index, animated: false, scrollPosition: UITableViewScrollPosition.Top)
-            ingridientCollection?.CatagoryId = item.id
+            ingridientCollection?.CatagoryId = Int(item.id)
         }
         
         itableView!.separatorStyle = UITableViewCellSeparatorStyle.None
@@ -68,7 +68,7 @@ class Ingridients: UIViewController , NSFetchedResultsControllerDelegate {
         var tableCell :IngridientClassCell = tableView.dequeueReusableCellWithIdentifier("ingridientClassCell") as IngridientClassCell
         tableCell.title.text = item.name
         tableCell.title_eng.text = item.nameEng
-        tableCell.tag = item.id
+        tableCell.tag = Int(item.id)
         tableCell.thumb.image = UIImage(named: item.thubmnailPhoto)
         tableCell.selectedBackgroundView = UIView(frame: tableCell.frame)
         tableCell.selectedBackgroundView.backgroundColor = UIColor.whiteColor()

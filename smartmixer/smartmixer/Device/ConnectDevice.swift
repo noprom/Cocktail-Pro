@@ -28,7 +28,7 @@ class ConnectDevice: UIViewController {
     
     //去买按钮
     @IBAction func toBuy(sender:UIButton){
-        UIApplication.sharedApplication().openURL(NSURL(string: "http://www.smarthito.com/"))
+        UIApplication.sharedApplication().openURL(NSURL(string: "http://www.smarthito.com/")!)
     }
     
     //视图加载处理
