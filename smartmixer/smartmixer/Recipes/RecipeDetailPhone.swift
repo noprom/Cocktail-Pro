@@ -107,12 +107,12 @@ class RecipeDetailPhone: UIViewController {
             }
             
             self.alchol?.text = "\(CurrentData.alcohol)°"
-            self.stars?.value = CurrentData.difficulty
+            self.stars?.value = Int(CurrentData.difficulty)
         }
         
         if(ingridientView != nil){
             recipeIngridients = UIStoryboard(name: "Recipes", bundle: nil).instantiateViewControllerWithIdentifier("recipeIngridients") as RecipeIngridients
-            recipeIngridients.recipeId = CurrentData.id
+            recipeIngridients.recipeId = Int(CurrentData.id)
             recipeIngridients.view.frame = CGRect(origin: CGPoint(x: 0, y: 34), size: recipeIngridients.size)
             ingridientView.addSubview(recipeIngridients.view)
             
@@ -202,7 +202,7 @@ class RecipeDetailPhone: UIViewController {
     }
     
     @IBAction func clickFaver(sender:UIButton){
-        CurrentData.isFav = !CurrentData.isFav
+        CurrentData.isFav = CurrentData!.isFav
         var error: NSError? = nil
         if !managedObjectContext.save(&error) {
             abort()

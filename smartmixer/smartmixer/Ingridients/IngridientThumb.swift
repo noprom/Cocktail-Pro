@@ -49,7 +49,7 @@ import UIKit
     //点击收藏与取消收藏
     @IBAction func clickCollect (sender : UIButton)
     {
-        selfIngridient!.iHave = !selfIngridient!.iHave
+        selfIngridient!.iHave = selfIngridient!.iHave
         if(selfIngridient!.iHave == true){
             collect!.image = UIImage(named: "Heartyes.png")
         }else{

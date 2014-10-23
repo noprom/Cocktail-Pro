@@ -52,7 +52,7 @@ class ContainerRoot: UIViewController , NSFetchedResultsControllerDelegate{
         let item = self.fetchedResultsController.objectAtIndexPath(indexPath) as Container
         tableCell.name.text = "\(item.name)"
         tableCell.nameEng.text = "\(item.nameEng)"
-        tableCell.tag = item.id
+        tableCell.tag = Int(item.id)
         tableCell.thumb.image = UIImage(named: item.largePhoto)
         var newview = RadiusView(frame: tableCell.frame)
         newview.backgroundColor = UIColor.whiteColor()

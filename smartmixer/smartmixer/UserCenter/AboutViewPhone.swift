@@ -30,7 +30,7 @@ class AboutViewPhone: UITableViewController {
     //3Z8C4UK6GU.com.smarthito.smartmixer
     func gotoMark(){
         var link = "itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id="+appID
-        UIApplication.sharedApplication().openURL(NSURL(string: link))
+        UIApplication.sharedApplication().openURL(NSURL(string: link)!)
     }
 
     func SwipeToBack(sender:UISwipeGestureRecognizer){

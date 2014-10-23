@@ -15,7 +15,7 @@ class IngridientStore: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var request = NSURLRequest(URL: NSURL(string: "http://www.smarthito.com/publicstore"))
+        var request = NSURLRequest(URL: NSURL(string: "http://www.smarthito.com/publicstore")!)
         webPage.loadRequest(request)
         // Do any additional setup after loading the view.
     }
