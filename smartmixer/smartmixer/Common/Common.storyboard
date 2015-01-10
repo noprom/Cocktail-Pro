@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--鸡尾酒百科-->
+        <scene sceneID="m5s-bs-SxP">
+            <objects>
+                <viewController storyboardIdentifier="webView" id="fgN-zh-oda" customClass="WebView" customModule="smartmixer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qih-pP-BUg"/>
+                        <viewControllerLayoutGuide type="bottom" id="yTK-B4-jhf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="a4u-FK-gS0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PGj-wR-hAc">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <connections>
+                                    <outlet property="delegate" destination="fgN-zh-oda" id="6jE-Dp-oOa"/>
+                                </connections>
+                            </webView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="正在加载网页" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TXr-wo-bQO">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="5SA-u8-2dQ"/>
+                                    <constraint firstAttribute="width" constant="200" id="iZB-d9-jaS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="5SA-u8-2dQ"/>
+                                        <exclude reference="iZB-d9-jaS"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="5SA-u8-2dQ"/>
+                                        <include reference="iZB-d9-jaS"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="PGj-wR-hAc" secondAttribute="trailing" constant="-16" id="3K9-Yf-RHK"/>
+                            <constraint firstItem="PGj-wR-hAc" firstAttribute="leading" secondItem="a4u-FK-gS0" secondAttribute="leadingMargin" constant="-16" id="5hk-Uz-4xd"/>
+                            <constraint firstItem="yTK-B4-jhf" firstAttribute="top" secondItem="PGj-wR-hAc" secondAttribute="bottom" id="DnV-Cm-NRV"/>
+                            <constraint firstItem="PGj-wR-hAc" firstAttribute="top" secondItem="qih-pP-BUg" secondAttribute="bottom" constant="-20" id="QvV-O8-XaV">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstAttribute="centerY" secondItem="TXr-wo-bQO" secondAttribute="centerY" id="W7w-HQ-Xpv"/>
+                            <constraint firstItem="PGj-wR-hAc" firstAttribute="top" secondItem="a4u-FK-gS0" secondAttribute="topMargin" id="leS-ph-XKv"/>
+                            <constraint firstItem="PGj-wR-hAc" firstAttribute="top" secondItem="a4u-FK-gS0" secondAttribute="topMargin" id="oUQ-Wb-r1d"/>
+                            <constraint firstAttribute="centerX" secondItem="TXr-wo-bQO" secondAttribute="centerX" id="qEY-gi-3O8"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="PGj-wR-hAc"/>
+                                <exclude reference="TXr-wo-bQO"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="3K9-Yf-RHK"/>
+                                <exclude reference="5hk-Uz-4xd"/>
+                                <exclude reference="QvV-O8-XaV"/>
+                                <exclude reference="leS-ph-XKv"/>
+                                <exclude reference="oUQ-Wb-r1d"/>
+                                <exclude reference="W7w-HQ-Xpv"/>
+                                <exclude reference="qEY-gi-3O8"/>
+                                <exclude reference="DnV-Cm-NRV"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="PGj-wR-hAc"/>
+                                <include reference="TXr-wo-bQO"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="3K9-Yf-RHK"/>
+                                <include reference="5hk-Uz-4xd"/>
+                                <include reference="QvV-O8-XaV"/>
+                                <exclude reference="leS-ph-XKv"/>
+                                <exclude reference="oUQ-Wb-r1d"/>
+                                <include reference="W7w-HQ-Xpv"/>
+                                <include reference="qEY-gi-3O8"/>
+                                <include reference="DnV-Cm-NRV"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem image="nav_back" id="l8J-Sp-i9k">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="goback:" destination="fgN-zh-oda" id="blN-xU-E9E"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="鸡尾酒百科" id="cQ8-Gp-B4T">
+                        <connections>
+                            <outlet property="leftBarButtonItem" destination="l8J-Sp-i9k" id="T36-Sh-G2j"/>
+                        </connections>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tipLable" destination="TXr-wo-bQO" id="Yav-Xx-jKK"/>
+                        <outlet property="webPage" destination="PGj-wR-hAc" id="7Wf-PQ-iBk"/>
+                        <outlet property="webTitle" destination="cQ8-Gp-B4T" id="Yci-F8-gL8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MCg-3Z-4tE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="205.5" y="26.25"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="9Tc-yc-tfp">
+            <objects>
+                <viewController storyboardIdentifier="webView7" id="NFm-X5-3rj" customClass="WebView" customModule="smartmixer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="N7f-Ua-ROV"/>
+                        <viewControllerLayoutGuide type="bottom" id="Cps-bE-gDl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XdE-KE-v2P">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="15E-Tx-K3f">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="15E-Tx-K3f" firstAttribute="top" secondItem="XdE-KE-v2P" secondAttribute="topMargin" id="Wse-o1-Ad4">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="15E-Tx-K3f" firstAttribute="leading" secondItem="XdE-KE-v2P" secondAttribute="leadingMargin" constant="-16" id="an7-h3-ktD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="15E-Tx-K3f" secondAttribute="trailing" constant="-16" id="ddb-rC-5E5"/>
+                            <constraint firstItem="Cps-bE-gDl" firstAttribute="top" secondItem="15E-Tx-K3f" secondAttribute="bottom" id="j4t-lL-pXx"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="15E-Tx-K3f"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="j4t-lL-pXx"/>
+                                <exclude reference="Wse-o1-Ad4"/>
+                                <exclude reference="an7-h3-ktD"/>
+                                <exclude reference="ddb-rC-5E5"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="15E-Tx-K3f"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="j4t-lL-pXx"/>
+                                <include reference="Wse-o1-Ad4"/>
+                                <include reference="an7-h3-ktD"/>
+                                <include reference="ddb-rC-5E5"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem image="nav_back" id="f2Y-do-CT5">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="goback:" destination="NFm-X5-3rj" id="oZP-7M-C6b"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Title" id="BWt-sN-RFq">
+                        <connections>
+                            <outlet property="leftBarButtonItem" destination="f2Y-do-CT5" id="st0-cH-cnX"/>
+                        </connections>
+                    </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="webPage" destination="15E-Tx-K3f" id="NOr-Vc-2sF"/>
+                        <outlet property="webTitle" destination="BWt-sN-RFq" id="mby-Dl-Rac"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Wc-yV-4Kv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="861" y="26.25"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="nav_back" width="48" height="32"/>
+    </resources>
+</document>

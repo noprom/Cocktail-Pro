@@ -22,56 +22,88 @@ class RecipesSearch: UIViewController , UIGestureRecognizerDelegate{
     @IBOutlet var star4:UIImageView!
     @IBOutlet var star5:UIImageView!
     
+    @IBOutlet var button01:UIButton!
+    @IBOutlet var button02:UIButton!
+    @IBOutlet var button03:UIButton!
+    @IBOutlet var button04:UIButton!
+    @IBOutlet var button05:UIButton!
+    @IBOutlet var button06:UIButton!
+    @IBOutlet var button07:UIButton!
+    @IBOutlet var button08:UIButton!
+    @IBOutlet var button09:UIButton!
+    @IBOutlet var button10:UIButton!
+    @IBOutlet var button11:UIButton!
+    
+    @IBOutlet var slider:UISlider!
+    
     //关键字
     var keyWord:String = ""
-    
     //口感选项
     var keyTaste:[Bool] = [false,false,false]
-    
     //技巧选项
     var keySkill:[Bool] = [false,false,false,false,false]
-    
     //适合引用时间
     var keyDrinkTime:[Bool] = [false,false,false]
-    
     //酒精度
-    var keyAlcohol:Int = 100
-    
+    var keyAlcohol:Int = 96
     //调制难度
     var keyDifficulty = 4
     
     //自定义的消息对象
     var delegate:SearchBeginDelegate!
     
+    func resetCondition(){
+        keyWord=""
+        keyTaste=[false,false,false]
+        keySkill=[false,false,false,false,false]
+        keyDrinkTime=[false,false,false]
+        keyAlcohol=96
+        keyDifficulty=4
+        button01.selected = false
+        button02.selected = false
+        button03.selected = false
+        button04.selected = false
+        button05.selected = false
+        button06.selected = false
+        button07.selected = false
+        button08.selected = false
+        button09.selected = false
+        button10.selected = false
+        button11.selected = false
+        slider.value=96
+        achole.text = "96°"
+        star2.image = UIImage(named: "star_on.png")
+        star3.image = UIImage(named: "star_on.png")
+        star4.image = UIImage(named: "star_on.png")
+        star5.image = UIImage(named: "star_on.png")
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        var  gestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("clickDifficulty:"))
-        gestureRecognizer.delegate = self
+        var gestureRecognizer = UITapGestureRecognizer()
+        gestureRecognizer.addTarget(self, action: "clickDifficulty:")
         self.star1.userInteractionEnabled = true
         self.star1.addGestureRecognizer(gestureRecognizer)
-        gestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("clickDifficulty:"))
-        gestureRecognizer.delegate = self
+        gestureRecognizer  = UITapGestureRecognizer()
+        gestureRecognizer.addTarget(self, action: "clickDifficulty:")
         self.star2.userInteractionEnabled = true
         self.star2.addGestureRecognizer(gestureRecognizer)
-        gestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("clickDifficulty:"))
-        gestureRecognizer.delegate = self
+        gestureRecognizer = UITapGestureRecognizer()
+        gestureRecognizer.addTarget(self, action: "clickDifficulty:")
         self.star3.userInteractionEnabled = true
         self.star3.addGestureRecognizer(gestureRecognizer)
-        gestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("clickDifficulty:"))
-        gestureRecognizer.delegate = self
+        gestureRecognizer = UITapGestureRecognizer()
+        gestureRecognizer.addTarget(self, action: "clickDifficulty:")
         self.star4.userInteractionEnabled = true
         self.star4.addGestureRecognizer(gestureRecognizer)
-        gestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("clickDifficulty:"))
-        gestureRecognizer.delegate = self
+        gestureRecognizer = UITapGestureRecognizer()
+        gestureRecognizer.addTarget(self, action: "clickDifficulty:")
         self.star5.userInteractionEnabled = true
         self.star5.addGestureRecognizer(gestureRecognizer)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+    //开始搜索按钮
     @IBAction func callSearch(sender:UIButton){
         if(self.delegate != nil){
             self.delegate.SearchBeginAction(self,hide: true)
@@ -143,4 +175,7 @@ class RecipesSearch: UIViewController , UIGestureRecognizerDelegate{
         callStartSearch()
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
 }

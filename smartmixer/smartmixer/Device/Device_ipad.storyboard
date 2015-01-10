@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A361c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="M1B-OS-TzS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6249" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="M1B-OS-TzS">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6243"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -18,6 +18,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="3dm-aX-y1T">
+                                <rect key="frame" x="-19" y="-18" width="39" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="len-q5-QfJ"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="len-q5-QfJ"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="len-q5-QfJ"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="pageControlChanged:" destination="M1B-OS-TzS" eventType="valueChanged" id="AQi-PZ-FdY"/>
+                                </connections>
+                            </pageControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X89-Bk-xHN" customClass="RadiusView" customModule="smartmixer" customModuleProvider="target">
                                 <rect key="frame" x="267" y="534" width="66" height="66"/>
                                 <subviews>
@@ -25,10 +44,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="66" height="66"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="N68-uz-dYi">
-                                                <variation key="heightClass=regular-widthClass=regular" constant="56"/>
+                                                <variation key="heightClass=regular-widthClass=regular" constant="40"/>
                                             </constraint>
                                             <constraint firstAttribute="width" constant="60" id="iZD-tV-JGJ">
-                                                <variation key="heightClass=regular-widthClass=regular" constant="56"/>
+                                                <variation key="heightClass=regular-widthClass=regular" constant="40"/>
                                             </constraint>
                                         </constraints>
                                         <state key="normal" title="关闭">
@@ -40,7 +59,7 @@
                                                 <color key="value" red="0.96862745100000003" green="0.42352941179999998" blue="0.39607843139999999" alpha="1" colorSpace="deviceRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="28"/>
+                                                <real key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <variation key="default">
@@ -62,8 +81,12 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.png" translatesAutoresizingMaskIntoConstraints="NO" id="9wH-fB-BU4">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="MfO-Xz-GtW"/>
-                                            <constraint firstAttribute="width" constant="36" id="xhO-Kr-9b9"/>
+                                            <constraint firstAttribute="height" constant="36" id="MfO-Xz-GtW">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="30"/>
+                                            </constraint>
+                                            <constraint firstAttribute="width" constant="36" id="xhO-Kr-9b9">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="30"/>
+                                            </constraint>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -86,10 +109,10 @@
                                     <constraint firstAttribute="centerX" secondItem="VEa-nE-Pab" secondAttribute="centerX" id="PJh-CK-uPH"/>
                                     <constraint firstAttribute="centerY" secondItem="9wH-fB-BU4" secondAttribute="centerY" id="QiD-V4-X7l"/>
                                     <constraint firstAttribute="width" constant="66" id="U2w-pL-Cfk">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="62"/>
+                                        <variation key="heightClass=regular-widthClass=regular" constant="42"/>
                                     </constraint>
                                     <constraint firstAttribute="height" constant="66" id="XZT-hW-2hv">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="62"/>
+                                        <variation key="heightClass=regular-widthClass=regular" constant="42"/>
                                     </constraint>
                                     <constraint firstItem="9wH-fB-BU4" firstAttribute="top" secondItem="X89-Bk-xHN" secondAttribute="top" constant="14" id="Y6x-9h-vzp">
                                         <variation key="heightClass=regular-widthClass=regular" constant="15"/>
@@ -97,14 +120,8 @@
                                     <constraint firstAttribute="centerX" secondItem="9wH-fB-BU4" secondAttribute="centerX" id="aK6-2v-uak"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.82517408290000005" green="0.82517408290000005" blue="0.82517408290000005" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="31"/>
+                                        <real key="value" value="21"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <variation key="default">
@@ -134,25 +151,6 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="3dm-aX-y1T">
-                                <rect key="frame" x="-19" y="-18" width="39" height="37"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="len-q5-QfJ"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="len-q5-QfJ"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <mask key="constraints">
-                                        <include reference="len-q5-QfJ"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="pageControlChanged:" destination="M1B-OS-TzS" eventType="valueChanged" id="AQi-PZ-FdY"/>
-                                </connections>
-                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -163,7 +161,7 @@
                                 <variation key="heightClass=regular-widthClass=regular" constant="-1"/>
                             </constraint>
                             <constraint firstAttribute="bottomMargin" secondItem="X89-Bk-xHN" secondAttribute="bottom" constant="-1" id="TNX-J2-hIT">
-                                <variation key="heightClass=regular-widthClass=regular" constant="2"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="4"/>
                             </constraint>
                             <constraint firstAttribute="centerX" secondItem="X89-Bk-xHN" secondAttribute="centerX" id="Tfc-xo-aIH"/>
                             <constraint firstAttribute="centerX" secondItem="3dm-aX-y1T" secondAttribute="centerX" id="cPp-Mv-4Rq"/>

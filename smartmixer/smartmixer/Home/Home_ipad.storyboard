@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6249" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="A6X-K5-n75">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6243"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="bwD-ec-bhG">
+            <objects>
+                <navigationController hidesBottomBarWhenPushed="YES" id="A6X-K5-n75" sceneMemberID="viewController">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Cvp-sM-or9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.94509803920000002" green="0.30196078430000001" blue="0.25882352939999997" alpha="1" colorSpace="deviceRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="QX4-wh-U36" kind="relationship" relationship="rootViewController" id="DpB-Nu-4JS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hQB-tJ-OeM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-623" y="169"/>
+        </scene>
+        <!--鸡尾酒 Pro-->
+        <scene sceneID="jq6-AY-5mX">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="QX4-wh-U36" customClass="Home" customModule="smartmixer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yb6-3j-k4w"/>
+                        <viewControllerLayoutGuide type="bottom" id="riK-Ht-4sl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="h5g-1g-Wtq">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="page1_bg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Tyv-Yc-yZr">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="1024" id="sir-1e-CxN"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="sir-1e-CxN"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="sir-1e-CxN"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q2B-gf-v7y">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sence_djzd.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="FAN-IN-21O" customClass="RadiusImage" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="157" y="23" width="335" height="180"/>
+                                        </variation>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sence_bsjl.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="05O-nV-o6k" customClass="RadiusImage" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="157" y="221" width="155" height="80"/>
+                                        </variation>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sence_qbbz.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Ifq-Bj-ERt" customClass="RadiusImage" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="337" y="221" width="155" height="80"/>
+                                        </variation>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sence_mybar.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="OPU-dq-dXR" customClass="RadiusImage" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="702" y="322" width="155" height="80"/>
+                                        </variation>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sence_music.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="7Ma-zs-3we" customClass="RadiusImage" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="520" y="322" width="155" height="80"/>
+                                        </variation>
+                                    </imageView>
+                                    <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qpc-cb-a0T" customClass="FilletButton" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="##">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalbgColor">
+                                                <color key="value" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalfontColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="509" y="526" width="226" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="OnClickSence:" destination="QX4-wh-U36" eventType="touchUpInside" id="Nmm-0I-wCv"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fXf-gc-XOZ" customClass="FilletButton" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="##">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalbgColor">
+                                                <color key="value" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalfontColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="275" y="526" width="226" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="OnClickSence:" destination="QX4-wh-U36" eventType="touchUpInside" id="Abp-vb-H9I"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBE-AV-z17" customClass="FilletButton" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="##">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalbgColor">
+                                                <color key="value" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalfontColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="509" y="488" width="226" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="OnClickSence:" destination="QX4-wh-U36" eventType="touchUpInside" id="8G2-fK-vTf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IkV-8d-qlz" customClass="FilletButton" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="##">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalbgColor">
+                                                <color key="value" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalfontColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="275" y="488" width="226" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="OnClickSence:" destination="QX4-wh-U36" eventType="touchUpInside" id="c2b-Rs-8fP"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hAk-TQ-gJn" customClass="FilletButton" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="##">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalbgColor">
+                                                <color key="value" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalfontColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="509" y="450" width="226" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="OnClickSence:" destination="QX4-wh-U36" eventType="touchUpInside" id="HYJ-Va-21L"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ywk-Xv-oST" customClass="FilletButton" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="##">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalbgColor">
+                                                <color key="value" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalfontColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="275" y="450" width="226" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="OnClickSence:" destination="QX4-wh-U36" eventType="touchUpInside" id="Uu8-Ad-Tf1"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sence_tzrm.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="lmZ-9M-bjE" customClass="RadiusImage" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="520" y="23" width="153" height="180"/>
+                                        </variation>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sence_wsns.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="HbO-Nh-4eG" customClass="RadiusImage" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="702" y="23" width="155" height="80"/>
+                                        </variation>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sence_ns.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="au9-5V-7pd" customClass="RadiusImage" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="702" y="123" width="155" height="80"/>
+                                        </variation>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sence_jfty.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="GYL-aD-NZy" customClass="RadiusImage" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="520" y="221" width="155" height="80"/>
+                                        </variation>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sence_hfmy.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Dhv-VQ-UQX" customClass="RadiusImage" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="702" y="221" width="155" height="80"/>
+                                        </variation>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sence_mybar.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Eb9-uI-l2u" customClass="RadiusImage" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="337" y="322" width="155" height="80"/>
+                                        </variation>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sence_music.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Dxu-TZ-2it" customClass="RadiusImage" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="157" y="322" width="155" height="80"/>
+                                        </variation>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="seperator" translatesAutoresizingMaskIntoConstraints="NO" id="ULJ-gh-2xR">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="155" y="440" width="700" height="2"/>
+                                        </variation>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xIS-Fs-m6d" customClass="FilletButton" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="#鸡尾酒百科#">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalbgColor">
+                                                <color key="value" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalfontColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="395" y="564" width="226" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="OnClickBaike:" destination="QX4-wh-U36" eventType="touchUpInside" id="mLb-OP-rQC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5w-A8-2Fc" customClass="FilletButton" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="智能调酒设备购买">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalbgColor">
+                                                <color key="value" red="0.96078431369999995" green="0.64313725489999995" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalfontColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="355" y="602" width="300" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="viewStore:" destination="QX4-wh-U36" eventType="touchUpInside" id="gHg-hb-tAJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="FAN-IN-21O"/>
+                                        <exclude reference="05O-nV-o6k"/>
+                                        <exclude reference="Ifq-Bj-ERt"/>
+                                        <exclude reference="OPU-dq-dXR"/>
+                                        <exclude reference="7Ma-zs-3we"/>
+                                        <exclude reference="qpc-cb-a0T"/>
+                                        <exclude reference="fXf-gc-XOZ"/>
+                                        <exclude reference="OBE-AV-z17"/>
+                                        <exclude reference="IkV-8d-qlz"/>
+                                        <exclude reference="hAk-TQ-gJn"/>
+                                        <exclude reference="ywk-Xv-oST"/>
+                                        <exclude reference="lmZ-9M-bjE"/>
+                                        <exclude reference="HbO-Nh-4eG"/>
+                                        <exclude reference="au9-5V-7pd"/>
+                                        <exclude reference="GYL-aD-NZy"/>
+                                        <exclude reference="Dhv-VQ-UQX"/>
+                                        <exclude reference="Eb9-uI-l2u"/>
+                                        <exclude reference="Dxu-TZ-2it"/>
+                                        <exclude reference="ULJ-gh-2xR"/>
+                                        <exclude reference="xIS-Fs-m6d"/>
+                                        <exclude reference="b5w-A8-2Fc"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
+                                    <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
+                                    <mask key="subviews">
+                                        <include reference="FAN-IN-21O"/>
+                                        <include reference="05O-nV-o6k"/>
+                                        <include reference="Ifq-Bj-ERt"/>
+                                        <include reference="OPU-dq-dXR"/>
+                                        <include reference="7Ma-zs-3we"/>
+                                        <include reference="qpc-cb-a0T"/>
+                                        <include reference="fXf-gc-XOZ"/>
+                                        <include reference="OBE-AV-z17"/>
+                                        <include reference="IkV-8d-qlz"/>
+                                        <include reference="hAk-TQ-gJn"/>
+                                        <include reference="ywk-Xv-oST"/>
+                                        <include reference="lmZ-9M-bjE"/>
+                                        <include reference="HbO-Nh-4eG"/>
+                                        <include reference="au9-5V-7pd"/>
+                                        <include reference="GYL-aD-NZy"/>
+                                        <include reference="Dhv-VQ-UQX"/>
+                                        <include reference="Eb9-uI-l2u"/>
+                                        <include reference="Dxu-TZ-2it"/>
+                                        <include reference="ULJ-gh-2xR"/>
+                                        <include reference="xIS-Fs-m6d"/>
+                                        <include reference="b5w-A8-2Fc"/>
+                                    </mask>
+                                </variation>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="q2B-gf-v7y" firstAttribute="top" secondItem="yb6-3j-k4w" secondAttribute="bottom" constant="-64" id="8gD-2O-a1V">
+                                <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
+                            </constraint>
+                            <constraint firstAttribute="trailingMargin" secondItem="Tyv-Yc-yZr" secondAttribute="trailing" constant="-16" id="Df0-dC-evA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="q2B-gf-v7y" secondAttribute="trailing" constant="-16" id="F3B-Lm-Qvy"/>
+                            <constraint firstItem="Tyv-Yc-yZr" firstAttribute="top" secondItem="h5g-1g-Wtq" secondAttribute="topMargin" id="Hag-Uu-i6M"/>
+                            <constraint firstItem="q2B-gf-v7y" firstAttribute="leading" secondItem="h5g-1g-Wtq" secondAttribute="leadingMargin" constant="-16" id="Od1-D4-Dep"/>
+                            <constraint firstItem="Tyv-Yc-yZr" firstAttribute="top" secondItem="yb6-3j-k4w" secondAttribute="bottom" constant="-64" id="PDk-8A-VQ4">
+                                <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="riK-Ht-4sl" firstAttribute="top" secondItem="q2B-gf-v7y" secondAttribute="bottom" id="Pve-A6-6bs"/>
+                            <constraint firstItem="riK-Ht-4sl" firstAttribute="top" secondItem="Tyv-Yc-yZr" secondAttribute="bottom" id="Utd-sM-5lR"/>
+                            <constraint firstItem="q2B-gf-v7y" firstAttribute="top" secondItem="h5g-1g-Wtq" secondAttribute="topMargin" id="h4S-NL-cmN"/>
+                            <constraint firstAttribute="centerX" secondItem="Tyv-Yc-yZr" secondAttribute="centerX" id="q7s-YB-VZ0"/>
+                            <constraint firstItem="Tyv-Yc-yZr" firstAttribute="leading" secondItem="h5g-1g-Wtq" secondAttribute="leadingMargin" constant="-16" id="vMx-SU-XfU"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Tyv-Yc-yZr"/>
+                                <exclude reference="q2B-gf-v7y"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Pve-A6-6bs"/>
+                                <exclude reference="Utd-sM-5lR"/>
+                                <exclude reference="Df0-dC-evA"/>
+                                <exclude reference="Hag-Uu-i6M"/>
+                                <exclude reference="PDk-8A-VQ4"/>
+                                <exclude reference="q7s-YB-VZ0"/>
+                                <exclude reference="vMx-SU-XfU"/>
+                                <exclude reference="8gD-2O-a1V"/>
+                                <exclude reference="F3B-Lm-Qvy"/>
+                                <exclude reference="Od1-D4-Dep"/>
+                                <exclude reference="h4S-NL-cmN"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="Tyv-Yc-yZr"/>
+                                <include reference="q2B-gf-v7y"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Pve-A6-6bs"/>
+                                <include reference="Utd-sM-5lR"/>
+                                <exclude reference="Df0-dC-evA"/>
+                                <exclude reference="Hag-Uu-i6M"/>
+                                <include reference="PDk-8A-VQ4"/>
+                                <include reference="q7s-YB-VZ0"/>
+                                <exclude reference="vMx-SU-XfU"/>
+                                <include reference="8gD-2O-a1V"/>
+                                <include reference="F3B-Lm-Qvy"/>
+                                <include reference="Od1-D4-Dep"/>
+                                <exclude reference="h4S-NL-cmN"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="鸡尾酒 Pro" id="jj8-PM-vJX"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="1024" height="768"/>
+                    <connections>
+                        <outlet property="button0" destination="qpc-cb-a0T" id="Asd-Xk-iNB"/>
+                        <outlet property="button1" destination="fXf-gc-XOZ" id="kJW-7K-UfP"/>
+                        <outlet property="button2" destination="IkV-8d-qlz" id="C2p-YG-PEq"/>
+                        <outlet property="button3" destination="hAk-TQ-gJn" id="AQk-Sk-Rtz"/>
+                        <outlet property="button4" destination="OBE-AV-z17" id="0rk-Ri-2WP"/>
+                        <outlet property="button5" destination="ywk-Xv-oST" id="MKh-SJ-CNa"/>
+                        <outlet property="mainScroll" destination="q2B-gf-v7y" id="ip8-dG-iqL"/>
+                        <outlet property="sence0" destination="FAN-IN-21O" id="ibK-6t-dzL"/>
+                        <outlet property="sence1" destination="lmZ-9M-bjE" id="vLP-kp-KRb"/>
+                        <outlet property="sence2" destination="HbO-Nh-4eG" id="EGp-dd-jSE"/>
+                        <outlet property="sence3" destination="au9-5V-7pd" id="dck-1Z-T6E"/>
+                        <outlet property="sence4" destination="05O-nV-o6k" id="AGC-Sr-AiU"/>
+                        <outlet property="sence5" destination="Ifq-Bj-ERt" id="3xP-ZF-j0n"/>
+                        <outlet property="sence6" destination="GYL-aD-NZy" id="O3X-Dc-tLv"/>
+                        <outlet property="sence7" destination="Dhv-VQ-UQX" id="nMf-Fv-4Us"/>
+                        <outlet property="sence8" destination="OPU-dq-dXR" id="87q-g6-UIf"/>
+                        <outlet property="sence9" destination="7Ma-zs-3we" id="6Gb-42-hzq"/>
+                        <outlet property="senceBar" destination="Eb9-uI-l2u" id="0w2-X6-NX5"/>
+                        <outlet property="senceMusic" destination="Dxu-TZ-2it" id="ncs-js-WDp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P0I-ey-SSn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="109.5" y="168.75"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="page1_bg.jpg" width="1024" height="768"/>
+        <image name="sence_bsjl.jpg" width="296" height="140"/>
+        <image name="sence_djzd.jpg" width="600" height="320"/>
+        <image name="sence_hfmy.jpg" width="296" height="140"/>
+        <image name="sence_jfty.jpg" width="296" height="140"/>
+        <image name="sence_music.jpg" width="296" height="140"/>
+        <image name="sence_mybar.jpg" width="296" height="140"/>
+        <image name="sence_ns.jpg" width="296" height="140"/>
+        <image name="sence_qbbz.jpg" width="296" height="140"/>
+        <image name="sence_tzrm.jpg" width="294" height="290"/>
+        <image name="sence_wsns.jpg" width="296" height="140"/>
+        <image name="seperator" width="284" height="4"/>
+    </resources>
+</document>

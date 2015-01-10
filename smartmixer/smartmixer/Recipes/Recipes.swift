@@ -9,15 +9,15 @@
 import UIKit
 import CoreData
 
-class Recipes: UIViewController, SearchBeginDelegate ,NumberDelegate{
+class Recipes: UIViewController, SearchBeginDelegate ,NumberDelegate,UISearchBarDelegate{
     
-    @IBOutlet weak var parentView: UIView?
+    @IBOutlet var parentView: UIView?
     
-    @IBOutlet weak var searchView:UIView?
+    @IBOutlet var searchView:UIView?
     
-    @IBOutlet weak var CollectionView: UIView?
+    @IBOutlet var CollectionView: UIView?
     
-    @IBOutlet weak var hCondition: NSLayoutConstraint?
+    @IBOutlet var hCondition: NSLayoutConstraint?
     
     @IBOutlet var searchIco:UIBarButtonItem?
     
@@ -41,6 +41,11 @@ class Recipes: UIViewController, SearchBeginDelegate ,NumberDelegate{
     
     var titleView:UIView?
     
+    class func RecipesInit()->UIViewController{
+        var recipes = UIStoryboard(name: "Recipes"+deviceDefine, bundle: nil).instantiateInitialViewController() as UIViewController
+        return recipes
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         (rootSideMenu.SideView as CategoryMenu).delegate = self
@@ -50,18 +55,12 @@ class Recipes: UIViewController, SearchBeginDelegate ,NumberDelegate{
             lable.textColor = UIColor.whiteColor()
             lable.textAlignment = NSTextAlignment.Center
             lable.text = navTitle.title!
-            //TODO:场景功能展示隐藏
-            /**
-            var doubleclick = UITapGestureRecognizer(target: self, action: "navdoubleClick:")
-            //doubleclick.numberOfTapsRequired = 2
-            lable.addGestureRecognizer(doubleclick)
-            lable.userInteractionEnabled = true
-           * */
             navTitle.titleView = lable
             
         }
         searchBar = UISearchBar()
-        searchBar?.placeholder = "例如：B52"
+        searchBar?.placeholder = "例如：热吻"
+        searchBar?.delegate = self
         
         var left = UIBarButtonItem(image: UIImage(named: "menu"), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("showLeft:"))
         self.navigationItem.leftBarButtonItem = left
@@ -87,51 +86,13 @@ class Recipes: UIViewController, SearchBeginDelegate ,NumberDelegate{
         super.didReceiveMemoryWarning()
     }
     
-    var hasShowTips:Bool = false
-    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if(hasShowTips == false){
-            showSenceTips("更多精彩尽在标题栏哟~")
-            hasShowTips = true
-        }
+        rootController.showOrhideToolbar(true)
     }
     
     func scrollToTop(){
-        if(hasShowTips == true){
-           recipesCollection?.icollectionView.setContentOffset(CGPoint.zeroPoint, animated: true)
-        }
-    }
-    
-    /**
-    //双击导航栏
-    
-    var senceSearch:SenceSearch!
-    
-    func navdoubleClick(sender:UITapGestureRecognizer){
-        senceSearch = UIStoryboard(name: "Recipes"+exdeviceName, bundle: nil).instantiateViewControllerWithIdentifier("senceSearch")as SenceSearch
-        senceSearch.delegate = self
-        senceSearch.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
-        self.view.window?.rootViewController?.presentViewController(senceSearch, animated: false, completion: nil)
-
-    }
-    
-    func SenceSearchAction(sender:String){
-        showSenceTips(sender)
-    }
-    
-    **/
-    func showSenceTips(info:String){
-        senceTipsButton.setTitle(info,forState: UIControlState.Normal)
-        UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-            self.hSenceTips?.constant =  10
-            self.view.layoutIfNeeded()
-            }, completion: { _ in
-                UIView.animateWithDuration(0.2, delay: 1.2, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-                    self.hSenceTips?.constant =  -40
-                    self.view.layoutIfNeeded()
-                    }, completion: nil)
-        })
+        recipesCollection?.icollectionView.setContentOffset(CGPoint.zeroPoint, animated: true)
     }
     
     func NumberAction(sender:UIViewController,num Number:Int){
@@ -153,6 +114,10 @@ class Recipes: UIViewController, SearchBeginDelegate ,NumberDelegate{
     }
     
     func cancleSearch(sender:UIBarButtonItem){
+        self.recipesSearch?.resetCondition()
+        self.searchBar?.text=""
+        recipesCollection?.catagorySearch = 0;
+        recipesCollection?.ReloadData()
         UIView.animateWithDuration(0.2, animations: {
             self.hCondition!.constant = 0
             self.parentView!.layoutIfNeeded()
@@ -163,6 +128,10 @@ class Recipes: UIViewController, SearchBeginDelegate ,NumberDelegate{
         })
     }
     
+    //点击搜索按钮
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
     
     //点击搜索回车按钮
     func SearchBeginAction(sender: RecipesSearch,hide:Bool) {

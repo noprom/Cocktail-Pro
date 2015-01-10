@@ -11,20 +11,21 @@ import CoreData
 
 class CategoryMenu: UIViewController {
     
+    class func CategoryMenuInit()->CategoryMenu{
+        var menu = UIStoryboard(name: "Recipes"+deviceDefine, bundle: nil).instantiateViewControllerWithIdentifier("categoryMenu") as CategoryMenu
+        return menu
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(white: 0, alpha: 0.5)
     }
     
     var delegate:NumberDelegate!
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionInfo = (self.fetchedResultsController.sections as [NSFetchedResultsSectionInfo]) [section]
-        return sectionInfo.numberOfObjects+1
+        return sectionInfo.numberOfObjects+2
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -38,11 +39,14 @@ class CategoryMenu: UIViewController {
             categoryCell.cellname.text = "全部 All"
             categoryCell.tag = 0
             tableView.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: UITableViewScrollPosition.Top)
+        }else if(indexPath.row==1 && indexPath.section==0){
+            categoryCell.cellname.text = "我的酒单 Mine"
+            categoryCell.tag = -1
         }else{
-            var index = NSIndexPath(forRow: indexPath.row-1, inSection: indexPath.section)
+            var index = NSIndexPath(forRow: indexPath.row-2, inSection: indexPath.section)
             let item = self.fetchedResultsController.objectAtIndexPath(index) as Category
             categoryCell.cellname.text = "\(item.name) \(item.nameEng)"
-            categoryCell.tag = Int(item.id)
+            categoryCell.tag = item.id.integerValue
         }
 
         return categoryCell
@@ -59,7 +63,6 @@ class CategoryMenu: UIViewController {
         }
     }
     
-    
     //下载分类的
     var fetchedResultsController: NSFetchedResultsController {
         if (_fetchedResultsController != nil) {
@@ -67,25 +70,12 @@ class CategoryMenu: UIViewController {
             }
             
             let fetchRequest = NSFetchRequest()
-            // Edit the entity name as appropriate.
-            let entity = NSEntityDescription.entityForName("Category", inManagedObjectContext: managedObjectContext)
-            fetchRequest.entity = entity
-            
-            // Set the batch size to a suitable number.
+            fetchRequest.entity = NSEntityDescription.entityForName("Category", inManagedObjectContext: managedObjectContext)
             fetchRequest.fetchBatchSize = 30
-            
-            // Edit the sort key as appropriate.
-            let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
-            let sortDescriptors = [sortDescriptor]
-            fetchRequest.sortDescriptors = sortDescriptors
-            
-            var condition = NSPredicate(format: "type = 0")
-            fetchRequest.predicate = condition
-            
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "order", ascending: true),NSSortDescriptor(key: "id", ascending: true)]
+            fetchRequest.predicate = NSPredicate(format: "type = 0")
             let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-            //aFetchedResultsController.delegate = self
             _fetchedResultsController = aFetchedResultsController
-            
             var error: NSError? = nil
             if !_fetchedResultsController!.performFetch(&error) {
                 abort()
@@ -95,51 +85,8 @@ class CategoryMenu: UIViewController {
     }
     
     var _fetchedResultsController: NSFetchedResultsController? = nil
-    /**/
     
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView!, canEditRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
-    // Return NO if you do not want the specified item to be editable.
-    return true
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
-    */
-    
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
-    if editingStyle == .Delete {
-    // Delete the row from the data source
-    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-    } else if editingStyle == .Insert {
-    // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }
-    }
-    */
-    
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView!, moveRowAtIndexPath fromIndexPath: NSIndexPath!, toIndexPath: NSIndexPath!) {
-    
-    }
-    */
-    
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView!, canMoveRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
-    // Return NO if you do not want the item to be re-orderable.
-    return true
-    }
-    */
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    }
-    */
-    
 }

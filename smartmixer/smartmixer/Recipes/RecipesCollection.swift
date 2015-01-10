@@ -8,35 +8,53 @@
 
 import UIKit
 import CoreData
+import Foundation
 
 class RecipesCollection: UIViewController,UIScrollViewDelegate {
-
-    //搜索参数设置部分
-    var recipesSearch:RecipesSearch! = nil
     
-    //当前的选中分类
-    var catagorySearch:Int! = 0
-    
+    //@MARK:容器对象
     @IBOutlet var icollectionView:UICollectionView!
-    
-    //没有找到数据
+    //标题的导航，一般不显示
+    @IBOutlet var senceTitle:UINavigationItem!
+    //没有找到数据时的显示提示
     @IBOutlet var nodataFind:UILabel!
     
-    //没有数据时的提示文字
-    var nodataTip:String = ""
-    
+    //@MARK:酒单页的参数设置
+    //搜索参数设置部分
+    var recipesSearch:RecipesSearch! = nil
+    //当前的选中分类
+    var catagorySearch:Int! = 0
     //该导航需要设置的
-    weak var NavigationController:UINavigationController!
+    var NavigationController:UINavigationController!
+    
+    //@MARK:场景显示时的需要设置的参数
+    //显示的标题,这是为场景显示准备的
+    var SenceTitle:String="鸡尾酒Pro"
+    //需要集中显示的项目
+    var SenceItems:NSArray!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if(nodataTip != "" && nodataFind != nil){
-            nodataFind.text = nodataTip
+        if(senceTitle != nil){
+            senceTitle.title = SenceTitle
         }
     }
     
+    
+    //@MARK:内部自初始化一个实例
+    class func RecipesCollectionInit()->RecipesCollection{
+        var recipesCollection = UIStoryboard(name: "Recipes"+deviceDefine, bundle: nil).instantiateViewControllerWithIdentifier("recipesCollection") as RecipesCollection
+        return recipesCollection
+    }
+    
+    //@MARK:摇一摇的功能部分
+    //是不是启用摇一摇，作为场景页显示的时候不不可以的
     override func canBecomeFirstResponder() -> Bool {
-        return true
+        if(recipesSearch != nil){
+            return true
+        }else{
+            return false
+        }
     }
     
     override func motionBegan(motion: UIEventSubtype, withEvent event: UIEvent) {
@@ -46,15 +64,9 @@ class RecipesCollection: UIViewController,UIScrollViewDelegate {
             var totle:UInt32 = UInt32(item.numberOfObjects)
             let num = arc4random_uniform(totle)
             var indexPath = NSIndexPath(forRow: Int(num), inSection: 0)
-            if(exdeviceName == ""){
-                var recipeDetail = UIStoryboard(name: "Recipes", bundle: nil).instantiateViewControllerWithIdentifier("recipeDetail") as RecipeDetailPhone
-                recipeDetail.CurrentData = self.fetchedItemsController.objectAtIndexPath(indexPath) as Recipe
-                self.NavigationController.pushViewController(recipeDetail, animated: true)
-            }else{
-                var recipeDetail = UIStoryboard(name: "Recipes"+exdeviceName, bundle: nil).instantiateViewControllerWithIdentifier("recipeDetail") as RecipeDetailPad
-                recipeDetail.CurrentData = self.fetchedItemsController.objectAtIndexPath(indexPath) as Recipe
-                self.NavigationController.pushViewController(recipeDetail, animated: true)
-            }
+            var recipeDetail = UIStoryboard(name: "Recipes", bundle: nil).instantiateViewControllerWithIdentifier("recipeDetail") as RecipeDetailPhone
+            recipeDetail.CurrentData = self.fetchedItemsController.objectAtIndexPath(indexPath) as Recipe
+            self.NavigationController.pushViewController(recipeDetail, animated: true)
         }
     }
     
@@ -69,24 +81,12 @@ class RecipesCollection: UIViewController,UIScrollViewDelegate {
         
     }
     
-    func ScrollToHide(sender:UISwipeGestureRecognizer){
-        if(sender.direction == UISwipeGestureRecognizerDirection.Up){
-            rootController.showOrhideToolbar(false)
-        }else if(sender.direction == UISwipeGestureRecognizerDirection.Up){
-            rootController.showOrhideToolbar(true)
-        }
+    //返回
+    @IBAction func goback(sender:UINavigationItem){
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
-    func ReloadData(){
-        _fetchedItemsController = nil
-        icollectionView.reloadData()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    //处理向下向上滚动影藏控制栏
+    //@MARK:处理向下向上滚动影藏控制栏
     var lastPos:CGFloat = 0
     
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
@@ -94,14 +94,24 @@ class RecipesCollection: UIViewController,UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        var off = scrollView.contentOffset.y
-        if((off-lastPos)>50 && off>50){//向下了
-            lastPos = off
-            rootController.showOrhideToolbar(false)
-        }else if((lastPos-off)>50){
-            lastPos = off
-            rootController.showOrhideToolbar(true)
+        if(SenceItems == nil){//非场景调用时的处理
+            var off = scrollView.contentOffset.y
+            if((off-lastPos)>50 && off>50){//向下了
+                lastPos = off
+                rootController.showOrhideToolbar(false)
+            }else if((lastPos-off)>50){
+                lastPos = off
+                rootController.showOrhideToolbar(true)
+            }
         }
+    }
+    
+    //@MARK:collectionView的显示处理
+    
+    func ReloadData(){
+        _fetchedItemsController = nil
+        icollectionView.reloadData()
+        icollectionView.setContentOffset(CGPoint.zeroPoint, animated: false)
     }
     
     func collectionView(collectionView: UICollectionView!, numberOfItemsInSection section: Int) -> Int {
@@ -114,56 +124,43 @@ class RecipesCollection: UIViewController,UIScrollViewDelegate {
         }
         return item.numberOfObjects
     }
-
     
     func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
         var viewCell = collectionView.dequeueReusableCellWithReuseIdentifier("recipe-thumbnail", forIndexPath: indexPath) as RecipeThumbail
         let item = self.fetchedItemsController.objectAtIndexPath(indexPath) as Recipe
         viewCell.SetDataContent(item)
-        if(recipesSearch == nil){
-            viewCell.collection = icollectionView
-        }
         return viewCell
     }
     
     func collectionView(collectionView: UICollectionView!, didSelectItemAtIndexPath indexPath: NSIndexPath!) {
         rootSideMenu.needSwipeShowMenu = false
-        if(exdeviceName == ""){
-            var recipeDetail = UIStoryboard(name: "Recipes", bundle: nil).instantiateViewControllerWithIdentifier("recipeDetail") as RecipeDetailPhone
+        if(deviceDefine==""){
+            var recipeDetail = RecipeDetailPhone.RecipesDetailPhoneInit()
             recipeDetail.CurrentData = self.fetchedItemsController.objectAtIndexPath(indexPath) as Recipe
             self.NavigationController.pushViewController(recipeDetail, animated: true)
-        }else{
-            var recipeDetail = UIStoryboard(name: "Recipes"+exdeviceName, bundle: nil).instantiateViewControllerWithIdentifier("recipeDetail") as RecipeDetailPad
+        }else{//ipad
+            var recipeDetail = RecipeDetailPad.RecipeDetailPadInit()
             recipeDetail.CurrentData = self.fetchedItemsController.objectAtIndexPath(indexPath) as Recipe
             self.NavigationController.pushViewController(recipeDetail, animated: true)
         }
+        
     }
     
-    
-    //详情的分类
+    //@MARK:数据准备的部分
     var fetchedItemsController: NSFetchedResultsController {
-        if (_fetchedItemsController != nil) {
-            return _fetchedItemsController!
-            }
-            
+        if (_fetchedItemsController == nil) {
             let fetchRequest = NSFetchRequest()
-            // Edit the entity name as appropriate.
-            let entity = NSEntityDescription.entityForName("Recipe", inManagedObjectContext: managedObjectContext)
-            fetchRequest.entity = entity
-            
-            // Set the batch size to a suitable number.
-            //fetchRequest.fetchBatchSize = 30
-            
-            // Edit the sort key as appropriate.
-            let sortDescriptor = NSSortDescriptor(key: "id", ascending: false)
-            let sortDescriptors = [sortDescriptor]
-            
-            fetchRequest.sortDescriptors = sortDescriptors
-            
-            var conditionStr = ""
+            fetchRequest.entity = NSEntityDescription.entityForName("Recipe", inManagedObjectContext: managedObjectContext)
+            if(catagorySearch == -1){
+                fetchRequest.sortDescriptors = [NSSortDescriptor(key: "coverd", ascending: false),NSSortDescriptor(key: "id", ascending: false)]
+            }else{
+                fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: false)]
+            }
+            var conditionStr:String = ""
             if(recipesSearch != nil){//这里是主界面的调用
-                if(recipesSearch.keyWord != ""){
-                    conditionStr = "(name CONTAINS '\(recipesSearch.keyWord)' OR nameEng CONTAINS '\(recipesSearch.keyWord)') AND "
+                //关键字
+                if(recipesSearch.keyWord != ""){//关键字
+                    conditionStr = "(name CONTAINS[cd] '\(recipesSearch.keyWord)' OR nameEng CONTAINS[cd] '\(recipesSearch.keyWord)') AND "
                 }
                 //口感部分
                 var conditionSeg:String = ""
@@ -200,40 +197,38 @@ class RecipesCollection: UIViewController,UIScrollViewDelegate {
                     conditionStr += "(\(conditionSeg)) AND "
                 }
                 
-                //
-                if(catagorySearch != 0){
-                    conditionStr += "type ==\(catagorySearch) AND "
+                //分类
+                if(catagorySearch > 0){
+                    conditionStr += "catagoryId==\(catagorySearch) AND "
                 }
-                
+                //酒精度
                 conditionStr += "alcohol<=\(recipesSearch.keyAlcohol) AND "
-                
+                //难度
                 conditionStr += "difficulty<=\(recipesSearch.keyDifficulty)"
-                
-                
-            } else {//这里是用户部分的调用
-                if(catagorySearch == 0){ //我的收藏
-                    conditionStr += "isFav == true "
-                }else{//调制历史
-                    conditionStr += "cooktimes > 0 "
+            } else if(SenceItems != nil) {//这里是用户调用场景显示的部分
+                for item in SenceItems {
+                    conditionStr += " id=\((item as Int)) or "
                 }
+                var end = advance(conditionStr.startIndex, countElements(conditionStr)-4)
+                conditionStr = conditionStr.substringToIndex(end)
             }
-            
-            var condition = NSPredicate(format: conditionStr)
-            fetchRequest.predicate = condition
-            
-            
+            if(conditionStr != ""){
+                fetchRequest.predicate = NSPredicate(format: conditionStr)
+            }
             let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-            //aFetchedResultsController.delegate = self
             _fetchedItemsController = aFetchedResultsController
             
             var error: NSError? = nil
             if !_fetchedItemsController!.performFetch(&error) {
                 abort()
             }
-            
+            }
             return _fetchedItemsController!
     }
-    
     var _fetchedItemsController: NSFetchedResultsController? = nil
-
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
 }

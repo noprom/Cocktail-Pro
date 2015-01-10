@@ -109,13 +109,12 @@ class RecipeIngridients: UIViewController, UIScrollViewDelegate,UICollectionView
         for( var index = 0; index != steps.count; index++){
             let item = steps[index]
             if(item.actionId == 1 || item.actionId == 20){//需要容器的
-                let container = getOneContainer(Int(item.ingridientId))
-                segmentCells.insert([container.name,container.nameEng,"",container.largePhoto], atIndex: 0)
+                let container = getOneContainer(item.ingridientId.integerValue)
+                segmentCells.insert([container.name,container.nameEng,"",container.thumb], atIndex: 0)
             }else if(item.actionId == 3){//需要材料的
-                let ingridient = getOneIngridient(Int(item.ingridientId))
-                NSLog("\(item.amount)")
-                NSLog("\(item.unitId) " + UnitDictory[Int(item.unitId)]!)
-                segmentCells.append([ingridient.name,ingridient.nameEng,"\(item.amount)"+UnitDictory[Int(item.unitId)]!,ingridient.largePhoto])
+                let ingridient = getOneIngridient(item.ingridientId.integerValue)
+                segmentCells.append([ingridient.name,ingridient.nameEng,"\(item.amount)"+UnitDictory[item.unitId.integerValue]!,ingridient.thumb])
+                
             }
         }
         

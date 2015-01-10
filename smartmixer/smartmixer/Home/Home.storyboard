@@ -1,0 +1,983 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6249" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5f9-vh-54m">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6243"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="hHh-fT-9Ub">
+            <objects>
+                <navigationController hidesBottomBarWhenPushed="YES" id="5f9-vh-54m" sceneMemberID="viewController">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="maa-IT-HV6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.94509803920000002" green="0.30196078430000001" blue="0.25882352939999997" alpha="0.90000000000000002" colorSpace="deviceRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="OZe-xk-iIy" kind="relationship" relationship="rootViewController" id="5KI-VX-6W0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xTZ-P6-xSb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1.5" y="78"/>
+        </scene>
+        <!--鸡尾酒 Pro-->
+        <scene sceneID="un0-Qq-YvU">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="OZe-xk-iIy" customClass="Home" customModule="smartmixer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Crx-QR-W8O"/>
+                        <viewControllerLayoutGuide type="bottom" id="BxN-yc-XXk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uZn-Vg-Lec">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpj-FW-e9R">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sence_djzd.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="vh5-MQ-LHk" customClass="RadiusImage" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="160" id="br2-RF-5Kr"/>
+                                            <constraint firstAttribute="width" constant="300" id="s3S-sM-5qT"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="br2-RF-5Kr"/>
+                                                <exclude reference="s3S-sM-5qT"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="br2-RF-5Kr"/>
+                                                <include reference="s3S-sM-5qT"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sence_tzrm.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="he8-Pj-Ew1" customClass="RadiusImage" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="145" id="1QQ-Pz-gZy"/>
+                                            <constraint firstAttribute="width" constant="147" id="Jzv-o7-fA8"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="1QQ-Pz-gZy"/>
+                                                <exclude reference="Jzv-o7-fA8"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="1QQ-Pz-gZy"/>
+                                                <include reference="Jzv-o7-fA8"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sence_wsns.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="QFv-uD-sIs" customClass="RadiusImage" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="M9j-cz-1eX"/>
+                                            <constraint firstAttribute="width" constant="148" id="TKy-Cw-Xdq"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="M9j-cz-1eX"/>
+                                                <exclude reference="TKy-Cw-Xdq"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="M9j-cz-1eX"/>
+                                                <include reference="TKy-Cw-Xdq"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sence_ns.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="8nI-TB-B1L" customClass="RadiusImage" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="8Ra-I0-gzd"/>
+                                            <constraint firstAttribute="width" constant="148" id="vjx-JR-QTF"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="8Ra-I0-gzd"/>
+                                                <exclude reference="vjx-JR-QTF"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="8Ra-I0-gzd"/>
+                                                <include reference="vjx-JR-QTF"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sence_bsjl.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ViR-m6-2gs" customClass="RadiusImage" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="Ikf-wh-fax"/>
+                                            <constraint firstAttribute="width" constant="147" id="qBB-QL-lA9"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Ikf-wh-fax"/>
+                                                <exclude reference="qBB-QL-lA9"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="Ikf-wh-fax"/>
+                                                <include reference="qBB-QL-lA9"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sence_qbbz.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="8py-ZV-wYn" customClass="RadiusImage" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="148" id="8Xm-JX-HgV"/>
+                                            <constraint firstAttribute="height" constant="70" id="AWW-tD-zdp"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="8Xm-JX-HgV"/>
+                                                <exclude reference="AWW-tD-zdp"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="8Xm-JX-HgV"/>
+                                                <include reference="AWW-tD-zdp"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sence_jfty.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="yaP-n6-DCm" customClass="RadiusImage" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="osB-dz-xNF"/>
+                                            <constraint firstAttribute="width" constant="147" id="p7R-CF-r8X"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="osB-dz-xNF"/>
+                                                <exclude reference="p7R-CF-r8X"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="osB-dz-xNF"/>
+                                                <include reference="p7R-CF-r8X"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sence_hfmy.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Hp7-5i-cRc" customClass="RadiusImage" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="WOw-6R-1Q7"/>
+                                            <constraint firstAttribute="width" constant="148" id="d4X-Bw-ywc"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="WOw-6R-1Q7"/>
+                                                <exclude reference="d4X-Bw-ywc"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="WOw-6R-1Q7"/>
+                                                <include reference="d4X-Bw-ywc"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sence_scxl.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Ysd-ni-A5c" customClass="RadiusImage" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="147" id="4ii-h7-QiJ"/>
+                                            <constraint firstAttribute="height" constant="70" id="ucr-uz-7GI"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="4ii-h7-QiJ"/>
+                                                <exclude reference="ucr-uz-7GI"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="4ii-h7-QiJ"/>
+                                                <include reference="ucr-uz-7GI"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sence_tmwx.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="jVb-Bf-Scg" customClass="RadiusImage" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="9H2-c5-VaG"/>
+                                            <constraint firstAttribute="width" constant="148" id="WHw-Jt-gZ3"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="9H2-c5-VaG"/>
+                                                <exclude reference="WHw-Jt-gZ3"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="9H2-c5-VaG"/>
+                                                <include reference="WHw-Jt-gZ3"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="seperator" translatesAutoresizingMaskIntoConstraints="NO" id="ItZ-VA-nwd">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="hxb-Cf-Ql3"/>
+                                            <constraint firstAttribute="width" constant="320" id="peM-rd-rnI"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="hxb-Cf-Ql3"/>
+                                                <exclude reference="peM-rd-rnI"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="hxb-Cf-Ql3"/>
+                                                <include reference="peM-rd-rnI"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cD3-9E-xdm" customClass="FilletButton" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="K2F-bs-0y9"/>
+                                            <constraint firstAttribute="width" constant="148" id="ybM-DW-XZR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="#女神最爱#">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalbgColor">
+                                                <color key="value" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalfontColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="K2F-bs-0y9"/>
+                                                <exclude reference="ybM-DW-XZR"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="K2F-bs-0y9"/>
+                                                <include reference="ybM-DW-XZR"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="OnClickSence:" destination="OZe-xk-iIy" eventType="touchUpInside" id="vzi-10-2GM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rZ8-xT-wdV" customClass="FilletButton" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="148" id="IHw-RM-oHw"/>
+                                            <constraint firstAttribute="height" constant="30" id="kKN-wY-ep3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="#鸡尾酒百科#">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalbgColor">
+                                                <color key="value" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalfontColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="IHw-RM-oHw"/>
+                                                <exclude reference="kKN-wY-ep3"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="IHw-RM-oHw"/>
+                                                <include reference="kKN-wY-ep3"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="OnClickSence:" destination="OZe-xk-iIy" eventType="touchUpInside" id="3Aj-iy-Aff"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qEi-pU-FpY" customClass="FilletButton" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="2k0-nB-IpG"/>
+                                            <constraint firstAttribute="width" constant="148" id="aaJ-lY-shv"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="#女神最爱#">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalbgColor">
+                                                <color key="value" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalfontColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="2k0-nB-IpG"/>
+                                                <exclude reference="aaJ-lY-shv"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="2k0-nB-IpG"/>
+                                                <include reference="aaJ-lY-shv"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="OnClickSence:" destination="OZe-xk-iIy" eventType="touchUpInside" id="OTA-Vc-EDE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ucl-2w-e5b" customClass="FilletButton" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="KJh-E2-LfU"/>
+                                            <constraint firstAttribute="width" constant="148" id="eC4-ap-Wk3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="#鸡尾酒百科#">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalbgColor">
+                                                <color key="value" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalfontColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="KJh-E2-LfU"/>
+                                                <exclude reference="eC4-ap-Wk3"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="KJh-E2-LfU"/>
+                                                <include reference="eC4-ap-Wk3"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="OnClickSence:" destination="OZe-xk-iIy" eventType="touchUpInside" id="Ibo-C3-twQ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="16I-KV-LQO" customClass="FilletButton" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="148" id="RRa-MV-bPV"/>
+                                            <constraint firstAttribute="height" constant="30" id="yeS-oK-Wmy"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="#女神最爱#">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalbgColor">
+                                                <color key="value" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalfontColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="RRa-MV-bPV"/>
+                                                <exclude reference="yeS-oK-Wmy"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="RRa-MV-bPV"/>
+                                                <include reference="yeS-oK-Wmy"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="OnClickSence:" destination="OZe-xk-iIy" eventType="touchUpInside" id="2xe-Zr-JmF"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mMQ-uQ-cJ8" customClass="FilletButton" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="hFn-E4-kNf"/>
+                                            <constraint firstAttribute="width" constant="148" id="qbr-eZ-GOd"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="#鸡尾酒百科#">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalbgColor">
+                                                <color key="value" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalfontColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="hFn-E4-kNf"/>
+                                                <exclude reference="qbr-eZ-GOd"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="hFn-E4-kNf"/>
+                                                <include reference="qbr-eZ-GOd"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="OnClickSence:" destination="OZe-xk-iIy" eventType="touchUpInside" id="BV5-ja-YyZ"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sep_button.png" translatesAutoresizingMaskIntoConstraints="NO" id="i73-eD-q3H">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="320" id="SSg-hb-QBC">
+                                                <variation key="heightClass=regular-widthClass=compact" constant="300"/>
+                                            </constraint>
+                                            <constraint firstAttribute="height" constant="48" id="bFb-Uc-NBl"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="SSg-hb-QBC"/>
+                                                <exclude reference="bFb-Uc-NBl"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="SSg-hb-QBC"/>
+                                                <include reference="bFb-Uc-NBl"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gof-j4-BWi" customClass="FilletButton" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="220" id="IFY-nE-Hgl"/>
+                                            <constraint firstAttribute="height" constant="30" id="nNF-Wx-rfo"/>
+                                        </constraints>
+                                        <state key="normal" title="智能调酒设备购买">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalbgColor">
+                                                <color key="value" red="0.96078431369999995" green="0.64313725489999995" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalfontColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="IFY-nE-Hgl"/>
+                                                <exclude reference="nNF-Wx-rfo"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="IFY-nE-Hgl"/>
+                                                <include reference="nNF-Wx-rfo"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="viewStore:" destination="OZe-xk-iIy" eventType="touchUpInside" id="jHu-S0-iuX"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RsE-Xt-tRl" customClass="FilletButton" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="Nhd-dO-AJn"/>
+                                            <constraint firstAttribute="height" constant="30" id="TKp-QS-bbc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="#鸡尾酒百科#">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalfontColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalbgColor">
+                                                <color key="value" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Nhd-dO-AJn"/>
+                                                <exclude reference="TKp-QS-bbc"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="Nhd-dO-AJn"/>
+                                                <include reference="TKp-QS-bbc"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="OnClickBaike:" destination="OZe-xk-iIy" eventType="touchUpInside" id="hBW-JR-tdH"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sence_music.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Ank-32-ZRz" customClass="RadiusImage" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="147" id="FYk-vr-amr"/>
+                                            <constraint firstAttribute="height" constant="70" id="vYP-VU-9r5"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="FYk-vr-amr"/>
+                                                <exclude reference="vYP-VU-9r5"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="FYk-vr-amr"/>
+                                                <include reference="vYP-VU-9r5"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sence_mybar.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="JPm-5D-NQ8" customClass="RadiusImage" customModule="smartmixer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="148" id="4Hv-aA-Fnt"/>
+                                            <constraint firstAttribute="height" constant="70" id="HY6-W0-FVt"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="4Hv-aA-Fnt"/>
+                                                <exclude reference="HY6-W0-FVt"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="4Hv-aA-Fnt"/>
+                                                <include reference="HY6-W0-FVt"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Ysd-ni-A5c" firstAttribute="leading" secondItem="cpj-FW-e9R" secondAttribute="leading" constant="10" id="0cR-jf-aoh"/>
+                                    <constraint firstItem="ItZ-VA-nwd" firstAttribute="top" secondItem="JPm-5D-NQ8" secondAttribute="bottom" constant="10" id="1IQ-Tl-I48"/>
+                                    <constraint firstItem="cD3-9E-xdm" firstAttribute="top" secondItem="ItZ-VA-nwd" secondAttribute="bottom" constant="16" id="2JY-AH-JAm"/>
+                                    <constraint firstItem="RsE-Xt-tRl" firstAttribute="top" secondItem="mMQ-uQ-cJ8" secondAttribute="bottom" constant="2" id="2t7-uP-rd0"/>
+                                    <constraint firstItem="rZ8-xT-wdV" firstAttribute="top" secondItem="ItZ-VA-nwd" secondAttribute="bottom" constant="16" id="3X5-8r-sZj"/>
+                                    <constraint firstItem="8nI-TB-B1L" firstAttribute="top" secondItem="QFv-uD-sIs" secondAttribute="bottom" constant="5" id="3j6-ck-YRz"/>
+                                    <constraint firstItem="Ank-32-ZRz" firstAttribute="leading" secondItem="cpj-FW-e9R" secondAttribute="leading" constant="10" id="49z-bb-6EW"/>
+                                    <constraint firstItem="he8-Pj-Ew1" firstAttribute="leading" secondItem="cpj-FW-e9R" secondAttribute="leading" constant="10" id="6F4-fi-kC4"/>
+                                    <constraint firstItem="he8-Pj-Ew1" firstAttribute="top" secondItem="vh5-MQ-LHk" secondAttribute="bottom" constant="5" id="6Fh-8j-QOQ"/>
+                                    <constraint firstItem="JPm-5D-NQ8" firstAttribute="leading" secondItem="Ank-32-ZRz" secondAttribute="trailing" constant="4" id="6UU-cz-unu"/>
+                                    <constraint firstItem="yaP-n6-DCm" firstAttribute="leading" secondItem="cpj-FW-e9R" secondAttribute="leading" constant="10" id="6wp-Ll-0on"/>
+                                    <constraint firstItem="ItZ-VA-nwd" firstAttribute="top" secondItem="jVb-Bf-Scg" secondAttribute="bottom" constant="15" id="9m8-W8-I1x">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="180"/>
+                                    </constraint>
+                                    <constraint firstItem="vh5-MQ-LHk" firstAttribute="top" secondItem="cpj-FW-e9R" secondAttribute="top" constant="10" id="B3o-bm-Mpf"/>
+                                    <constraint firstItem="ViR-m6-2gs" firstAttribute="top" secondItem="he8-Pj-Ew1" secondAttribute="bottom" constant="5" id="CaI-F7-eZU"/>
+                                    <constraint firstItem="Ucl-2w-e5b" firstAttribute="top" secondItem="rZ8-xT-wdV" secondAttribute="bottom" constant="2" id="CkF-dO-jdF"/>
+                                    <constraint firstItem="ItZ-VA-nwd" firstAttribute="leading" secondItem="cpj-FW-e9R" secondAttribute="leading" id="Lkb-Xj-q9B"/>
+                                    <constraint firstItem="JPm-5D-NQ8" firstAttribute="top" secondItem="jVb-Bf-Scg" secondAttribute="bottom" constant="5" id="MEV-ER-tNg"/>
+                                    <constraint firstItem="mMQ-uQ-cJ8" firstAttribute="top" secondItem="Ucl-2w-e5b" secondAttribute="bottom" constant="2" id="NIm-Zs-0Ha"/>
+                                    <constraint firstItem="qEi-pU-FpY" firstAttribute="leading" secondItem="cpj-FW-e9R" secondAttribute="leading" constant="9" id="O2M-QF-Lqd"/>
+                                    <constraint firstItem="Hp7-5i-cRc" firstAttribute="leading" secondItem="yaP-n6-DCm" secondAttribute="trailing" constant="4" id="OBE-M7-ffp"/>
+                                    <constraint firstItem="Gof-j4-BWi" firstAttribute="leading" secondItem="cpj-FW-e9R" secondAttribute="leading" constant="49" id="QGB-dY-BOd"/>
+                                    <constraint firstItem="cD3-9E-xdm" firstAttribute="leading" secondItem="cpj-FW-e9R" secondAttribute="leading" constant="9" id="WOr-JV-iRE"/>
+                                    <constraint firstItem="JPm-5D-NQ8" firstAttribute="leading" secondItem="Ank-32-ZRz" secondAttribute="trailing" constant="4" id="ZJU-ia-4hj"/>
+                                    <constraint firstItem="QFv-uD-sIs" firstAttribute="leading" secondItem="he8-Pj-Ew1" secondAttribute="trailing" constant="5" id="ZQF-M7-qkP"/>
+                                    <constraint firstItem="rZ8-xT-wdV" firstAttribute="leading" secondItem="cD3-9E-xdm" secondAttribute="trailing" constant="4" id="aHf-16-2QW"/>
+                                    <constraint firstItem="jVb-Bf-Scg" firstAttribute="top" secondItem="Hp7-5i-cRc" secondAttribute="bottom" constant="5" id="aJW-Y2-d4V"/>
+                                    <constraint firstAttribute="centerX" secondItem="i73-eD-q3H" secondAttribute="centerX" id="eL5-9j-eOR"/>
+                                    <constraint firstItem="qEi-pU-FpY" firstAttribute="top" secondItem="cD3-9E-xdm" secondAttribute="bottom" constant="2" id="fWX-Z4-Ptl"/>
+                                    <constraint firstItem="Ank-32-ZRz" firstAttribute="top" secondItem="Ysd-ni-A5c" secondAttribute="bottom" constant="5" id="fmr-49-Xrr"/>
+                                    <constraint firstItem="mMQ-uQ-cJ8" firstAttribute="leading" secondItem="16I-KV-LQO" secondAttribute="trailing" constant="4" id="fuJ-sG-YRm"/>
+                                    <constraint firstItem="Ysd-ni-A5c" firstAttribute="top" secondItem="yaP-n6-DCm" secondAttribute="bottom" constant="5" id="gBe-Vg-hhv"/>
+                                    <constraint firstItem="yaP-n6-DCm" firstAttribute="top" secondItem="ViR-m6-2gs" secondAttribute="bottom" constant="5" id="gBx-rg-a2Q"/>
+                                    <constraint firstItem="16I-KV-LQO" firstAttribute="leading" secondItem="cpj-FW-e9R" secondAttribute="leading" constant="9" id="gct-rp-dkX"/>
+                                    <constraint firstItem="ViR-m6-2gs" firstAttribute="leading" secondItem="cpj-FW-e9R" secondAttribute="leading" constant="10" id="ghQ-f6-sCT"/>
+                                    <constraint firstItem="Hp7-5i-cRc" firstAttribute="top" secondItem="8py-ZV-wYn" secondAttribute="bottom" constant="5" id="ihY-dh-lwB"/>
+                                    <constraint firstItem="jVb-Bf-Scg" firstAttribute="leading" secondItem="Ysd-ni-A5c" secondAttribute="trailing" constant="4" id="mfm-iA-BDM"/>
+                                    <constraint firstItem="RsE-Xt-tRl" firstAttribute="leading" secondItem="cpj-FW-e9R" secondAttribute="leading" constant="99" id="q3V-d2-Jm4"/>
+                                    <constraint firstItem="8nI-TB-B1L" firstAttribute="leading" secondItem="he8-Pj-Ew1" secondAttribute="trailing" constant="5" id="rOX-le-SEJ"/>
+                                    <constraint firstItem="vh5-MQ-LHk" firstAttribute="leading" secondItem="cpj-FW-e9R" secondAttribute="leading" constant="10" id="s5E-Ol-E3u"/>
+                                    <constraint firstItem="Ucl-2w-e5b" firstAttribute="leading" secondItem="qEi-pU-FpY" secondAttribute="trailing" constant="4" id="uRn-5Z-REo"/>
+                                    <constraint firstItem="8py-ZV-wYn" firstAttribute="top" secondItem="8nI-TB-B1L" secondAttribute="bottom" constant="5" id="uVJ-cm-fak"/>
+                                    <constraint firstItem="QFv-uD-sIs" firstAttribute="top" secondItem="vh5-MQ-LHk" secondAttribute="bottom" constant="5" id="uz8-Ns-9iV"/>
+                                    <constraint firstItem="16I-KV-LQO" firstAttribute="top" secondItem="qEi-pU-FpY" secondAttribute="bottom" constant="2" id="wBW-zR-oz9"/>
+                                    <constraint firstItem="Gof-j4-BWi" firstAttribute="top" secondItem="RsE-Xt-tRl" secondAttribute="bottom" constant="16" id="y8r-zx-74W"/>
+                                    <constraint firstItem="i73-eD-q3H" firstAttribute="top" secondItem="Gof-j4-BWi" secondAttribute="bottom" constant="3" id="zTQ-Cb-1EI"/>
+                                    <constraint firstItem="8py-ZV-wYn" firstAttribute="leading" secondItem="ViR-m6-2gs" secondAttribute="trailing" constant="4" id="zfv-QM-yDf"/>
+                                    <constraint firstAttribute="width" constant="320" id="zqe-8P-ncr"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="vh5-MQ-LHk"/>
+                                        <exclude reference="he8-Pj-Ew1"/>
+                                        <exclude reference="QFv-uD-sIs"/>
+                                        <exclude reference="8nI-TB-B1L"/>
+                                        <exclude reference="ViR-m6-2gs"/>
+                                        <exclude reference="8py-ZV-wYn"/>
+                                        <exclude reference="yaP-n6-DCm"/>
+                                        <exclude reference="Hp7-5i-cRc"/>
+                                        <exclude reference="Ysd-ni-A5c"/>
+                                        <exclude reference="jVb-Bf-Scg"/>
+                                        <exclude reference="ItZ-VA-nwd"/>
+                                        <exclude reference="cD3-9E-xdm"/>
+                                        <exclude reference="rZ8-xT-wdV"/>
+                                        <exclude reference="qEi-pU-FpY"/>
+                                        <exclude reference="Ucl-2w-e5b"/>
+                                        <exclude reference="16I-KV-LQO"/>
+                                        <exclude reference="mMQ-uQ-cJ8"/>
+                                        <exclude reference="i73-eD-q3H"/>
+                                        <exclude reference="Gof-j4-BWi"/>
+                                        <exclude reference="RsE-Xt-tRl"/>
+                                        <exclude reference="Ank-32-ZRz"/>
+                                        <exclude reference="JPm-5D-NQ8"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="zqe-8P-ncr"/>
+                                        <exclude reference="gct-rp-dkX"/>
+                                        <exclude reference="wBW-zR-oz9"/>
+                                        <exclude reference="QGB-dY-BOd"/>
+                                        <exclude reference="y8r-zx-74W"/>
+                                        <exclude reference="2t7-uP-rd0"/>
+                                        <exclude reference="q3V-d2-Jm4"/>
+                                        <exclude reference="CkF-dO-jdF"/>
+                                        <exclude reference="uRn-5Z-REo"/>
+                                        <exclude reference="2JY-AH-JAm"/>
+                                        <exclude reference="WOr-JV-iRE"/>
+                                        <exclude reference="NIm-Zs-0Ha"/>
+                                        <exclude reference="fuJ-sG-YRm"/>
+                                        <exclude reference="O2M-QF-Lqd"/>
+                                        <exclude reference="fWX-Z4-Ptl"/>
+                                        <exclude reference="3X5-8r-sZj"/>
+                                        <exclude reference="aHf-16-2QW"/>
+                                        <exclude reference="3j6-ck-YRz"/>
+                                        <exclude reference="rOX-le-SEJ"/>
+                                        <exclude reference="uVJ-cm-fak"/>
+                                        <exclude reference="zfv-QM-yDf"/>
+                                        <exclude reference="49z-bb-6EW"/>
+                                        <exclude reference="fmr-49-Xrr"/>
+                                        <exclude reference="OBE-M7-ffp"/>
+                                        <exclude reference="ihY-dh-lwB"/>
+                                        <exclude reference="1IQ-Tl-I48"/>
+                                        <exclude reference="9m8-W8-I1x"/>
+                                        <exclude reference="Lkb-Xj-q9B"/>
+                                        <exclude reference="6UU-cz-unu"/>
+                                        <exclude reference="MEV-ER-tNg"/>
+                                        <exclude reference="ZJU-ia-4hj"/>
+                                        <exclude reference="ZQF-M7-qkP"/>
+                                        <exclude reference="uz8-Ns-9iV"/>
+                                        <exclude reference="CaI-F7-eZU"/>
+                                        <exclude reference="ghQ-f6-sCT"/>
+                                        <exclude reference="0cR-jf-aoh"/>
+                                        <exclude reference="gBe-Vg-hhv"/>
+                                        <exclude reference="6F4-fi-kC4"/>
+                                        <exclude reference="6Fh-8j-QOQ"/>
+                                        <exclude reference="eL5-9j-eOR"/>
+                                        <exclude reference="zTQ-Cb-1EI"/>
+                                        <exclude reference="aJW-Y2-d4V"/>
+                                        <exclude reference="mfm-iA-BDM"/>
+                                        <exclude reference="B3o-bm-Mpf"/>
+                                        <exclude reference="s5E-Ol-E3u"/>
+                                        <exclude reference="6wp-Ll-0on"/>
+                                        <exclude reference="gBx-rg-a2Q"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                    <rect key="frame" x="0.0" y="64" width="320" height="936"/>
+                                    <mask key="subviews">
+                                        <include reference="vh5-MQ-LHk"/>
+                                        <include reference="he8-Pj-Ew1"/>
+                                        <include reference="QFv-uD-sIs"/>
+                                        <include reference="8nI-TB-B1L"/>
+                                        <include reference="ViR-m6-2gs"/>
+                                        <include reference="8py-ZV-wYn"/>
+                                        <include reference="yaP-n6-DCm"/>
+                                        <include reference="Hp7-5i-cRc"/>
+                                        <include reference="Ysd-ni-A5c"/>
+                                        <include reference="jVb-Bf-Scg"/>
+                                        <include reference="ItZ-VA-nwd"/>
+                                        <include reference="cD3-9E-xdm"/>
+                                        <include reference="rZ8-xT-wdV"/>
+                                        <include reference="qEi-pU-FpY"/>
+                                        <include reference="Ucl-2w-e5b"/>
+                                        <include reference="16I-KV-LQO"/>
+                                        <include reference="mMQ-uQ-cJ8"/>
+                                        <include reference="i73-eD-q3H"/>
+                                        <include reference="Gof-j4-BWi"/>
+                                        <include reference="RsE-Xt-tRl"/>
+                                        <include reference="Ank-32-ZRz"/>
+                                        <include reference="JPm-5D-NQ8"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="zqe-8P-ncr"/>
+                                        <include reference="gct-rp-dkX"/>
+                                        <include reference="wBW-zR-oz9"/>
+                                        <include reference="QGB-dY-BOd"/>
+                                        <include reference="y8r-zx-74W"/>
+                                        <include reference="2t7-uP-rd0"/>
+                                        <include reference="q3V-d2-Jm4"/>
+                                        <include reference="CkF-dO-jdF"/>
+                                        <include reference="uRn-5Z-REo"/>
+                                        <include reference="2JY-AH-JAm"/>
+                                        <include reference="WOr-JV-iRE"/>
+                                        <include reference="NIm-Zs-0Ha"/>
+                                        <include reference="fuJ-sG-YRm"/>
+                                        <include reference="O2M-QF-Lqd"/>
+                                        <include reference="fWX-Z4-Ptl"/>
+                                        <include reference="3X5-8r-sZj"/>
+                                        <include reference="aHf-16-2QW"/>
+                                        <include reference="3j6-ck-YRz"/>
+                                        <include reference="rOX-le-SEJ"/>
+                                        <include reference="uVJ-cm-fak"/>
+                                        <include reference="zfv-QM-yDf"/>
+                                        <include reference="49z-bb-6EW"/>
+                                        <include reference="fmr-49-Xrr"/>
+                                        <include reference="OBE-M7-ffp"/>
+                                        <include reference="ihY-dh-lwB"/>
+                                        <include reference="1IQ-Tl-I48"/>
+                                        <exclude reference="9m8-W8-I1x"/>
+                                        <include reference="Lkb-Xj-q9B"/>
+                                        <include reference="6UU-cz-unu"/>
+                                        <include reference="MEV-ER-tNg"/>
+                                        <include reference="ZJU-ia-4hj"/>
+                                        <include reference="ZQF-M7-qkP"/>
+                                        <include reference="uz8-Ns-9iV"/>
+                                        <include reference="CaI-F7-eZU"/>
+                                        <include reference="ghQ-f6-sCT"/>
+                                        <include reference="0cR-jf-aoh"/>
+                                        <include reference="gBe-Vg-hhv"/>
+                                        <include reference="6F4-fi-kC4"/>
+                                        <include reference="6Fh-8j-QOQ"/>
+                                        <include reference="eL5-9j-eOR"/>
+                                        <include reference="zTQ-Cb-1EI"/>
+                                        <include reference="aJW-Y2-d4V"/>
+                                        <include reference="mfm-iA-BDM"/>
+                                        <include reference="B3o-bm-Mpf"/>
+                                        <include reference="s5E-Ol-E3u"/>
+                                        <include reference="6wp-Ll-0on"/>
+                                        <include reference="gBx-rg-a2Q"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="OZe-xk-iIy" id="FXj-vP-iVm"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="BxN-yc-XXk" firstAttribute="top" secondItem="cpj-FW-e9R" secondAttribute="bottom" id="bXA-ca-kq3"/>
+                            <constraint firstItem="cpj-FW-e9R" firstAttribute="top" secondItem="Crx-QR-W8O" secondAttribute="bottom" constant="-64" id="dIv-aH-nBb">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstAttribute="centerX" secondItem="cpj-FW-e9R" secondAttribute="centerX" id="ex5-qa-eXa"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="cpj-FW-e9R"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="bXA-ca-kq3"/>
+                                <exclude reference="dIv-aH-nBb"/>
+                                <exclude reference="ex5-qa-eXa"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="cpj-FW-e9R"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="bXA-ca-kq3"/>
+                                <include reference="dIv-aH-nBb"/>
+                                <include reference="ex5-qa-eXa"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="鸡尾酒 Pro" id="g3d-kn-N6t"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="1000"/>
+                    <connections>
+                        <outlet property="button0" destination="cD3-9E-xdm" id="GNE-gN-mtF"/>
+                        <outlet property="button1" destination="rZ8-xT-wdV" id="eh3-hH-osv"/>
+                        <outlet property="button2" destination="qEi-pU-FpY" id="Z7B-m3-3Z8"/>
+                        <outlet property="button3" destination="Ucl-2w-e5b" id="FJl-he-xy1"/>
+                        <outlet property="button4" destination="16I-KV-LQO" id="geH-aE-pwJ"/>
+                        <outlet property="button5" destination="mMQ-uQ-cJ8" id="giq-Uq-s2H"/>
+                        <outlet property="mainScroll" destination="cpj-FW-e9R" id="lwe-KG-PBT"/>
+                        <outlet property="sence0" destination="vh5-MQ-LHk" id="bI7-60-c93"/>
+                        <outlet property="sence1" destination="he8-Pj-Ew1" id="s75-ch-oOP"/>
+                        <outlet property="sence2" destination="QFv-uD-sIs" id="W9f-bX-L8s"/>
+                        <outlet property="sence3" destination="8nI-TB-B1L" id="e2k-To-iV9"/>
+                        <outlet property="sence4" destination="ViR-m6-2gs" id="bFM-i3-02N"/>
+                        <outlet property="sence5" destination="8py-ZV-wYn" id="fgv-ay-bzo"/>
+                        <outlet property="sence6" destination="yaP-n6-DCm" id="ybX-kF-lYN"/>
+                        <outlet property="sence7" destination="Hp7-5i-cRc" id="LDY-LW-nOd"/>
+                        <outlet property="sence8" destination="Ysd-ni-A5c" id="4HS-ls-ZdO"/>
+                        <outlet property="sence9" destination="jVb-Bf-Scg" id="FwI-Ls-u3W"/>
+                        <outlet property="senceBar" destination="JPm-5D-NQ8" id="9cm-zh-lUV"/>
+                        <outlet property="senceMusic" destination="Ank-32-ZRz" id="gfy-uG-8CU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gmA-jo-XRx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="709.5" y="78"/>
+        </scene>
+        <!--我们的酒吧-->
+        <scene sceneID="23L-RN-leL">
+            <objects>
+                <viewController id="lg5-Vy-QZr" userLabel="我们的酒吧" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zRl-vx-22A"/>
+                        <viewControllerLayoutGuide type="bottom" id="qBd-fd-JNB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dZZ-Xn-pBH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zXB-Yl-G8N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1338" y="40.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="sence_bsjl.jpg" width="296" height="140"/>
+        <image name="sence_djzd.jpg" width="600" height="320"/>
+        <image name="sence_hfmy.jpg" width="296" height="140"/>
+        <image name="sence_jfty.jpg" width="296" height="140"/>
+        <image name="sence_music.jpg" width="296" height="140"/>
+        <image name="sence_mybar.jpg" width="296" height="140"/>
+        <image name="sence_ns.jpg" width="296" height="140"/>
+        <image name="sence_qbbz.jpg" width="296" height="140"/>
+        <image name="sence_scxl.jpg" width="296" height="140"/>
+        <image name="sence_tmwx.jpg" width="296" height="140"/>
+        <image name="sence_tzrm.jpg" width="294" height="290"/>
+        <image name="sence_wsns.jpg" width="296" height="140"/>
+        <image name="sep_button.png" width="620" height="96"/>
+        <image name="seperator" width="284" height="4"/>
+    </resources>
+</document>

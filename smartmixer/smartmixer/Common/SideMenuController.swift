@@ -30,7 +30,8 @@ class SideMenuController: UIViewController,UIGestureRecognizerDelegate {
             if self.SideView != newValue{
                 self._leftViewController = newValue
                 self._leftViewController.view.frame = self.view.bounds
-                self.view.insertSubview(self._leftViewController.view, atIndex: 1)
+                self.view.insertSubview(self._leftViewController.view, aboveSubview: (self.view.subviews[0] as UIView))
+                //self.view.insertSubview(self._leftViewController.view, atIndex: 1)
             }
         }
     }
@@ -76,7 +77,8 @@ class SideMenuController: UIViewController,UIGestureRecognizerDelegate {
         self.animationDuration = 0.35
         self.showBoundsShadow = true
         
-        self.panGestureRecognizer = UIPanGestureRecognizer(target:self,action:"pan:")
+        self.panGestureRecognizer = UIPanGestureRecognizer()
+        self.panGestureRecognizer.addTarget(self,action:"pan:")
         self.panGestureRecognizer.delegate = self
         
         self.panMovingRightOrLeft = false
@@ -89,7 +91,9 @@ class SideMenuController: UIViewController,UIGestureRecognizerDelegate {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red:1,green:1,blue:1,alpha:1)
         var image = UIImageView(image: UIImage(named: "userbg.jpg"))
-        self.view.insertSubview(image, atIndex: 0)
+        image.frame = self.view.frame
+        image.contentMode = UIViewContentMode.ScaleAspectFill
+        self.view.addSubview(image)
         self.needSwipeShowMenu = true
     }
     

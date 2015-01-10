@@ -7,24 +7,24 @@
 //
 
 import UIKit
+import CoreData
 
 @IBDesignable class RecipeThumbail : UICollectionViewCell {
     
-    @IBOutlet weak var thumbnailImage: UIImageView!
+    @IBOutlet var thumbnailImage: UIImageView!
     
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet var nameLabel: UILabel!
 
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet var descriptionLabel: UILabel!
     
-    @IBOutlet weak var cookTimes: UILabel!
+    @IBOutlet var favButton: UIImageView!
     
-    @IBOutlet weak var favButton: UIImageView!
+    @IBOutlet var alcohol:UILabel!
     
-    @IBOutlet weak var alcohol:UILabel!
+    @IBOutlet var nameEng:UILabel!
     
-    @IBOutlet weak var nameEng:UILabel!
+    @IBOutlet var coverd:UILabel!
     
-    var collection:UICollectionView!=nil
     
     @IBInspectable var borderColor:UIColor = UIColor.grayColor(){
         didSet{
@@ -47,24 +47,17 @@ import UIKit
     }
     
     @IBAction func favClick(sender: UIButton) {
-        CurrentRecipe.isFav = CurrentRecipe!.isFav
+        CurrentRecipe.isfavorite = !CurrentRecipe.isfavorite.boolValue
+        if(CurrentRecipe.isfavorite == true){
+            favButton.image = UIImage(named: "Heartyes.png")
+            UserHome.addHistory(1, id: CurrentRecipe.id.integerValue, thumb: CurrentRecipe.thumb, name: CurrentRecipe.name)
+        }else{
+            favButton.image = UIImage(named: "Heartno.png")
+            UserHome.removeHistory(1, id: CurrentRecipe.id.integerValue)
+        }
         var error: NSError? = nil
         if !managedObjectContext.save(&error) {
             abort()
-        }
-        if(CurrentRecipe.isFav == true){
-            favButton.image = UIImage(named: "Heartyes.png")
-        }else{
-            favButton.image = UIImage(named: "Heartno.png")
-        }
-        
-        if(collection != nil && CurrentRecipe.isFav == false){//这里判断本项是否可以删除从视图
-            UIView.animateWithDuration(0.3,
-                animations: {
-                    self.alpha = 0
-                }, completion: { _ in
-                    self.removeFromSuperview()
-            })
         }
     }
     
@@ -72,14 +65,14 @@ import UIKit
     
     func SetDataContent(item:Recipe){
         CurrentRecipe = item
-        self.tag = Int(item.id)
+        self.tag = item.id.integerValue
         self.nameLabel.text = item.name
         self.nameEng.text = item.nameEng
         self.descriptionLabel.text = item.des
-        self.cookTimes.text = "\(item.cooktimes)"
         self.alcohol.text = "\(item.alcohol) °"
-        self.thumbnailImage.image = UIImage(named: item.largePhoto)
-        if(item.isFav == true){
+        self.coverd.text = String(format:"%.0f", item.coverd.doubleValue*100)+"%"
+        self.thumbnailImage.image = UIImage(named: item.thumb)
+        if(item.isfavorite == true){
             favButton.image = UIImage(named: "Heartyes.png")
         }else{
             favButton.image = UIImage(named: "Heartno.png")

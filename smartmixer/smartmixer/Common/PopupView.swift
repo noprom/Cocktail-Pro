@@ -24,7 +24,7 @@ class PopupView: UIView {
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.alpha = 0.8
+        //self.alpha = 0.88
     }
     
     var closeButton:UIButton! = nil
@@ -51,7 +51,7 @@ class PopupView: UIView {
         if(options){
             self.alpha = 0
             self.hidden = false
-            UIView.animateWithDuration(0.3, animations: { self.alpha = 0.9 }, completion: { _ in
+            UIView.animateWithDuration(0.3, animations: { self.alpha = 1 }, completion: { _ in
                 self.lockAnimation = false
             })
         }else{
@@ -68,7 +68,8 @@ class PopupView: UIView {
         super.drawRect(rect)
         drawInContext(UIGraphicsGetCurrentContext())
         //设置阴影颜色，透明度，偏移量
-        self.layer.shadowColor = UIColor.grayColor().CGColor
+        //self.layer.backgroundColor = UIColor(white: 1, alpha: 0.88).CGColor
+        self.layer.shadowColor = UIColor.lightGrayColor().CGColor
         self.layer.shadowRadius = 3
         self.layer.shadowOpacity = 0.55;
         self.layer.shadowOffset = CGSizeMake(0.0, 0.0);

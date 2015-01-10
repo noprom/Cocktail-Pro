@@ -29,27 +29,34 @@ class RecipeDetailPad : UIViewController {
     @IBOutlet var desc:UITextView?
     
     //口感
-    @IBOutlet var taste:UISegmentedControl?
+    @IBOutlet var taste:UILabel?
     
     //技巧
-    @IBOutlet var skill:UISegmentedControl?
+    @IBOutlet var skill:UILabel?
     
     //时间段
-    @IBOutlet var drinkTime:UISegmentedControl?
+    @IBOutlet var drinkTime:UILabel?
+    
+    //卡路里
+    @IBOutlet var calorie:UILabel!
+    
+    //覆盖度
+    @IBOutlet var coverd:UILabel!
     
     //酒精度
-    @IBOutlet var alchol:UIProgressView?
     @IBOutlet var alcohol:UILabel?
     
     //描述的高度
     @IBOutlet var hDesc: NSLayoutConstraint?
+    
     //主框架的高度
     @IBOutlet var hMainboard: NSLayoutConstraint?
+    
     //主框架
     @IBOutlet var parentView:UIView?
     
     //难度
-    @IBOutlet var stars:Stars?
+    @IBOutlet var difficulty:UILabel?
     
     @IBOutlet var navTitle:UINavigationItem!
     
@@ -60,19 +67,25 @@ class RecipeDetailPad : UIViewController {
     
     var moresize:CGFloat = 0
     
+    class func RecipeDetailPadInit()->RecipeDetailPad{
+        var recipeDetail = UIStoryboard(name: "Recipes"+deviceDefine, bundle: nil).instantiateViewControllerWithIdentifier("recipeDetail") as RecipeDetailPad
+        return recipeDetail
+    }
+    
+    
     override func viewDidLoad() {
         rootController.showOrhideToolbar(false)
         super.viewDidLoad()
-        var left = UIBarButtonItem(title: "开始制作>", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("toCook:"))
+        var left = UIBarButtonItem(title: "开始制作", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("toCook:"))
         self.navigationItem.rightBarButtonItem = left
         if(CurrentData != nil){
-            self.image?.image = UIImage(named: CurrentData.largePhoto)
+            self.image?.image = UIImage(named: CurrentData.thumb)
             self.name?.text = "\(CurrentData.name)"
             if(navTitle != nil){
                 navTitle.title = "\(CurrentData.name)"
             }
             self.nameEng?.text = "\(CurrentData.nameEng)"
-            if(CurrentData.isFav == true){
+            if(CurrentData.isfavorite == true){
                 self.faver?.image = UIImage(named: "Heartyes.png")
             }else{
                 self.faver?.image = UIImage(named: "Heartno.png")
@@ -82,15 +95,38 @@ class RecipeDetailPad : UIViewController {
                 showBt.hidden = true
             }
             self.desc?.text = CurrentData.des
-            self.taste?.selectedSegmentIndex = Int(CurrentData.taste)
-            self.skill?.selectedSegmentIndex = Int(CurrentData.skill)
-            self.drinkTime?.selectedSegmentIndex = Int(CurrentData.drinktime)
-            self.alchol?.progress = Float(CurrentData.alcohol)/100
+            if(CurrentData.taste.integerValue == 0){
+                self.taste?.text = "甜味"
+            }else if(CurrentData.taste.integerValue == 1){
+                self.taste?.text = "中味"
+            }else if(CurrentData.taste.integerValue == 2){
+                self.taste?.text = "辣味"
+            }
+            if(CurrentData.skill.integerValue == 0){
+                self.skill?.text = "兑和"
+            }else if(CurrentData.skill.integerValue == 1){
+                self.skill?.text = "摇和"
+            }else if(CurrentData.skill.integerValue == 2){
+                self.skill?.text = "调和"
+            }else if(CurrentData.skill.integerValue == 3){
+                self.skill?.text = "搅和"
+            }else{
+                self.skill?.text = "漂浮"
+            }
+            if(CurrentData.drinktime.integerValue == 0){
+                self.drinkTime?.text = "餐前"
+            }else if(CurrentData.drinktime.integerValue == 1){
+                self.drinkTime?.text = "餐后"
+            }else if(CurrentData.drinktime.integerValue == 2){
+                self.drinkTime?.text = "全天"
+            }
             self.alcohol?.text = "\(CurrentData.alcohol)°"
-            self.stars?.value = Int(CurrentData.difficulty)
+            self.difficulty?.text = CurrentData.difficulty.stringValue
+            self.calorie.text = "\(CurrentData.calorie) 卡"
+            self.coverd.text = String(format:"%.0f", CurrentData.coverd.doubleValue*100)+"%"
         }
         if(popview == nil){
-            popview = PopupView(frame:CGRect(x: 200, y: 10, width: 600, height: 500))
+            popview = PopupView(frame:CGRect(x: 200, y: 100, width: 600, height: 500))
             popview?.parentView = self.view
             popview?.hidden = true
             popview.arrorDirection = ArrorDirection.right
@@ -110,7 +146,7 @@ class RecipeDetailPad : UIViewController {
         if(popview.hidden == true){
             if(recipeIngridients == nil){
                 recipeIngridients = UIStoryboard(name: "Recipes_ipad", bundle: nil).instantiateViewControllerWithIdentifier("recipeIngridients") as RecipeIngridients
-                recipeIngridients.recipeId = Int(CurrentData.id)
+                recipeIngridients.recipeId = CurrentData.id.integerValue
             }
             if(popview?.currentView != recipeIngridients.view){
                 recipeIngridients.view.frame = CGRect(origin: CGPoint(), size: recipeIngridients.ViewSize)
@@ -128,12 +164,12 @@ class RecipeDetailPad : UIViewController {
     }
     
     @IBAction func ShowAllTextPad(sender:UIButton){
-        if(hMainboard?.constant == 300){
+        if(hMainboard?.constant == 520){
             var str:String = desc!.text!
             var size = str.textSizeWithFont(desc!.font!, constrainedToSize: CGSize(width:314, height:1000))
             if(size.height > (hDesc!.constant-28)){
                 UIView.animateWithDuration(0.4, animations: {
-                    self.hMainboard!.constant = 104 + size.height;
+                    self.hMainboard!.constant = 354 + size.height;
                     self.hDesc!.constant = size.height + 28;
                     self.parentView!.layoutIfNeeded();
                     }, completion: { _ in
@@ -142,7 +178,7 @@ class RecipeDetailPad : UIViewController {
             }
         }else{
             UIView.animateWithDuration(0.4, animations: {
-                self.hMainboard!.constant = 300
+                self.hMainboard!.constant = 520
                 self.hDesc!.constant = 166
                 self.parentView!.layoutIfNeeded()
                 }, completion: { _ in
@@ -153,21 +189,22 @@ class RecipeDetailPad : UIViewController {
     }
     
     @IBAction func clickFaver(sender:UIButton){
-        CurrentData.isFav = CurrentData!.isFav
+        CurrentData.isfavorite = !CurrentData.isfavorite.boolValue
+        if(CurrentData.isfavorite == true){
+            self.faver?.image = UIImage(named: "Heartyes.png")
+            UserHome.addHistory(1, id: CurrentData.id.integerValue, thumb: CurrentData.thumb, name: CurrentData.name)
+        }else{
+            self.faver?.image = UIImage(named: "Heartno.png")
+            UserHome.removeHistory(1, id: CurrentData.id.integerValue)
+        }
         var error: NSError? = nil
         if !managedObjectContext.save(&error) {
             abort()
-        }
-        if(CurrentData.isFav == true){
-            self.faver?.image = UIImage(named: "Heartyes.png")
-        }else{
-            self.faver?.image = UIImage(named: "Heartno.png")
         }
     }
     
     @IBAction func back(sender: UIBarButtonItem) {
         self.navigationController?.popViewControllerAnimated(true)
-        rootController.showOrhideToolbar(true)
     }
     
     //点击去制作

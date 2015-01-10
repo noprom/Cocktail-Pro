@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AboutDetail: UIViewController {
+class AboutDetail: UIViewController,UITextFieldDelegate {
     
     @IBOutlet var about:UIView!
     @IBOutlet var buy:UIView!
@@ -16,27 +16,40 @@ class AboutDetail: UIViewController {
     @IBOutlet var response:UIView!
     @IBOutlet var terms:UIView!
     
-    @IBOutlet var help:UIView!
-    
     @IBOutlet var navTitle:UINavigationItem!
     
-    @IBOutlet var webPage:UIWebView!
+    @IBOutlet var responseText:UITextField!
+    
+    @IBOutlet var responseTip:UILabel!
+    
+    @IBOutlet var responseEditView:UIView!
     
     var currentTag:Int = 0
+    
+    class func AboutDetailInit()->AboutDetail{
+       var aboutDetail = UIStoryboard(name: "UserCenter"+deviceDefine, bundle: nil).instantiateViewControllerWithIdentifier("aboutDetail") as AboutDetail
+        return aboutDetail
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        if(exdeviceName == ""){
-            //添加向右滑动返回
-            var slideback = UISwipeGestureRecognizer(target: self, action: "SwipeToBack:")
-            slideback.direction = UISwipeGestureRecognizerDirection.Right
-            self.view.addGestureRecognizer(slideback)
-            self.view.userInteractionEnabled = true
+        //添加向右滑动返回
+        var slideback = UISwipeGestureRecognizer()
+        slideback.addTarget(self, action: "SwipeToBack:")
+        slideback.direction = UISwipeGestureRecognizerDirection.Right
+        self.view.addGestureRecognizer(slideback)
+        self.view.userInteractionEnabled = true
+        switch currentTag{
+        case 0:
+            self.about.hidden = false
+        case 1:
+            self.contact.hidden = false
+        case 3:
+            self.response.hidden = false
+        case 4:
+            self.terms.hidden = false
+        default:
+            break
         }
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        showTag(currentTag)
     }
     
     func SwipeToBack(sender:UISwipeGestureRecognizer){
@@ -47,33 +60,86 @@ class AboutDetail: UIViewController {
         currentTag = tag
         switch tag{
         case 0:
+            self.about.hidden = false
             self.view.bringSubviewToFront(about)
         case 1:
-            self.view.bringSubviewToFront(buy)
-        case 2:
+            self.contact.hidden = false
             self.view.bringSubviewToFront(contact)
-        case 4:
-            var request = NSURLRequest(URL: NSURL(string: "http://www.smarthito.com/feedback")!)
-            webPage.loadRequest(request)
+        case 3:
+            self.response.hidden = false
             self.view.bringSubviewToFront(response)
-        case 5:
+        case 4:
+            self.terms.hidden = false
             self.view.bringSubviewToFront(terms)
-
+            
         default:
             break
         }
     }
     
+    func textFieldDidBeginEditing(textField: UITextField) {
+        var ex:CGFloat=250
+        if(deviceDefine != ""){
+            ex=400
+        }
+        UIView.animateWithDuration(0.2, animations: {
+            self.responseEditView.frame = CGRect(x: self.responseEditView.frame.origin.x, y: self.responseEditView.frame.origin.y-ex, width: self.responseEditView.frame.width, height: self.responseEditView.frame.height)
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        var ex:CGFloat=250
+        if(deviceDefine != ""){
+            ex=400
+        }
+        UIView.animateWithDuration(0.2, animations: {
+            self.responseEditView.frame = CGRect(x: self.responseEditView.frame.origin.x, y: self.responseEditView.frame.origin.y+ex, width: self.responseEditView.frame.width, height: self.responseEditView.frame.height)
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    @IBAction func sendResponse(sender:UIButton){
+        if(responseText.text != ""){
+            responseText.resignFirstResponder()
+            responseTip.text="谢谢您的反馈！我们将尽快处理"
+            var alert = UIAlertView(title: "提示", message: "谢谢您的反馈！我们将尽快处理！",delegate: nil, cancelButtonTitle: "确定")
+            alert.show()
+            var request = HTTPTask()
+            request.GET("http://www.smarthito.com/app/feedback.action", parameters: ["response": responseText.text,"keyword":"nicaiyahehe"], success: {(response: HTTPResponse) in
+                if response.responseObject != nil {
+                    let data = NSJSONSerialization.JSONObjectWithData(response.responseObject as NSData, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
+                    NSLog((data["keyword"] as String))
+                    self.responseText.text=""
+                }
+            },failure: {(error: NSError, response: HTTPResponse?) in
+                    
+            })
+        }else{
+            var alert = UIAlertView(title: "提示", message: "是不是该先写点什么呀？",delegate: nil, cancelButtonTitle: "确定")
+            alert.show()
+        }
+        
+    }
+    
     
     //新浪微博
     @IBAction func openWeibo(sender:UIButton){
-        //
-        UIApplication.sharedApplication().openURL(NSURL(string: "http://www.smarthito.com/snscontacts?to=sinaweibo")!)
+        //http://weibo.com/u/1278678934
+        //http://weibo.com/u/1149960291 我的
+        UIApplication.sharedApplication().openURL(NSURL(string: "sinaweibo://userinfo?uid=1149960291")!)
     }
     //微信 weixin://qr/%@
     @IBAction func openWeixin(sender:UIButton){
         //
-        UIApplication.sharedApplication().openURL(NSURL(string:"http://www.smarthito.com/snscontacts?to=weixin")!)
+        UIApplication.sharedApplication().openURL(NSURL(string: "sinaweibo://userinfo?uid=1149960291")!)
+        //UIApplication.sharedApplication().openURL(NSURL(string:"http://www.smarthito.com/snscontacts?to=weixin")!)
     }
     
     //陌陌 weixin://qr/%@

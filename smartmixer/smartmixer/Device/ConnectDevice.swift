@@ -26,6 +26,11 @@ class ConnectDevice: UIViewController {
     //展示的图片
     @IBOutlet weak var showImage:UIImageView!
     
+    class func ConncectDeviceInit()->ConnectDevice{
+       var connectDevice = UIStoryboard(name:"Device"+deviceDefine,bundle:nil).instantiateViewControllerWithIdentifier("connectDevice") as ConnectDevice
+        return connectDevice
+    }
+    
     //去买按钮
     @IBAction func toBuy(sender:UIButton){
         UIApplication.sharedApplication().openURL(NSURL(string: "http://www.smarthito.com/")!)

@@ -22,11 +22,19 @@ class Device: UIViewController , UIScrollViewDelegate {
     
     var connectDevice:ConnectDevice!=nil
     
+    class func DeviceRoot()->UIViewController{
+        var device = UIStoryboard(name: "Device"+deviceDefine, bundle: nil).instantiateInitialViewController() as UIViewController
+        return device
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if(scrollview == nil){
-            var rect = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height-124)
+            var rect = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height-60)
+            if(osVersion<8 && deviceDefine != ""){
+                rect = CGRect(x: 0, y: 0, width: self.view.frame.height, height: self.view.frame.width-60)
+            }
             scrollview = UIScrollView(frame: rect)
             scrollview.bounces = false
             scrollview.showsHorizontalScrollIndicator = false
@@ -34,12 +42,13 @@ class Device: UIViewController , UIScrollViewDelegate {
             scrollview.contentSize = CGSize(width: rect.width*2, height: rect.height)
             scrollview.delegate = self
             self.view.addSubview(scrollview)
+            self.view.sendSubviewToBack(scrollview)
             
-            connectDevice = UIStoryboard(name:"Device"+exdeviceName,bundle:nil).instantiateViewControllerWithIdentifier("connectDevice") as ConnectDevice
+            connectDevice = ConnectDevice.ConncectDeviceInit()
             connectDevice.view.frame = rect
             scrollview.addSubview(connectDevice.view)
             
-            weighing = UIStoryboard(name:"Device"+exdeviceName,bundle:nil).instantiateViewControllerWithIdentifier("weightContainer") as WeightView
+            weighing = WeightView.WeightViewInit()
             weighing.view.frame = CGRect(x: rect.width, y: 0, width: rect.width, height: rect.height)
             scrollview.addSubview(weighing.view)
             

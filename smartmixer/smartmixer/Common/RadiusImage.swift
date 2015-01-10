@@ -36,7 +36,8 @@ import UIKit
         didSet{
             if(acceptFullscreen){
                 self.userInteractionEnabled = true
-                clickGesture = UITapGestureRecognizer(target: self, action: Selector("Fullscreen:"));
+                clickGesture = UITapGestureRecognizer()
+                clickGesture?.addTarget(self, action: Selector("Fullscreen:"))
                 clickGesture?.delegate = self
                 self.addGestureRecognizer(clickGesture!)
             }else{
@@ -72,10 +73,11 @@ import UIKit
         imageView.tag=1;
         imageView.userInteractionEnabled = true
         backgroundView.addSubview(imageView)
-        window!.addSubview(backgroundView)
+        (window as UIView!).addSubview(backgroundView)
         
-        var tap = UITapGestureRecognizer(target: self, action: Selector("hideFullscreen:"))
-        tap.delegate = self
+        var tap = UITapGestureRecognizer()
+        tap.addTarget(self, action: Selector("hideFullscreen:"))
+        //tap.delegate = self
         
         backgroundView.addGestureRecognizer(tap)
         
