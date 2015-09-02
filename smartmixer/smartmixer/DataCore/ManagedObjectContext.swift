@@ -11,13 +11,13 @@ import CoreData
 
 var applicationDocumentsDirectory: NSURL! = {
     let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-    return urls[urls.endIndex-1] as NSURL
+    return urls[urls.endIndex-1] as! NSURL
     }()
 
 //应用的Document路径
 var applicationDocumentsPath:String! = {
     let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-    return paths[0] as String
+    return paths[0] as! String
     }()
 var managedObjectModel: NSManagedObjectModel! = {
     let modelURL = NSBundle.mainBundle().URLForResource("smartmixer", withExtension: "momd")
@@ -65,7 +65,7 @@ let UnitDictory:Dictionary<Int, String> = {
     
     var error: NSError? = nil
     
-    var items:[Unit] = managedObjectContext.executeFetchRequest(fetchRequest, error: &error) as [Unit]
+    var items:[Unit] = managedObjectContext.executeFetchRequest(fetchRequest, error: &error)as! [Unit]
     
     var units = Dictionary<Int, String>()
     

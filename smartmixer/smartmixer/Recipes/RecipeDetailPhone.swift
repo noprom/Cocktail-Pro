@@ -62,7 +62,7 @@ class RecipeDetailPhone: UIViewController {
     var moresize:CGFloat = 0
     
     class func RecipesDetailPhoneInit()->RecipeDetailPhone{
-        var recipeDetail = UIStoryboard(name: "Recipes"+deviceDefine, bundle: nil).instantiateViewControllerWithIdentifier("recipeDetail") as RecipeDetailPhone
+        var recipeDetail = UIStoryboard(name: "Recipes"+deviceDefine, bundle: nil).instantiateViewControllerWithIdentifier("recipeDetail") as! RecipeDetailPhone
         return recipeDetail
     }
     
@@ -125,7 +125,7 @@ class RecipeDetailPhone: UIViewController {
         }
         
         if(ingridientView != nil){
-            recipeIngridients = UIStoryboard(name: "Recipes", bundle: nil).instantiateViewControllerWithIdentifier("recipeIngridients") as RecipeIngridients
+            recipeIngridients = UIStoryboard(name: "Recipes", bundle: nil).instantiateViewControllerWithIdentifier("recipeIngridients")as! RecipeIngridients
             recipeIngridients.recipeId = CurrentData.id.integerValue
             recipeIngridients.view.frame = CGRect(origin: CGPoint(x: 0, y: 34), size: recipeIngridients.size)
             ingridientView.addSubview(recipeIngridients.view)
@@ -155,7 +155,7 @@ class RecipeDetailPhone: UIViewController {
     //告知窗口现在有多少个item需要添加
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int
     {
-        let sectionInfo = self.fetchedStepsController.sections as [NSFetchedResultsSectionInfo]
+        let sectionInfo = self.fetchedStepsController.sections as! [NSFetchedResultsSectionInfo]
         let item = sectionInfo[section]
         stepnum = item.numberOfObjects
         return stepnum
@@ -164,8 +164,8 @@ class RecipeDetailPhone: UIViewController {
     //处理单个View的添加
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell!
     {
-        var tableCell :UITableViewCell = tableView.dequeueReusableCellWithIdentifier("stepCell") as UITableViewCell
-        let item = self.fetchedStepsController.objectAtIndexPath(indexPath) as RecipeStep
+        var tableCell :UITableViewCell = tableView.dequeueReusableCellWithIdentifier("stepCell") as! UITableViewCell
+        let item = self.fetchedStepsController.objectAtIndexPath(indexPath) as! RecipeStep
         tableCell.textLabel?.text = "\((indexPath.row+1)). "+item.stepInfo
         return tableCell
     }

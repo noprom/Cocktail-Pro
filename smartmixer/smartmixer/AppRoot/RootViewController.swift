@@ -130,10 +130,10 @@ class RootViewController: UITabBarController , ChangeTableDelegate{
         {
         case 1:
             if(self.selectedIndex == index){
-                var curent = self.selectedViewController! as SideMenuController
-                var item:UIViewController = (curent.rootViewController as UINavigationController).topViewController
+                var curent = self.selectedViewController! as! SideMenuController
+                var item:UIViewController = (curent.rootViewController as! UINavigationController).topViewController
                 if(item.isKindOfClass(Recipes) == true){
-                    (item as Recipes).scrollToTop()
+                    (item as! Recipes).scrollToTop()
                 }
             }
             break

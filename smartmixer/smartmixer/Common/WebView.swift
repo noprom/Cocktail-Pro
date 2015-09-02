@@ -19,7 +19,7 @@ class WebView: UIViewController,UIWebViewDelegate{
     @IBOutlet var tipLable:UILabel!
     
     //显示的标题
-    var WebTitle:String!="Smart Hito"
+    var myWebTitle:String!="Smart Hito"
     
     //需要显示的网页链接
     var WebUrl:String!
@@ -39,7 +39,7 @@ class WebView: UIViewController,UIWebViewDelegate{
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationItem.backBarButtonItem?.title = ""
-        webTitle.title = WebTitle
+        webTitle.title = myWebTitle
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -53,7 +53,7 @@ class WebView: UIViewController,UIWebViewDelegate{
         if(osVersion<8){
             extende = "7"
         }
-        var webView = UIStoryboard(name: "Common"+deviceDefine, bundle: nil).instantiateViewControllerWithIdentifier("webView"+extende) as WebView
+        var webView = UIStoryboard(name: "Common"+deviceDefine, bundle: nil).instantiateViewControllerWithIdentifier("webView"+extende) as! WebView
         return webView
     }
     

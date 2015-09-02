@@ -699,8 +699,8 @@
 		67CE105B19BFE6C400434A8D = {
 			isa = PBXGroup;
 			children = (
-				67400EFE19BFEC0800F800B9 /* Framework */,
 				67CE106619BFE6C400434A8D /* smartmixer */,
+				67400EFE19BFEC0800F800B9 /* Framework */,
 				67CE107E19BFE6C400434A8D /* smartmixerTests */,
 				67CE106519BFE6C400434A8D /* Products */,
 			);

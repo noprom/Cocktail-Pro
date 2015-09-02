@@ -37,7 +37,7 @@ class ContainerDetail: UIViewController , NSFetchedResultsControllerDelegate {
     var CurrentContainer:Container!
     
     class func ContainerDetailInit()->ContainerDetail{
-        var containerDetail = UIStoryboard(name:"Ingredients"+deviceDefine,bundle:nil).instantiateViewControllerWithIdentifier("containerDetail") as ContainerDetail
+        var containerDetail = UIStoryboard(name:"Ingredients"+deviceDefine,bundle:nil).instantiateViewControllerWithIdentifier("containerDetail") as! ContainerDetail
         return containerDetail
     }
     

@@ -77,7 +77,7 @@ class IngredientDetail: UIViewController {
     }
     
     class func IngredientDetailInit()->IngredientDetail{
-        var ingredientDetail = UIStoryboard(name:"Ingredients"+deviceDefine,bundle:nil).instantiateViewControllerWithIdentifier("ingredientDetail") as IngredientDetail
+        var ingredientDetail = UIStoryboard(name:"Ingredients"+deviceDefine,bundle:nil).instantiateViewControllerWithIdentifier("ingredientDetail") as! IngredientDetail
         return ingredientDetail
     }
     
@@ -98,7 +98,7 @@ class IngredientDetail: UIViewController {
     
     @IBAction func tuBuy(sender: UIButton){
         webView=WebView.WebViewInit()
-        webView.WebTitle="商城"
+        webView.myWebTitle="商城"
         self.navigationController?.pushViewController(webView, animated: true)
     }
     
@@ -156,13 +156,13 @@ class IngredientDetail: UIViewController {
     func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
         var row = indexPath.row
         var session = indexPath.section
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier("aboutRecipe", forIndexPath: indexPath) as UICollectionViewCell
+        var cell = collectionView.dequeueReusableCellWithReuseIdentifier("aboutRecipe", forIndexPath: indexPath) as! UICollectionViewCell
         return cell
     }
     
     func collectionView(collectionView: UICollectionView!, didSelectItemAtIndexPath indexPath: NSIndexPath!) {
-        var cell = collectionView.cellForItemAtIndexPath(indexPath) as IngredientThumb
-        var materials = UIStoryboard(name:"Ingredients",bundle:nil).instantiateViewControllerWithIdentifier("ingredientDetail") as IngredientDetail
+        var cell = collectionView.cellForItemAtIndexPath(indexPath) as! IngredientThumb
+        var materials = UIStoryboard(name:"Ingredients",bundle:nil).instantiateViewControllerWithIdentifier("ingredientDetail") as! IngredientDetail
         //self.navigationController.pushViewController(materials, animated: true)
     }
     

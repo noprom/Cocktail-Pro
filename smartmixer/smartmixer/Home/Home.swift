@@ -46,7 +46,7 @@ class Home: UIViewController ,UIScrollViewDelegate ,HomeDirectionSyncDelegate {
     var refreshControl = UIRefreshControl()
     
     class func HomeRoot()->UIViewController{
-        var home = UIStoryboard(name: "Home"+deviceDefine, bundle: nil).instantiateInitialViewController() as UIViewController
+        var home = UIStoryboard(name: "Home"+deviceDefine, bundle: nil).instantiateInitialViewController() as! UIViewController
         return home
     }
     
@@ -109,19 +109,19 @@ class Home: UIViewController ,UIScrollViewDelegate ,HomeDirectionSyncDelegate {
             path = NSBundle.mainBundle().URLForResource("HomeDirections", withExtension: "json")
         }
         let jsonData = NSData(contentsOfURL: path, options: .DataReadingMappedIfSafe, error: nil)
-        let rootDescription = NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
-        JsonData = rootDescription["data"] as NSArray
+        let rootDescription = NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSDictionary
+        JsonData = rootDescription["data"] as! NSArray
         
         //翻滚吧，蛋炒饭
         homeDirectionSync.UpdateHomeSync()
         
         for index in 0...9 {
-            var item:NSDictionary = JsonData[index] as NSDictionary
-            var sence = self.valueForKey("sence\(index)") as UIImageView!
+            var item:NSDictionary = JsonData[index] as! NSDictionary
+            var sence = self.valueForKey("sence\(index)") as! UIImageView!
             if(remote){
-                sence.image = UIImage(contentsOfFile: applicationDocumentsPath+"/homedirections/"+(item["image"] as String))
+                sence.image = UIImage(contentsOfFile: applicationDocumentsPath+"/homedirections/"+(item["image"] as! String))
             }else{
-                sence.image = UIImage(named: (item["image"] as String))
+                sence.image = UIImage(named: (item["image"] as! String))
             }
             var tapGuesture = UITapGestureRecognizer()
             tapGuesture.addTarget(self, action: "OnClickImageSence:")
@@ -141,15 +141,15 @@ class Home: UIViewController ,UIScrollViewDelegate ,HomeDirectionSyncDelegate {
         senceMusic.addGestureRecognizer(tapGuesture2)
         
         for index in 0...5 {
-            var item:NSDictionary = JsonData[10+index] as NSDictionary
-            var button = self.valueForKey("button\(index)") as UIButton!
-            button.setTitle("#"+(item["title"] as String)+"#", forState: UIControlState.Normal)
+            var item:NSDictionary = JsonData[10+index] as! NSDictionary
+            var button = self.valueForKey("button\(index)") as! UIButton!
+            button.setTitle("#"+(item["title"] as! String)+"#", forState: UIControlState.Normal)
         }
     }
     //点击图片
     func OnClickMyBar(sender:UITapGestureRecognizer){
         var baike:WebView = WebView.WebViewInit()
-        baike.WebTitle = "我们的酒吧"
+        baike.myWebTitle = "我们的酒吧"
         baike.WebUrl="http://www.dianping.com/shop/17187839"
         rootController.showOrhideToolbar(false)
         baike.showToolbar = true
@@ -158,7 +158,7 @@ class Home: UIViewController ,UIScrollViewDelegate ,HomeDirectionSyncDelegate {
     //点击音乐人
     func OnClickMusic(sender:UITapGestureRecognizer){
         var baike:WebView = WebView.WebViewInit()
-        baike.WebTitle = "音乐人推荐"
+        baike.myWebTitle = "音乐人推荐"
         baike.WebUrl="http://m.weibo.cn/u/1278678934"
         rootController.showOrhideToolbar(false)
         baike.showToolbar = true
@@ -170,7 +170,7 @@ class Home: UIViewController ,UIScrollViewDelegate ,HomeDirectionSyncDelegate {
     
     //点击图片
     func OnClickImageSence(sender:UITapGestureRecognizer){
-        var sence = sender.self.view as UIImageView!
+        var sence = sender.self.view as! UIImageView!
         CallShowSence(sence.tag)
     }
     
@@ -180,11 +180,11 @@ class Home: UIViewController ,UIScrollViewDelegate ,HomeDirectionSyncDelegate {
     }
     
     func CallShowSence(tag:Int){
-        var item:NSDictionary = JsonData[tag] as NSDictionary
+        var item:NSDictionary = JsonData[tag] as! NSDictionary
         recipesCollection = RecipesCollection.RecipesCollectionInit()
         recipesCollection.NavigationController = self.navigationController
-        recipesCollection.SenceTitle = (item["title"] as String)
-        recipesCollection.SenceItems = (item["data"] as NSArray)
+        recipesCollection.mySenceTitle = (item["title"] as! String)
+        recipesCollection.SenceItems = (item["data"] as! NSArray)
         self.navigationController?.pushViewController(recipesCollection, animated: true)
         rootController.showOrhideToolbar(false)
     }
@@ -193,7 +193,7 @@ class Home: UIViewController ,UIScrollViewDelegate ,HomeDirectionSyncDelegate {
     
     @IBAction func OnClickBaike(sender:UIButton){
         var baike:WebView = WebView.WebViewInit()
-        baike.WebTitle = "鸡尾酒百科"
+        baike.myWebTitle = "鸡尾酒百科"
         baike.WebUrl="http://baike.baidu.com/subview/10115/10886479.htm"
         rootController.showOrhideToolbar(false)
         baike.showToolbar = true
@@ -203,7 +203,7 @@ class Home: UIViewController ,UIScrollViewDelegate ,HomeDirectionSyncDelegate {
     //@MARK:点击查看
     @IBAction func viewStore(sender:UIButton){
         var baike:WebView = WebView.WebViewInit()
-        baike.WebTitle = "商城"
+        baike.myWebTitle = "商城"
         baike.WebUrl="http://?????"
         rootController.showOrhideToolbar(false)
         baike.showToolbar = true

@@ -18,7 +18,7 @@ class AboutViewPhone: UITableViewController,UINavigationControllerDelegate,UIIma
     var delegate:NumberDelegate!
     
     class func AboutViewPhoneInit()->AboutViewPhone{
-        var aboutview = UIStoryboard(name: "UserCenter"+deviceDefine, bundle: nil).instantiateViewControllerWithIdentifier("aboutView") as AboutViewPhone
+        var aboutview = UIStoryboard(name: "UserCenter"+deviceDefine, bundle: nil).instantiateViewControllerWithIdentifier("aboutView") as! AboutViewPhone
         return aboutview
     }
     override func viewDidLoad() {
@@ -118,7 +118,7 @@ class AboutViewPhone: UITableViewController,UINavigationControllerDelegate,UIIma
     
     //写入Document中
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-        var image = info["UIImagePickerControllerEditedImage"] as UIImage
+        var image = info["UIImagePickerControllerEditedImage"] as! UIImage
         headImage.image = image
         var imageData = UIImagePNGRepresentation(image)
         imageData.writeToFile(applicationDocumentsPath+"/myimage.png", atomically: false)

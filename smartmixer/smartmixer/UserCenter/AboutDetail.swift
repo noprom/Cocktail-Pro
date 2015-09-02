@@ -27,7 +27,7 @@ class AboutDetail: UIViewController,UITextFieldDelegate {
     var currentTag:Int = 0
     
     class func AboutDetailInit()->AboutDetail{
-       var aboutDetail = UIStoryboard(name: "UserCenter"+deviceDefine, bundle: nil).instantiateViewControllerWithIdentifier("aboutDetail") as AboutDetail
+       var aboutDetail = UIStoryboard(name: "UserCenter"+deviceDefine, bundle: nil).instantiateViewControllerWithIdentifier("aboutDetail") as! AboutDetail
         return aboutDetail
     }
     override func viewDidLoad() {
@@ -114,8 +114,8 @@ class AboutDetail: UIViewController,UITextFieldDelegate {
             var request = HTTPTask()
             request.GET("http://www.smarthito.com/app/feedback.action", parameters: ["response": responseText.text,"keyword":"nicaiyahehe"], success: {(response: HTTPResponse) in
                 if response.responseObject != nil {
-                    let data = NSJSONSerialization.JSONObjectWithData(response.responseObject as NSData, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
-                    NSLog((data["keyword"] as String))
+                    let data = NSJSONSerialization.JSONObjectWithData(response.responseObject as! NSData, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSDictionary
+                    NSLog((data["keyword"] as! String))
                     self.responseText.text=""
                 }
             },failure: {(error: NSError, response: HTTPResponse?) in

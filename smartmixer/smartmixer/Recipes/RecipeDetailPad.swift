@@ -68,7 +68,7 @@ class RecipeDetailPad : UIViewController {
     var moresize:CGFloat = 0
     
     class func RecipeDetailPadInit()->RecipeDetailPad{
-        var recipeDetail = UIStoryboard(name: "Recipes"+deviceDefine, bundle: nil).instantiateViewControllerWithIdentifier("recipeDetail") as RecipeDetailPad
+        var recipeDetail = UIStoryboard(name: "Recipes"+deviceDefine, bundle: nil).instantiateViewControllerWithIdentifier("recipeDetail") as! RecipeDetailPad
         return recipeDetail
     }
     
@@ -145,7 +145,7 @@ class RecipeDetailPad : UIViewController {
     @IBAction func showIngridient(sender:UIButton){
         if(popview.hidden == true){
             if(recipeIngridients == nil){
-                recipeIngridients = UIStoryboard(name: "Recipes_ipad", bundle: nil).instantiateViewControllerWithIdentifier("recipeIngridients") as RecipeIngridients
+                recipeIngridients = UIStoryboard(name: "Recipes_ipad", bundle: nil).instantiateViewControllerWithIdentifier("recipeIngridients")as! RecipeIngridients
                 recipeIngridients.recipeId = CurrentData.id.integerValue
             }
             if(popview?.currentView != recipeIngridients.view){

@@ -12,7 +12,7 @@ import CoreData
 class CategoryMenu: UIViewController {
     
     class func CategoryMenuInit()->CategoryMenu{
-        var menu = UIStoryboard(name: "Recipes"+deviceDefine, bundle: nil).instantiateViewControllerWithIdentifier("categoryMenu") as CategoryMenu
+        var menu = UIStoryboard(name: "Recipes"+deviceDefine, bundle: nil).instantiateViewControllerWithIdentifier("categoryMenu") as! CategoryMenu
         return menu
     }
     
@@ -24,12 +24,12 @@ class CategoryMenu: UIViewController {
     var delegate:NumberDelegate!
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionInfo = (self.fetchedResultsController.sections as [NSFetchedResultsSectionInfo]) [section]
+        let sectionInfo = (self.fetchedResultsController.sections as! [NSFetchedResultsSectionInfo]) [section]
         return sectionInfo.numberOfObjects+2
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var categoryCell :CategoryCell = tableView.dequeueReusableCellWithIdentifier("categoryCell") as CategoryCell
+        var categoryCell :CategoryCell = tableView.dequeueReusableCellWithIdentifier("categoryCell") as! CategoryCell
         categoryCell.backgroundColor = UIColor.clearColor()
         var newview = RadiusView(frame: categoryCell.frame)
         newview.backgroundColor = UIColor.clearColor()
@@ -44,7 +44,7 @@ class CategoryMenu: UIViewController {
             categoryCell.tag = -1
         }else{
             var index = NSIndexPath(forRow: indexPath.row-2, inSection: indexPath.section)
-            let item = self.fetchedResultsController.objectAtIndexPath(index) as Category
+            let item = self.fetchedResultsController.objectAtIndexPath(index) as! Category
             categoryCell.cellname.text = "\(item.name) \(item.nameEng)"
             categoryCell.tag = item.id.integerValue
         }

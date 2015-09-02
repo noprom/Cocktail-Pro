@@ -41,7 +41,7 @@ class HomeDirectionSync {
         NSThread.detachNewThreadSelector("getServerVersionSync:", toTarget:self,withObject:self)
     }
     @objc func getServerVersionSync(sender:AnyObject){
-        var owner = sender as HomeDirectionSync
+        var owner = sender as! HomeDirectionSync
         var request = HTTPTask()
         request.GET(owner.baseUrl+"version.txt", parameters: nil, success: {(response: HTTPResponse) in
             if response.responseObject != nil {
@@ -49,7 +49,7 @@ class HomeDirectionSync {
                 if(localVersion==nil){
                     localVersion=""
                 }
-                let data = response.responseObject as NSData
+                let data = response.responseObject as! NSData
                 let remoteVersion = NSString(data: data, encoding: NSUTF8StringEncoding)
                 if(localVersion != remoteVersion || owner.byForce){//两地的版本字符串不匹配或是强制更新，开始下载新的
                     let fileManager = NSFileManager.defaultManager()
@@ -81,7 +81,7 @@ class HomeDirectionSync {
                 if response.responseObject != nil {
                     //数据下载成功，将数据解压到用户牡蛎中
                     var zip = ZipArchive()
-                    zip.UnzipOpenFile((response.responseObject! as NSURL).path)
+                    zip.UnzipOpenFile((response.responseObject! as! NSURL).path)
                     needRefresh=zip.UnzipFileTo(applicationDocumentsPath+"/homedirections/", overWrite: true)
                     if(needRefresh && sender.delegate != nil){//唯一的操作成功的返回
                         sender.delegate.homeDirectionSync(sender, NeedRefresh: true)

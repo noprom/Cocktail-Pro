@@ -30,7 +30,7 @@ class SideMenuController: UIViewController,UIGestureRecognizerDelegate {
             if self.SideView != newValue{
                 self._leftViewController = newValue
                 self._leftViewController.view.frame = self.view.bounds
-                self.view.insertSubview(self._leftViewController.view, aboveSubview: (self.view.subviews[0] as UIView))
+                self.view.insertSubview(self._leftViewController.view, aboveSubview: (self.view.subviews[0] as! UIView))
                 //self.view.insertSubview(self._leftViewController.view, atIndex: 1)
             }
         }
@@ -157,7 +157,7 @@ class SideMenuController: UIViewController,UIGestureRecognizerDelegate {
     func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer!) -> Bool
     {
         if gestureRecognizer == self.panGestureRecognizer {
-            var panGesture = gestureRecognizer as UIPanGestureRecognizer
+            var panGesture = gestureRecognizer as! UIPanGestureRecognizer
             var translation = panGesture.translationInView(self.view)
             if panGesture.velocityInView(self.view).x < 600 && abs(translation.x)/abs(translation.y)>1 {
                 return true

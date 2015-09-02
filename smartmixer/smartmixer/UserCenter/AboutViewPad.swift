@@ -15,7 +15,7 @@ class AboutViewPad: UIViewController ,NumberDelegate {
     var aboutDetail:AboutDetail!
     
     class func AboutViewPadInit()->AboutViewPad{
-        var aboutview = UIStoryboard(name: "UserCenter"+deviceDefine, bundle: nil).instantiateViewControllerWithIdentifier("aboutViewPad") as AboutViewPad
+        var aboutview = UIStoryboard(name: "UserCenter"+deviceDefine, bundle: nil).instantiateViewControllerWithIdentifier("aboutViewPad") as! AboutViewPad
         return aboutview
     }
     

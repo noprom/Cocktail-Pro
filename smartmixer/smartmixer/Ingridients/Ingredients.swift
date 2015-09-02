@@ -23,7 +23,7 @@ class Ingredients: UIViewController , NSFetchedResultsControllerDelegate,UISearc
     var numberOfitems:Int = 0
     
     class func IngredientsRoot()->UIViewController{
-        var ingridientController = UIStoryboard(name:"Ingredients"+deviceDefine,bundle:nil).instantiateInitialViewController() as UIViewController
+        var ingridientController = UIStoryboard(name:"Ingredients"+deviceDefine,bundle:nil).instantiateInitialViewController() as! UIViewController
         return ingridientController
     }
     override func viewDidLoad() {
@@ -94,7 +94,7 @@ class Ingredients: UIViewController , NSFetchedResultsControllerDelegate,UISearc
     //告知窗口现在有多少个item需要添加
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int
     {
-        let sectionInfo = self.fetchedResultsController.sections as [NSFetchedResultsSectionInfo]
+        let sectionInfo = self.fetchedResultsController.sections as! [NSFetchedResultsSectionInfo]
         let item = sectionInfo[section]
         numberOfitems = item.numberOfObjects + 1
         return numberOfitems
@@ -103,7 +103,7 @@ class Ingredients: UIViewController , NSFetchedResultsControllerDelegate,UISearc
     //处理单个View的添加
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell!
     {
-        var tableCell:IngredientCategory = tableView.dequeueReusableCellWithIdentifier("categoryCell") as IngredientCategory
+        var tableCell:IngredientCategory = tableView.dequeueReusableCellWithIdentifier("categoryCell") as! IngredientCategory
         if(indexPath.row==0){
             tableCell.title.text = "器具"
             tableCell.title_eng.text = "Appliances"
@@ -111,7 +111,7 @@ class Ingredients: UIViewController , NSFetchedResultsControllerDelegate,UISearc
             tableCell.thumb.image = UIImage(named: "C_Appliances.jpg")
         }else{
             var index = NSIndexPath(forRow: indexPath.row - 1, inSection: indexPath.section)
-            let item = self.fetchedResultsController.objectAtIndexPath(index) as Category
+            let item = self.fetchedResultsController.objectAtIndexPath(index) as! Category
             tableCell.title.text = item.name
             tableCell.title_eng.text = item.nameEng
             tableCell.tag = item.id.integerValue
@@ -126,7 +126,7 @@ class Ingredients: UIViewController , NSFetchedResultsControllerDelegate,UISearc
     
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!)
     {
-        var cell = tableView.cellForRowAtIndexPath(indexPath) as IngredientCategory
+        var cell = tableView.cellForRowAtIndexPath(indexPath) as! IngredientCategory
         if(deviceDefine==""){
             ingredientCollection = IngredientCollection.IngredientCollectionInit()
             ingredientCollection.NavigationController = self.navigationController

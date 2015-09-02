@@ -18,7 +18,7 @@ class DataDAO {
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: false)]
         fetchRequest.predicate = NSPredicate(format: "id == \(id)")
         var error: NSError? = nil
-        var items:[Recipe] = managedObjectContext.executeFetchRequest(fetchRequest, error: &error) as [Recipe]
+        var items:[Recipe] = managedObjectContext.executeFetchRequest(fetchRequest, error: &error) as! [Recipe]
         if(items.count==0){
             abort()
         }else{
@@ -32,7 +32,7 @@ class DataDAO {
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: false)]
         fetchRequest.predicate = NSPredicate(format: "ingridientId == \(ingredientId) AND stepType == 0")
         var error: NSError? = nil
-        var recipeSteps = managedObjectContext.executeFetchRequest(fetchRequest, error: &error) as [RecipeStep]
+        var recipeSteps = managedObjectContext.executeFetchRequest(fetchRequest, error: &error) as! [RecipeStep]
         if(recipeSteps.count != 0){//该材料有绑定，需要更新
             for recipestep:RecipeStep in recipeSteps {
                 //找到对应的recipe
@@ -44,7 +44,7 @@ class DataDAO {
                 fetchsistor.sortDescriptors = [NSSortDescriptor(key: "id", ascending: false)]
                 fetchsistor.predicate = NSPredicate(format: "recipeId == \(recipestep.recipeId) AND important == true")
                 var error: NSError? = nil
-                var sistorSteps = managedObjectContext.executeFetchRequest(fetchsistor, error: &error) as [RecipeStep]
+                var sistorSteps = managedObjectContext.executeFetchRequest(fetchsistor, error: &error)as! [RecipeStep]
                 if(sistorSteps.count != 0){//有标记位重要的
                     var numcover:CGFloat = 0
                     for sistor:RecipeStep in sistorSteps {
@@ -69,7 +69,7 @@ class DataDAO {
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: false)]
         fetchRequest.predicate = NSPredicate(format: "id == \(id)")
         var error: NSError? = nil
-        var items:[Container] = managedObjectContext.executeFetchRequest(fetchRequest, error: &error) as [Container]
+        var items:[Container] = managedObjectContext.executeFetchRequest(fetchRequest, error: &error) as! [Container]
         if(items.count==0){
             abort()
         }else{
@@ -83,7 +83,7 @@ class DataDAO {
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: false)]
         fetchRequest.predicate = NSPredicate(format: "id == \(id)")
         var error: NSError? = nil
-        var items:[Ingridient] = managedObjectContext.executeFetchRequest(fetchRequest, error: &error) as [Ingridient]
+        var items:[Ingridient] = managedObjectContext.executeFetchRequest(fetchRequest, error: &error) as! [Ingridient]
         if(items.count==0){
             abort()
         }else{

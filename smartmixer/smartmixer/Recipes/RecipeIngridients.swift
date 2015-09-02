@@ -73,7 +73,7 @@ class RecipeIngridients: UIViewController, UIScrollViewDelegate,UICollectionView
     
     func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
         var item = segmentCells[indexPath.item]
-        var segmentCell = segmentView.dequeueReusableCellWithReuseIdentifier("segmentCell", forIndexPath: indexPath) as SegmentCell
+        var segmentCell = segmentView.dequeueReusableCellWithReuseIdentifier("segmentCell", forIndexPath: indexPath) as! SegmentCell
         segmentCell.name.text=item[0]
         segmentCell.nameEng.text=item[1]
         segmentCell.extendInfo = item[2]
@@ -88,7 +88,7 @@ class RecipeIngridients: UIViewController, UIScrollViewDelegate,UICollectionView
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         var rect = CGRect(x: CGFloat(indexPath.item) * imageScroll.frame.width, y: CGFloat(0), width: imageScroll.frame.width, height: imageScroll.frame.height)
         segmentView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredHorizontally, animated: true)
-        var segmentCell = collectionView.cellForItemAtIndexPath(indexPath) as SegmentCell
+        var segmentCell = collectionView.cellForItemAtIndexPath(indexPath) as! SegmentCell
         moreinfo.text = segmentCell.extendInfo
         imageScroll.scrollRectToVisible(rect, animated: true)
     }
@@ -104,7 +104,7 @@ class RecipeIngridients: UIViewController, UIScrollViewDelegate,UICollectionView
         fetchRequest.predicate =  NSPredicate(format: "recipeId == \(recipeId)")
         
         var error: NSError? = nil
-        var steps:[RecipeStep] = managedObjectContext.executeFetchRequest(fetchRequest, error: &error) as [RecipeStep]
+        var steps:[RecipeStep] = managedObjectContext.executeFetchRequest(fetchRequest, error: &error) as! [RecipeStep]
         
         for( var index = 0; index != steps.count; index++){
             let item = steps[index]
@@ -132,7 +132,7 @@ class RecipeIngridients: UIViewController, UIScrollViewDelegate,UICollectionView
         
         var error: NSError? = nil
         
-        var items:[Container] = managedObjectContext.executeFetchRequest(fetchRequest, error: &error) as [Container]
+        var items:[Container] = managedObjectContext.executeFetchRequest(fetchRequest, error: &error) as! [Container]
         
         if(items.count==0){
             abort()
@@ -154,7 +154,7 @@ class RecipeIngridients: UIViewController, UIScrollViewDelegate,UICollectionView
         
         var error: NSError? = nil
         
-        var items:[Ingridient] = managedObjectContext.executeFetchRequest(fetchRequest, error: &error) as [Ingridient]
+        var items:[Ingridient] = managedObjectContext.executeFetchRequest(fetchRequest, error: &error) as! [Ingridient]
         
         if(items.count==0){
             abort()

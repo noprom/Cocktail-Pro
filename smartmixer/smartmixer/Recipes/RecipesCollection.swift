@@ -29,21 +29,21 @@ class RecipesCollection: UIViewController,UIScrollViewDelegate {
     
     //@MARK:场景显示时的需要设置的参数
     //显示的标题,这是为场景显示准备的
-    var SenceTitle:String="鸡尾酒Pro"
+    var mySenceTitle:String="鸡尾酒Pro"
     //需要集中显示的项目
     var SenceItems:NSArray!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if(senceTitle != nil){
-            senceTitle.title = SenceTitle
+            senceTitle.title = mySenceTitle
         }
     }
     
     
     //@MARK:内部自初始化一个实例
     class func RecipesCollectionInit()->RecipesCollection{
-        var recipesCollection = UIStoryboard(name: "Recipes"+deviceDefine, bundle: nil).instantiateViewControllerWithIdentifier("recipesCollection") as RecipesCollection
+        var recipesCollection = UIStoryboard(name: "Recipes"+deviceDefine, bundle: nil).instantiateViewControllerWithIdentifier("recipesCollection") as! RecipesCollection
         return recipesCollection
     }
     
@@ -59,13 +59,13 @@ class RecipesCollection: UIViewController,UIScrollViewDelegate {
     
     override func motionBegan(motion: UIEventSubtype, withEvent event: UIEvent) {
         if (motion == UIEventSubtype.MotionShake) {
-            let sectionInfo = self.fetchedItemsController.sections as [NSFetchedResultsSectionInfo]
+            let sectionInfo = self.fetchedItemsController.sections as! [NSFetchedResultsSectionInfo]
             let item = sectionInfo[0]
             var totle:UInt32 = UInt32(item.numberOfObjects)
             let num = arc4random_uniform(totle)
             var indexPath = NSIndexPath(forRow: Int(num), inSection: 0)
-            var recipeDetail = UIStoryboard(name: "Recipes", bundle: nil).instantiateViewControllerWithIdentifier("recipeDetail") as RecipeDetailPhone
-            recipeDetail.CurrentData = self.fetchedItemsController.objectAtIndexPath(indexPath) as Recipe
+            var recipeDetail = UIStoryboard(name: "Recipes", bundle: nil).instantiateViewControllerWithIdentifier("recipeDetail") as! RecipeDetailPhone
+            recipeDetail.CurrentData = self.fetchedItemsController.objectAtIndexPath(indexPath) as! Recipe
             self.NavigationController.pushViewController(recipeDetail, animated: true)
         }
     }
@@ -115,7 +115,7 @@ class RecipesCollection: UIViewController,UIScrollViewDelegate {
     }
     
     func collectionView(collectionView: UICollectionView!, numberOfItemsInSection section: Int) -> Int {
-        let sectionInfo = self.fetchedItemsController.sections as [NSFetchedResultsSectionInfo]
+        let sectionInfo = self.fetchedItemsController.sections as! [NSFetchedResultsSectionInfo]
         let item = sectionInfo[section]
         if(item.numberOfObjects==0){
             nodataFind.hidden=false
@@ -126,8 +126,8 @@ class RecipesCollection: UIViewController,UIScrollViewDelegate {
     }
     
     func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
-        var viewCell = collectionView.dequeueReusableCellWithReuseIdentifier("recipe-thumbnail", forIndexPath: indexPath) as RecipeThumbail
-        let item = self.fetchedItemsController.objectAtIndexPath(indexPath) as Recipe
+        var viewCell = collectionView.dequeueReusableCellWithReuseIdentifier("recipe-thumbnail", forIndexPath: indexPath) as! RecipeThumbail
+        let item = self.fetchedItemsController.objectAtIndexPath(indexPath) as! Recipe
         viewCell.SetDataContent(item)
         return viewCell
     }
@@ -136,11 +136,11 @@ class RecipesCollection: UIViewController,UIScrollViewDelegate {
         rootSideMenu.needSwipeShowMenu = false
         if(deviceDefine==""){
             var recipeDetail = RecipeDetailPhone.RecipesDetailPhoneInit()
-            recipeDetail.CurrentData = self.fetchedItemsController.objectAtIndexPath(indexPath) as Recipe
+            recipeDetail.CurrentData = self.fetchedItemsController.objectAtIndexPath(indexPath) as! Recipe
             self.NavigationController.pushViewController(recipeDetail, animated: true)
         }else{//ipad
             var recipeDetail = RecipeDetailPad.RecipeDetailPadInit()
-            recipeDetail.CurrentData = self.fetchedItemsController.objectAtIndexPath(indexPath) as Recipe
+            recipeDetail.CurrentData = self.fetchedItemsController.objectAtIndexPath(indexPath) as! Recipe
             self.NavigationController.pushViewController(recipeDetail, animated: true)
         }
         
@@ -170,7 +170,7 @@ class RecipesCollection: UIViewController,UIScrollViewDelegate {
                     }
                 }
                 if(conditionSeg != ""){
-                    conditionSeg = conditionSeg.substringToIndex(advance(conditionSeg.startIndex, countElements(conditionSeg)-3))
+                    conditionSeg = conditionSeg.substringToIndex(advance(conditionSeg.startIndex, count(conditionSeg)-3))
                     conditionStr += "(\(conditionSeg)) AND "
                 }
                 //技巧部分
@@ -181,7 +181,7 @@ class RecipesCollection: UIViewController,UIScrollViewDelegate {
                     }
                 }
                 if(conditionSeg != ""){
-                    conditionSeg = conditionSeg.substringToIndex(advance(conditionSeg.startIndex, countElements(conditionSeg)-3))
+                    conditionSeg = conditionSeg.substringToIndex(advance(conditionSeg.startIndex, count(conditionSeg)-3))
                     conditionStr += "(\(conditionSeg)) AND "
                 }
                 
@@ -193,7 +193,7 @@ class RecipesCollection: UIViewController,UIScrollViewDelegate {
                     }
                 }
                 if(conditionSeg != ""){
-                    conditionSeg = conditionSeg.substringToIndex(advance(conditionSeg.startIndex, countElements(conditionSeg)-3))
+                    conditionSeg = conditionSeg.substringToIndex(advance(conditionSeg.startIndex, count(conditionSeg)-3))
                     conditionStr += "(\(conditionSeg)) AND "
                 }
                 
@@ -207,9 +207,9 @@ class RecipesCollection: UIViewController,UIScrollViewDelegate {
                 conditionStr += "difficulty<=\(recipesSearch.keyDifficulty)"
             } else if(SenceItems != nil) {//这里是用户调用场景显示的部分
                 for item in SenceItems {
-                    conditionStr += " id=\((item as Int)) or "
+                    conditionStr += " id=\((item as! Int)) or "
                 }
-                var end = advance(conditionStr.startIndex, countElements(conditionStr)-4)
+                var end = advance(conditionStr.startIndex, count(conditionStr)-4)
                 conditionStr = conditionStr.substringToIndex(end)
             }
             if(conditionStr != ""){
