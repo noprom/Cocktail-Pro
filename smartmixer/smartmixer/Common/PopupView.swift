@@ -23,7 +23,7 @@ class PopupView: UIView {
     @IBOutlet var parentView:UIView!
     
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
         //self.alpha = 0.88
     }
     
@@ -196,11 +196,11 @@ class PopupView: UIView {
         CGContextSetStrokeColorWithColor(context, UIColor.lightGrayColor().CGColor)
         CGContextSetLineWidth(context, 1.0)
         CGContextSetFillColorWithColor(context, UIColor.whiteColor().CGColor)
-        var rrect = self.bounds;
+        let rrect = self.bounds;
         var minx = CGRectGetMinX(rrect)
         var maxx = CGRectGetMaxX(rrect)
-        var miny = CGRectGetMinY(rrect)
-        var maxy = CGRectGetMaxY(rrect)
+        let miny = CGRectGetMinY(rrect)
+        let maxy = CGRectGetMaxY(rrect)
         if(self.arrorDirection == ArrorDirection.left){//向左
             minx = minx + arrorWidth
             CGContextMoveToPoint(context, minx,arrorWidth+arrorPosY)
@@ -228,7 +228,7 @@ class PopupView: UIView {
         }
         
         CGContextClosePath(context)
-        CGContextDrawPath(context, kCGPathFillStroke)
+        CGContextDrawPath(context, CGPathDrawingMode.Stroke)
     }
     
 }

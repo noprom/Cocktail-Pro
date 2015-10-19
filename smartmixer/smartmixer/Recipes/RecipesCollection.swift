@@ -43,7 +43,7 @@ class RecipesCollection: UIViewController,UIScrollViewDelegate {
     
     //@MARK:内部自初始化一个实例
     class func RecipesCollectionInit()->RecipesCollection{
-        var recipesCollection = UIStoryboard(name: "Recipes"+deviceDefine, bundle: nil).instantiateViewControllerWithIdentifier("recipesCollection") as! RecipesCollection
+        let recipesCollection = UIStoryboard(name: "Recipes"+deviceDefine, bundle: nil).instantiateViewControllerWithIdentifier("recipesCollection") as! RecipesCollection
         return recipesCollection
     }
     
@@ -57,14 +57,14 @@ class RecipesCollection: UIViewController,UIScrollViewDelegate {
         }
     }
     
-    override func motionBegan(motion: UIEventSubtype, withEvent event: UIEvent) {
+    override func motionBegan(motion: UIEventSubtype, withEvent event: UIEvent?) {
         if (motion == UIEventSubtype.MotionShake) {
-            let sectionInfo = self.fetchedItemsController.sections as! [NSFetchedResultsSectionInfo]
+            let sectionInfo = self.fetchedItemsController.sections!
             let item = sectionInfo[0]
-            var totle:UInt32 = UInt32(item.numberOfObjects)
+            let totle:UInt32 = UInt32(item.numberOfObjects)
             let num = arc4random_uniform(totle)
-            var indexPath = NSIndexPath(forRow: Int(num), inSection: 0)
-            var recipeDetail = UIStoryboard(name: "Recipes", bundle: nil).instantiateViewControllerWithIdentifier("recipeDetail") as! RecipeDetailPhone
+            let indexPath = NSIndexPath(forRow: Int(num), inSection: 0)
+            let recipeDetail = UIStoryboard(name: "Recipes", bundle: nil).instantiateViewControllerWithIdentifier("recipeDetail") as! RecipeDetailPhone
             recipeDetail.CurrentData = self.fetchedItemsController.objectAtIndexPath(indexPath) as! Recipe
             self.NavigationController.pushViewController(recipeDetail, animated: true)
         }
@@ -95,7 +95,7 @@ class RecipesCollection: UIViewController,UIScrollViewDelegate {
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         if(SenceItems == nil){//非场景调用时的处理
-            var off = scrollView.contentOffset.y
+            let off = scrollView.contentOffset.y
             if((off-lastPos)>50 && off>50){//向下了
                 lastPos = off
                 rootController.showOrhideToolbar(false)
@@ -111,11 +111,11 @@ class RecipesCollection: UIViewController,UIScrollViewDelegate {
     func ReloadData(){
         _fetchedItemsController = nil
         icollectionView.reloadData()
-        icollectionView.setContentOffset(CGPoint.zeroPoint, animated: false)
+        icollectionView.setContentOffset(CGPoint.zero, animated: false)
     }
     
     func collectionView(collectionView: UICollectionView!, numberOfItemsInSection section: Int) -> Int {
-        let sectionInfo = self.fetchedItemsController.sections as! [NSFetchedResultsSectionInfo]
+        let sectionInfo = self.fetchedItemsController.sections!
         let item = sectionInfo[section]
         if(item.numberOfObjects==0){
             nodataFind.hidden=false
@@ -126,7 +126,7 @@ class RecipesCollection: UIViewController,UIScrollViewDelegate {
     }
     
     func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
-        var viewCell = collectionView.dequeueReusableCellWithReuseIdentifier("recipe-thumbnail", forIndexPath: indexPath) as! RecipeThumbail
+        let viewCell = collectionView.dequeueReusableCellWithReuseIdentifier("recipe-thumbnail", forIndexPath: indexPath) as! RecipeThumbail
         let item = self.fetchedItemsController.objectAtIndexPath(indexPath) as! Recipe
         viewCell.SetDataContent(item)
         return viewCell
@@ -135,11 +135,11 @@ class RecipesCollection: UIViewController,UIScrollViewDelegate {
     func collectionView(collectionView: UICollectionView!, didSelectItemAtIndexPath indexPath: NSIndexPath!) {
         rootSideMenu.needSwipeShowMenu = false
         if(deviceDefine==""){
-            var recipeDetail = RecipeDetailPhone.RecipesDetailPhoneInit()
+            let recipeDetail = RecipeDetailPhone.RecipesDetailPhoneInit()
             recipeDetail.CurrentData = self.fetchedItemsController.objectAtIndexPath(indexPath) as! Recipe
             self.NavigationController.pushViewController(recipeDetail, animated: true)
         }else{//ipad
-            var recipeDetail = RecipeDetailPad.RecipeDetailPadInit()
+            let recipeDetail = RecipeDetailPad.RecipeDetailPadInit()
             recipeDetail.CurrentData = self.fetchedItemsController.objectAtIndexPath(indexPath) as! Recipe
             self.NavigationController.pushViewController(recipeDetail, animated: true)
         }
@@ -170,7 +170,7 @@ class RecipesCollection: UIViewController,UIScrollViewDelegate {
                     }
                 }
                 if(conditionSeg != ""){
-                    conditionSeg = conditionSeg.substringToIndex(advance(conditionSeg.startIndex, count(conditionSeg)-3))
+                    conditionSeg = conditionSeg.substringToIndex(advance(conditionSeg.startIndex, count(conditionSeg as NSString)-3))
                     conditionStr += "(\(conditionSeg)) AND "
                 }
                 //技巧部分
@@ -218,11 +218,16 @@ class RecipesCollection: UIViewController,UIScrollViewDelegate {
             let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
             _fetchedItemsController = aFetchedResultsController
             
-            var error: NSError? = nil
-            if !_fetchedItemsController!.performFetch(&error) {
+            do {
+                try self.fetchedItemsController.performFetch()
+            }catch{
                 abort()
             }
-            }
+//            var error: NSError? = nil
+//            if !_fetchedItemsController!.performFetch(&error) {
+//                abort()
+//            }
+        }
             return _fetchedItemsController!
     }
     var _fetchedItemsController: NSFetchedResultsController? = nil

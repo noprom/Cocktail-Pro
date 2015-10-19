@@ -62,7 +62,7 @@ class RecipeDetailPhone: UIViewController {
     var moresize:CGFloat = 0
     
     class func RecipesDetailPhoneInit()->RecipeDetailPhone{
-        var recipeDetail = UIStoryboard(name: "Recipes"+deviceDefine, bundle: nil).instantiateViewControllerWithIdentifier("recipeDetail") as! RecipeDetailPhone
+        let recipeDetail = UIStoryboard(name: "Recipes"+deviceDefine, bundle: nil).instantiateViewControllerWithIdentifier("recipeDetail") as! RecipeDetailPhone
         return recipeDetail
     }
     
@@ -75,7 +75,7 @@ class RecipeDetailPhone: UIViewController {
         slideback.direction = UISwipeGestureRecognizerDirection.Right
         self.view.addGestureRecognizer(slideback)
         self.view.userInteractionEnabled = true
-        var left = UIBarButtonItem(title: "开始制作", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("toCook:"))
+        let left = UIBarButtonItem(title: "开始制作", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("toCook:"))
         self.navigationItem.rightBarButtonItem = left
         if(CurrentData != nil){
             self.image.image = UIImage(named: CurrentData.thumb)
@@ -155,7 +155,7 @@ class RecipeDetailPhone: UIViewController {
     //告知窗口现在有多少个item需要添加
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int
     {
-        let sectionInfo = self.fetchedStepsController.sections as! [NSFetchedResultsSectionInfo]
+        let sectionInfo = self.fetchedStepsController.sections!
         let item = sectionInfo[section]
         stepnum = item.numberOfObjects
         return stepnum
@@ -164,7 +164,7 @@ class RecipeDetailPhone: UIViewController {
     //处理单个View的添加
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell!
     {
-        var tableCell :UITableViewCell = tableView.dequeueReusableCellWithIdentifier("stepCell") as! UITableViewCell
+        let tableCell = tableView.dequeueReusableCellWithIdentifier("stepCell")!
         let item = self.fetchedStepsController.objectAtIndexPath(indexPath) as! RecipeStep
         tableCell.textLabel?.text = "\((indexPath.row+1)). "+item.stepInfo
         return tableCell
@@ -177,9 +177,9 @@ class RecipeDetailPhone: UIViewController {
     //显示所有的文字
     @IBAction func showAllText(sender:UIButton){
         if(hMainboard.constant == 280){
-            var str:String = desc.text!
+            let str:String = desc.text!
             NSLog(str)
-            var size = str.textSizeWithFont(self.desc.font, constrainedToSize: CGSize(width:304, height:1000))
+            let size = str.textSizeWithFont(self.desc.font!, constrainedToSize: CGSize(width:304, height:1000))
             if(size.height > (hDesc!.constant-28)){
                 /**/
                 UIView.animateWithDuration(0.4, animations: {
@@ -213,8 +213,9 @@ class RecipeDetailPhone: UIViewController {
             self.faver?.image = UIImage(named: "Heartno.png")
             UserHome.removeHistory(1, id: CurrentData.id.integerValue)
         }
-        var error: NSError? = nil
-        if !managedObjectContext.save(&error) {
+        do {
+            try managedObjectContext!.save()
+        } catch {
             abort()
         }
     }
@@ -245,14 +246,19 @@ class RecipeDetailPhone: UIViewController {
         let sortDescriptor = NSSortDescriptor(key: "order", ascending: true)
         let sortDescriptors = [sortDescriptor]
         fetchRequest.sortDescriptors = sortDescriptors
-        var condition = NSPredicate(format: "recipeId == \(CurrentData.id)")
+        let condition = NSPredicate(format: "recipeId == \(CurrentData.id)")
         fetchRequest.predicate = condition
         let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         _fetchedStepsController = aFetchedResultsController
-        var error: NSError? = nil
-        if !_fetchedStepsController!.performFetch(&error) {
+        do{
+            try _fetchedStepsController!.performFetch()
+        } catch{
             abort()
         }
+//        var error: NSError? = nil
+//        if !_fetchedStepsController!.performFetch(&error) {
+//            abort()
+//        }
         return _fetchedStepsController!
     }
     

@@ -68,7 +68,7 @@ class RecipeDetailPad : UIViewController {
     var moresize:CGFloat = 0
     
     class func RecipeDetailPadInit()->RecipeDetailPad{
-        var recipeDetail = UIStoryboard(name: "Recipes"+deviceDefine, bundle: nil).instantiateViewControllerWithIdentifier("recipeDetail") as! RecipeDetailPad
+        let recipeDetail = UIStoryboard(name: "Recipes"+deviceDefine, bundle: nil).instantiateViewControllerWithIdentifier("recipeDetail") as! RecipeDetailPad
         return recipeDetail
     }
     
@@ -76,7 +76,7 @@ class RecipeDetailPad : UIViewController {
     override func viewDidLoad() {
         rootController.showOrhideToolbar(false)
         super.viewDidLoad()
-        var left = UIBarButtonItem(title: "开始制作", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("toCook:"))
+        let left = UIBarButtonItem(title: "开始制作", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("toCook:"))
         self.navigationItem.rightBarButtonItem = left
         if(CurrentData != nil){
             self.image?.image = UIImage(named: CurrentData.thumb)
@@ -90,7 +90,7 @@ class RecipeDetailPad : UIViewController {
             }else{
                 self.faver?.image = UIImage(named: "Heartno.png")
             }
-            var size = CurrentData.des.textSizeWithFont(self.desc!.font!, constrainedToSize: CGSize(width:314, height:1000))
+            let size = CurrentData.des.textSizeWithFont(self.desc!.font!, constrainedToSize: CGSize(width:314, height:1000))
             if(size.height<146){
                 showBt.hidden = true
             }
@@ -165,8 +165,8 @@ class RecipeDetailPad : UIViewController {
     
     @IBAction func ShowAllTextPad(sender:UIButton){
         if(hMainboard?.constant == 520){
-            var str:String = desc!.text!
-            var size = str.textSizeWithFont(desc!.font!, constrainedToSize: CGSize(width:314, height:1000))
+            let str:String = desc!.text!
+            let size = str.textSizeWithFont(desc!.font!, constrainedToSize: CGSize(width:314, height:1000))
             if(size.height > (hDesc!.constant-28)){
                 UIView.animateWithDuration(0.4, animations: {
                     self.hMainboard!.constant = 354 + size.height;
@@ -197,10 +197,15 @@ class RecipeDetailPad : UIViewController {
             self.faver?.image = UIImage(named: "Heartno.png")
             UserHome.removeHistory(1, id: CurrentData.id.integerValue)
         }
-        var error: NSError? = nil
-        if !managedObjectContext.save(&error) {
+        do {
+            try managedObjectContext.save()
+        }catch{
             abort()
         }
+//        var error: NSError? = nil
+//        if !managedObjectContext.save(&error) {
+//            abort()
+//        }
     }
     
     @IBAction func back(sender: UIBarButtonItem) {

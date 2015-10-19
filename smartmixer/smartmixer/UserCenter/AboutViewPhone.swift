@@ -18,7 +18,7 @@ class AboutViewPhone: UITableViewController,UINavigationControllerDelegate,UIIma
     var delegate:NumberDelegate!
     
     class func AboutViewPhoneInit()->AboutViewPhone{
-        var aboutview = UIStoryboard(name: "UserCenter"+deviceDefine, bundle: nil).instantiateViewControllerWithIdentifier("aboutView") as! AboutViewPhone
+        let aboutview = UIStoryboard(name: "UserCenter"+deviceDefine, bundle: nil).instantiateViewControllerWithIdentifier("aboutView") as! AboutViewPhone
         return aboutview
     }
     override func viewDidLoad() {
@@ -62,13 +62,13 @@ class AboutViewPhone: UITableViewController,UINavigationControllerDelegate,UIIma
         }else if(indexPath.section==0 && indexPath.row==1){//点击修改名字
             
             if(osVersion<8){
-                var alert = UIAlertView(title: "编辑昵称", message: nil, delegate: self, cancelButtonTitle: "取消")
+                let alert = UIAlertView(title: "编辑昵称", message: nil, delegate: self, cancelButtonTitle: "取消")
                 alert.alertViewStyle = UIAlertViewStyle.PlainTextInput
                 alert.textFieldAtIndex(0)?.text = self.userName.text
                 alert.addButtonWithTitle("确定")
                 alert.show()
             }else{
-                var alert = UIAlertController(title: "编辑昵称", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                let alert = UIAlertController(title: "编辑昵称", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addTextFieldWithConfigurationHandler { (choiceNameTF) -> Void in
                     choiceNameTF.borderStyle = .None
                     choiceNameTF.text = NSUserDefaults.standardUserDefaults().stringForKey("UserName")!
@@ -77,11 +77,10 @@ class AboutViewPhone: UITableViewController,UINavigationControllerDelegate,UIIma
                     choiceNameTF.becomeFirstResponder()
                 }
                 alert.addAction(UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler:nil))
-                alert.addAction(UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler:{ (action) -> Void in
+                alert.addAction(UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
                     NSUserDefaults.standardUserDefaults().setObject(self.usernewName, forKey: "UserName")
                     self.userName.text=self.usernewName
-                    }
-                    ))
+                }))
                 self.view.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
             }
             
@@ -89,12 +88,12 @@ class AboutViewPhone: UITableViewController,UINavigationControllerDelegate,UIIma
             gotoMark()
         }else if(indexPath.row==5){
             welcome = WelcomePlus.WelcomePlusInit()
-            welcome.firstPop=false;
+            welcome.firstPop=false
             welcome.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
             self.view.window?.rootViewController?.presentViewController(welcome, animated: true, completion: nil)
         }else{
             if(deviceDefine==""){
-                var aboutDetail = AboutDetail.AboutDetailInit()
+                let aboutDetail = AboutDetail.AboutDetailInit()
                 aboutDetail.currentTag = indexPath.row
                 self.navigationController?.pushViewController(aboutDetail, animated: true)
             }else if(self.delegate != nil){
@@ -104,7 +103,7 @@ class AboutViewPhone: UITableViewController,UINavigationControllerDelegate,UIIma
     }
     
     func alertView(alertView: UIAlertView, didDismissWithButtonIndex buttonIndex: Int) {
-        var title = alertView.buttonTitleAtIndex(buttonIndex)
+        let title = alertView.buttonTitleAtIndex(buttonIndex)
         if(title=="确定"){
             self.userName.text=alertView.textFieldAtIndex(0)?.text
             NSUserDefaults.standardUserDefaults().setObject(self.userName.text, forKey: "UserName")
@@ -117,11 +116,11 @@ class AboutViewPhone: UITableViewController,UINavigationControllerDelegate,UIIma
     }
     
     //写入Document中
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-        var image = info["UIImagePickerControllerEditedImage"] as! UIImage
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        let image = info["UIImagePickerControllerEditedImage"] as! UIImage
         headImage.image = image
-        var imageData = UIImagePNGRepresentation(image)
-        imageData.writeToFile(applicationDocumentsPath+"/myimage.png", atomically: false)
+        let imageData = UIImagePNGRepresentation(image)
+        imageData!.writeToFile(applicationDocumentsPath+"/myimage.png", atomically: false)
         self.dismissViewControllerAnimated(true, completion: nil)
         if(osVersion<8 && deviceDefine != ""){
             popview.dismissPopoverAnimated(true)

@@ -45,9 +45,9 @@ class RecipeIngridients: UIViewController, UIScrollViewDelegate,UICollectionView
     //#MARK:这里是开始处理图片滚动的地方
     func scrollViewDidScroll(scrollView: UIScrollView) {
         if(scrollView.tag == 1){
-            var percent = imageScroll.contentOffset.x / imageScroll.contentSize.width
+            let percent = imageScroll.contentOffset.x / imageScroll.contentSize.width
             
-            var posx:Int = Int(10+CGFloat(100*segmentCells.count)*percent)
+            let posx:Int = Int(10+CGFloat(100*segmentCells.count)*percent)
             
             separator.frame = CGRect(x: posx, y: 35, width: 80, height: 3)
         }
@@ -55,9 +55,9 @@ class RecipeIngridients: UIViewController, UIScrollViewDelegate,UICollectionView
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         if(scrollView.tag == 1){
-            var offset:CGFloat!=imageScroll.contentOffset.x
-            var index:Int = Int(offset/imageScroll.frame.width)
-            var indexPath = NSIndexPath(forItem: index, inSection: 0)
+            let offset:CGFloat!=imageScroll.contentOffset.x
+            let index:Int = Int(offset/imageScroll.frame.width)
+            let indexPath = NSIndexPath(forItem: index, inSection: 0)
             segmentView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredHorizontally, animated: true)
             var segmentCell = segmentCells[index]
             moreinfo.text = segmentCell[2]
@@ -73,12 +73,12 @@ class RecipeIngridients: UIViewController, UIScrollViewDelegate,UICollectionView
     
     func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
         var item = segmentCells[indexPath.item]
-        var segmentCell = segmentView.dequeueReusableCellWithReuseIdentifier("segmentCell", forIndexPath: indexPath) as! SegmentCell
+        let segmentCell = segmentView.dequeueReusableCellWithReuseIdentifier("segmentCell", forIndexPath: indexPath) as! SegmentCell
         segmentCell.name.text=item[0]
         segmentCell.nameEng.text=item[1]
         segmentCell.extendInfo = item[2]
-        var rect = CGRect(x: CGFloat(indexPath.item) * imageScroll.frame.width, y: CGFloat(0), width: imageScroll.frame.width, height: imageScroll.frame.height)
-        var imgView = UIImageView(frame:rect)
+        let rect = CGRect(x: CGFloat(indexPath.item) * imageScroll.frame.width, y: CGFloat(0), width: imageScroll.frame.width, height: imageScroll.frame.height)
+        let imgView = UIImageView(frame:rect)
         imgView.contentMode=UIViewContentMode.ScaleAspectFit
         imgView.image = UIImage(named: item[3])
         imageScroll.addSubview(imgView)
@@ -86,9 +86,9 @@ class RecipeIngridients: UIViewController, UIScrollViewDelegate,UICollectionView
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        var rect = CGRect(x: CGFloat(indexPath.item) * imageScroll.frame.width, y: CGFloat(0), width: imageScroll.frame.width, height: imageScroll.frame.height)
+        let rect = CGRect(x: CGFloat(indexPath.item) * imageScroll.frame.width, y: CGFloat(0), width: imageScroll.frame.width, height: imageScroll.frame.height)
         segmentView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredHorizontally, animated: true)
-        var segmentCell = collectionView.cellForItemAtIndexPath(indexPath) as! SegmentCell
+        let segmentCell = collectionView.cellForItemAtIndexPath(indexPath) as! SegmentCell
         moreinfo.text = segmentCell.extendInfo
         imageScroll.scrollRectToVisible(rect, animated: true)
     }
@@ -103,21 +103,23 @@ class RecipeIngridients: UIViewController, UIScrollViewDelegate,UICollectionView
         
         fetchRequest.predicate =  NSPredicate(format: "recipeId == \(recipeId)")
         
-        var error: NSError? = nil
-        var steps:[RecipeStep] = managedObjectContext.executeFetchRequest(fetchRequest, error: &error) as! [RecipeStep]
-        
-        for( var index = 0; index != steps.count; index++){
-            let item = steps[index]
-            if(item.actionId == 1 || item.actionId == 20){//需要容器的
-                let container = getOneContainer(item.ingridientId.integerValue)
-                segmentCells.insert([container.name,container.nameEng,"",container.thumb], atIndex: 0)
-            }else if(item.actionId == 3){//需要材料的
-                let ingridient = getOneIngridient(item.ingridientId.integerValue)
-                segmentCells.append([ingridient.name,ingridient.nameEng,"\(item.amount)"+UnitDictory[item.unitId.integerValue]!,ingridient.thumb])
-                
+        do {
+            var steps:[RecipeStep] = try managedObjectContext.executeFetchRequest(fetchRequest) as! [RecipeStep]
+            for( var index = 0; index != steps.count; index++){
+                let item = steps[index]
+                if(item.actionId == 1 || item.actionId == 20){//需要容器的
+                    let container = getOneContainer(item.ingridientId.integerValue)
+                    segmentCells.insert([container.name,container.nameEng,"",container.thumb], atIndex: 0)
+                }else if(item.actionId == 3){//需要材料的
+                    let ingridient = getOneIngridient(item.ingridientId.integerValue)
+                    segmentCells.append([ingridient.name,ingridient.nameEng,"\(item.amount)"+UnitDictory[item.unitId.integerValue]!,ingridient.thumb])
+                    
+                }
             }
+        }catch{
+            abort()
         }
-        
+//        var steps:[RecipeStep] = try managedObjectContext.executeFetchRequest(fetchRequest) as! [RecipeStep]
     }
     
     func getOneContainer(id:Int) -> Container{

@@ -53,14 +53,14 @@ class IngredientDetail: UIViewController {
                 iHave.image = UIImage(named: "Heartno.png")
             }
             desc.text = ingridient.desc
-            var size = ingridient.desc.textSizeWithFont(self.desc!.font!, constrainedToSize: CGSize(width:300, height:1000))
+            let size = ingridient.desc.textSizeWithFont(self.desc!.font!, constrainedToSize: CGSize(width:300, height:1000))
             if(size.height<100){
                 showBt.hidden = true
             }
             image.image = UIImage(named: ingridient.thumb)
         }
         if(deviceDefine==""){//添加向右滑动返回
-            var slideback = UISwipeGestureRecognizer()
+            let slideback = UISwipeGestureRecognizer()
             slideback.addTarget(self, action: "SwipeToBack:")
             slideback.direction = UISwipeGestureRecognizerDirection.Right
             self.view.addGestureRecognizer(slideback)
@@ -77,7 +77,7 @@ class IngredientDetail: UIViewController {
     }
     
     class func IngredientDetailInit()->IngredientDetail{
-        var ingredientDetail = UIStoryboard(name:"Ingredients"+deviceDefine,bundle:nil).instantiateViewControllerWithIdentifier("ingredientDetail") as! IngredientDetail
+        let ingredientDetail = UIStoryboard(name:"Ingredients"+deviceDefine,bundle:nil).instantiateViewControllerWithIdentifier("ingredientDetail") as! IngredientDetail
         return ingredientDetail
     }
     
@@ -112,8 +112,9 @@ class IngredientDetail: UIViewController {
             iHave.image = UIImage(named: "Heartno.png")
             UserHome.removeHistory(2, id: ingridient.id.integerValue)
         }
-        var error: NSError? = nil
-        if !managedObjectContext.save(&error) {
+        do {
+            try managedObjectContext.save()
+        } catch {
             abort()
         }
     }
@@ -121,8 +122,8 @@ class IngredientDetail: UIViewController {
     //显示所有的文字
     @IBAction func showAllText(sender:UIButton){
         if(hMainboard.constant == 250){
-            var str:String = desc.text!
-            var size = str.textSizeWithFont(desc!.font!, constrainedToSize: CGSize(width:300, height:1000))
+            let str:String = desc.text!
+            let size = str.textSizeWithFont(desc!.font!, constrainedToSize: CGSize(width:300, height:1000))
             if(size.height > (hDesc!.constant-20)){
                 /**/
                 UIView.animateWithDuration(0.4, animations: {
@@ -154,15 +155,15 @@ class IngredientDetail: UIViewController {
     }
     
     func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
-        var row = indexPath.row
-        var session = indexPath.section
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier("aboutRecipe", forIndexPath: indexPath) as! UICollectionViewCell
+        _ = indexPath.row
+        _ = indexPath.section
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("aboutRecipe", forIndexPath: indexPath)
         return cell
     }
     
     func collectionView(collectionView: UICollectionView!, didSelectItemAtIndexPath indexPath: NSIndexPath!) {
-        var cell = collectionView.cellForItemAtIndexPath(indexPath) as! IngredientThumb
-        var materials = UIStoryboard(name:"Ingredients",bundle:nil).instantiateViewControllerWithIdentifier("ingredientDetail") as! IngredientDetail
+        _ = collectionView.cellForItemAtIndexPath(indexPath) as! IngredientThumb
+        _ = UIStoryboard(name:"Ingredients",bundle:nil).instantiateViewControllerWithIdentifier("ingredientDetail") as! IngredientDetail
         //self.navigationController.pushViewController(materials, animated: true)
     }
     

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6249" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6243"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -21,21 +21,27 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="page5_bg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Snv-mp-cnq">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="page4_bg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="WWG-Td-R7S">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="page3_bg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="MwP-6N-5ad">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="page2_bg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Axb-3x-MOE">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="page1_bg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="r1B-Rg-mMh">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tGb-UQ-si2">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="1024" id="Kja-Mm-utp"/>
                                 </constraints>
@@ -52,6 +58,7 @@
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="8Y6-19-F8U">
                                 <rect key="frame" x="-19" y="-18" width="39" height="37"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="Muk-Mc-x5a"/>
                                     <constraint firstAttribute="width" constant="100" id="xMq-qg-Hx8"/>
@@ -74,6 +81,7 @@
                             </pageControl>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gei-A9-fpd" customClass="FilletButton" customModule="smartmixer" customModuleProvider="target">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="DuU-hS-u7v">
                                         <variation key="heightClass=regular-widthClass=regular" constant="120"/>
@@ -123,6 +131,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="MwP-6N-5ad" firstAttribute="leading" secondItem="Goo-23-fPV" secondAttribute="leadingMargin" constant="-16" id="0QE-s7-3af">
@@ -194,23 +203,6 @@
                                 <exclude reference="Gei-A9-fpd"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="G6J-Mu-vfI"/>
-                                <exclude reference="S6g-4V-Efs"/>
-                                <exclude reference="nkf-4v-7vh"/>
-                                <exclude reference="Guv-aC-Bpv"/>
-                                <exclude reference="P4e-NJ-F83"/>
-                                <exclude reference="emb-Fs-YVo"/>
-                                <exclude reference="0QE-s7-3af"/>
-                                <exclude reference="CVh-Ma-ttA"/>
-                                <exclude reference="liH-Og-jUw"/>
-                                <exclude reference="IBR-3s-Jst"/>
-                                <exclude reference="PpW-SS-oEY"/>
-                                <exclude reference="pDH-uK-2Gt"/>
-                                <exclude reference="RSh-Ca-WUq"/>
-                                <exclude reference="Vf6-fY-w5h"/>
-                                <exclude reference="tkv-Q0-OJn"/>
-                                <exclude reference="Gei-9J-0fm"/>
-                                <exclude reference="YUX-63-Zm8"/>
                                 <exclude reference="DMd-h7-KES"/>
                                 <exclude reference="H9W-wP-Pjj"/>
                                 <exclude reference="KFc-5x-8Rt"/>
@@ -222,6 +214,23 @@
                                 <exclude reference="IB4-hG-uBm"/>
                                 <exclude reference="lFp-Eo-UYY"/>
                                 <exclude reference="1gp-tX-M0y"/>
+                                <exclude reference="Guv-aC-Bpv"/>
+                                <exclude reference="P4e-NJ-F83"/>
+                                <exclude reference="emb-Fs-YVo"/>
+                                <exclude reference="0QE-s7-3af"/>
+                                <exclude reference="CVh-Ma-ttA"/>
+                                <exclude reference="liH-Og-jUw"/>
+                                <exclude reference="G6J-Mu-vfI"/>
+                                <exclude reference="S6g-4V-Efs"/>
+                                <exclude reference="nkf-4v-7vh"/>
+                                <exclude reference="IBR-3s-Jst"/>
+                                <exclude reference="PpW-SS-oEY"/>
+                                <exclude reference="pDH-uK-2Gt"/>
+                                <exclude reference="RSh-Ca-WUq"/>
+                                <exclude reference="Vf6-fY-w5h"/>
+                                <exclude reference="tkv-Q0-OJn"/>
+                                <exclude reference="Gei-9J-0fm"/>
+                                <exclude reference="YUX-63-Zm8"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -236,23 +245,6 @@
                                 <include reference="Gei-A9-fpd"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="G6J-Mu-vfI"/>
-                                <include reference="S6g-4V-Efs"/>
-                                <include reference="nkf-4v-7vh"/>
-                                <include reference="Guv-aC-Bpv"/>
-                                <include reference="P4e-NJ-F83"/>
-                                <include reference="emb-Fs-YVo"/>
-                                <include reference="0QE-s7-3af"/>
-                                <include reference="CVh-Ma-ttA"/>
-                                <include reference="liH-Og-jUw"/>
-                                <include reference="IBR-3s-Jst"/>
-                                <include reference="PpW-SS-oEY"/>
-                                <include reference="pDH-uK-2Gt"/>
-                                <include reference="RSh-Ca-WUq"/>
-                                <include reference="Vf6-fY-w5h"/>
-                                <include reference="tkv-Q0-OJn"/>
-                                <include reference="Gei-9J-0fm"/>
-                                <include reference="YUX-63-Zm8"/>
                                 <include reference="DMd-h7-KES"/>
                                 <include reference="H9W-wP-Pjj"/>
                                 <include reference="KFc-5x-8Rt"/>
@@ -264,6 +256,23 @@
                                 <exclude reference="IB4-hG-uBm"/>
                                 <include reference="lFp-Eo-UYY"/>
                                 <include reference="1gp-tX-M0y"/>
+                                <include reference="Guv-aC-Bpv"/>
+                                <include reference="P4e-NJ-F83"/>
+                                <include reference="emb-Fs-YVo"/>
+                                <include reference="0QE-s7-3af"/>
+                                <include reference="CVh-Ma-ttA"/>
+                                <include reference="liH-Og-jUw"/>
+                                <include reference="G6J-Mu-vfI"/>
+                                <include reference="S6g-4V-Efs"/>
+                                <include reference="nkf-4v-7vh"/>
+                                <include reference="IBR-3s-Jst"/>
+                                <include reference="PpW-SS-oEY"/>
+                                <include reference="pDH-uK-2Gt"/>
+                                <include reference="RSh-Ca-WUq"/>
+                                <include reference="Vf6-fY-w5h"/>
+                                <include reference="tkv-Q0-OJn"/>
+                                <include reference="Gei-9J-0fm"/>
+                                <include reference="YUX-63-Zm8"/>
                             </mask>
                         </variation>
                     </view>

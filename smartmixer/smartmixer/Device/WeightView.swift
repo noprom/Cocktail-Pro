@@ -24,7 +24,7 @@ class WeightView: UIViewController {
     var clipWeight:CGFloat!=0
     
     class func WeightViewInit()->WeightView{
-        var weightView = UIStoryboard(name:"Device"+deviceDefine,bundle:nil).instantiateViewControllerWithIdentifier("weightContainer") as! WeightView
+        let weightView = UIStoryboard(name:"Device"+deviceDefine,bundle:nil).instantiateViewControllerWithIdentifier("weightContainer") as! WeightView
         return weightView
     }
     
@@ -44,7 +44,7 @@ class WeightView: UIViewController {
         
         var diff = weight - self.clipWeight
         diff = diff - self.showWeight
-        var timediff = Double(diff/1000.0)
+        let timediff = Double(diff/1000.0)
         self.realWeight = weight
         UIView.animateWithDuration(timediff,
             animations : {

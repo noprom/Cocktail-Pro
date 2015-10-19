@@ -59,15 +59,15 @@ import UIKit
     var backgroundView:UIView!
     
     func Fullscreen(sender:UITapGestureRecognizer){
-        var image=self.image
-        var window = UIApplication.sharedApplication().keyWindow
+        let image=self.image
+        let window = UIApplication.sharedApplication().keyWindow
         backgroundView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height))
         
         oldframe=self.convertRect(self.bounds, toView: window)
         backgroundView.userInteractionEnabled = true
         backgroundView.backgroundColor=UIColor.blackColor()
         backgroundView.alpha=0
-        var imageView = UIImageView(frame: oldframe)
+        let imageView = UIImageView(frame: oldframe)
         imageView.image=image;
         imageView.contentMode = UIViewContentMode.ScaleAspectFit
         imageView.tag=1;
@@ -75,7 +75,7 @@ import UIKit
         backgroundView.addSubview(imageView)
         (window as UIView!).addSubview(backgroundView)
         
-        var tap = UITapGestureRecognizer()
+        let tap = UITapGestureRecognizer()
         tap.addTarget(self, action: Selector("hideFullscreen:"))
         //tap.delegate = self
         
@@ -92,9 +92,9 @@ import UIKit
     
     //从全屏中退出
     func hideFullscreen(sender:UITapGestureRecognizer){
-        var backgroundView = sender.view
+        _ = sender.view
         
-        var imageView = sender.view?.viewWithTag(1)
+        _ = sender.view?.viewWithTag(1)
         /**/
         UIView.animateWithDuration(0.3, animations: {
                 //self.imageView.frame = self.oldframe

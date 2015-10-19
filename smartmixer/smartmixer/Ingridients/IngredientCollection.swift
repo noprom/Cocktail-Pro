@@ -24,7 +24,7 @@ class IngredientCollection: UICollectionViewController {
     var catagoryName:String = ""
     
     class func IngredientCollectionInit()->IngredientCollection{
-        var ingredientCollection = UIStoryboard(name: "Ingredients"+deviceDefine, bundle: nil).instantiateViewControllerWithIdentifier("ingredientCollection") as! IngredientCollection
+        let ingredientCollection = UIStoryboard(name: "Ingredients"+deviceDefine, bundle: nil).instantiateViewControllerWithIdentifier("ingredientCollection") as! IngredientCollection
         return ingredientCollection
     }
     
@@ -61,7 +61,7 @@ class IngredientCollection: UICollectionViewController {
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         if(deviceDefine != "" ){
-            var off = scrollView.contentOffset.y
+            let off = scrollView.contentOffset.y
             if((off-lastPos)>50 && off>50){//向下了
                 lastPos = off
                 rootController.showOrhideToolbar(false)
@@ -80,13 +80,13 @@ class IngredientCollection: UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         icollectionView = collectionView
-        let sectionInfo = self.fetchedResultsController.sections as! [NSFetchedResultsSectionInfo]
+        let sectionInfo = self.fetchedResultsController.sections!
         let item = sectionInfo[section]
         return item.numberOfObjects
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier("ingredientThumb", forIndexPath: indexPath) as! IngredientThumb
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ingredientThumb", forIndexPath: indexPath) as! IngredientThumb
         if(CatagoryId==0){
             let item = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Container
             cell.SetContainer(item)
@@ -99,12 +99,12 @@ class IngredientCollection: UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if(CatagoryId==0){
-            var container = ContainerDetail.ContainerDetailInit()
+            let container = ContainerDetail.ContainerDetailInit()
             let item = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Container
             container.CurrentContainer = item
             self.NavigationController.pushViewController(container, animated: true)
         }else{
-            var materials = IngredientDetail.IngredientDetailInit()
+            let materials = IngredientDetail.IngredientDetailInit()
             let item = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Ingridient
             materials.ingridient=item
             self.NavigationController.pushViewController(materials, animated: true)
@@ -138,11 +138,16 @@ class IngredientCollection: UICollectionViewController {
             }
             let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
             _fetchedResultsController = aFetchedResultsController
-            
-            var error: NSError? = nil
-            if !_fetchedResultsController!.performFetch(&error) {
+        
+            do {
+                try _fetchedResultsController!.performFetch()
+            }catch{
                 abort()
             }
+//            var error: NSError? = nil
+//            if !_fetchedResultsController!.performFetch(&error) {
+//                abort()
+//            }
             
             return _fetchedResultsController!
     }

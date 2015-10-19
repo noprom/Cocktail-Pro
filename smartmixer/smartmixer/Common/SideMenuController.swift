@@ -30,7 +30,7 @@ class SideMenuController: UIViewController,UIGestureRecognizerDelegate {
             if self.SideView != newValue{
                 self._leftViewController = newValue
                 self._leftViewController.view.frame = self.view.bounds
-                self.view.insertSubview(self._leftViewController.view, aboveSubview: (self.view.subviews[0] as! UIView))
+                self.view.insertSubview(self._leftViewController.view, aboveSubview: (self.view.subviews[0] ))
                 //self.view.insertSubview(self._leftViewController.view, atIndex: 1)
             }
         }
@@ -69,7 +69,7 @@ class SideMenuController: UIViewController,UIGestureRecognizerDelegate {
     }
     
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
     }
     
     func initData(){
@@ -90,7 +90,7 @@ class SideMenuController: UIViewController,UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red:1,green:1,blue:1,alpha:1)
-        var image = UIImageView(image: UIImage(named: "userbg.jpg"))
+        let image = UIImageView(image: UIImage(named: "userbg.jpg"))
         image.frame = self.view.frame
         image.contentMode = UIViewContentMode.ScaleAspectFill
         self.view.addSubview(image)
@@ -154,11 +154,11 @@ class SideMenuController: UIViewController,UIGestureRecognizerDelegate {
         self.hideSideViewController(true)
     }
     
-    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer!) -> Bool
+    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool
     {
         if gestureRecognizer == self.panGestureRecognizer {
-            var panGesture = gestureRecognizer as! UIPanGestureRecognizer
-            var translation = panGesture.translationInView(self.view)
+            var panGeslete = gestureRecognizer as! UIPanGestureRecognizer
+            let translation = panGesture.translationInView(self.view)
             if panGesture.velocityInView(self.view).x < 600 && abs(translation.x)/abs(translation.y)>1 {
                 return true
             }
@@ -176,7 +176,7 @@ class SideMenuController: UIViewController,UIGestureRecognizerDelegate {
             }
             return
         }
-        var currentPostion = pan.translationInView(self.view)
+        let currentPostion = pan.translationInView(self.view)
         var xoffset = self.startPanPoint.x + currentPostion.x
         if (xoffset>0) {//向右滑
             if (self.SideView != nil)  {
@@ -204,7 +204,7 @@ class SideMenuController: UIViewController,UIGestureRecognizerDelegate {
             }
             self.lastPanPoint = CGPointZero
         }else{
-            var velocity = pan.velocityInView(self.view)
+            let velocity = pan.velocityInView(self.view)
             if velocity.x > 0 {
                 self.panMovingRightOrLeft = true
             }else if velocity.x < 0 {
@@ -221,8 +221,8 @@ class SideMenuController: UIViewController,UIGestureRecognizerDelegate {
         scale = max(0.8, scale)
         self.rootViewController.view.transform = CGAffineTransformMakeScale(CGFloat(scale), CGFloat(scale))
         
-        var totalWidth:CGFloat = self.view.frame.size.width
-        var totalHeight:CGFloat = self.view.frame.size.height
+        let totalWidth:CGFloat = self.view.frame.size.width
+        let totalHeight:CGFloat = self.view.frame.size.height
         if xoffset > 0  {//向右滑的
             self.rootViewController.view.frame = CGRectMake(xoffset,self.view.bounds.origin.y + (totalHeight * (1 - scale) / 2), totalWidth * scale, totalHeight * scale)
         }else{//向左滑的

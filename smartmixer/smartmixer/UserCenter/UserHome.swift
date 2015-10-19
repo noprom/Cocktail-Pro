@@ -44,7 +44,7 @@ class UserHome: UIViewController,UIScrollViewDelegate,UITableViewDelegate,Histor
     var clickGesture:UITapGestureRecognizer!
     
     class func UserHomeRoot()->UIViewController{
-        var userCenterController = UIStoryboard(name:"UserCenter"+deviceDefine,bundle:nil).instantiateInitialViewController() as! UIViewController
+        let userCenterController = UIStoryboard(name:"UserCenter"+deviceDefine,bundle:nil).instantiateInitialViewController() as! UserHome
         return userCenterController
     }
     
@@ -71,10 +71,10 @@ class UserHome: UIViewController,UIScrollViewDelegate,UITableViewDelegate,Histor
         self.tabBarController?.tabBar.hidden = true
         self.hidesBottomBarWhenPushed = true
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        var UserCook = NSUserDefaults.standardUserDefaults().integerForKey("UserCook")
-        var UserFavor = NSUserDefaults.standardUserDefaults().integerForKey("UserFavor")
-        var UserHave = NSUserDefaults.standardUserDefaults().integerForKey("UserHave")
-        var UserContainer = NSUserDefaults.standardUserDefaults().integerForKey("UserContainer")
+        let UserCook = NSUserDefaults.standardUserDefaults().integerForKey("UserCook")
+        let UserFavor = NSUserDefaults.standardUserDefaults().integerForKey("UserFavor")
+        let UserHave = NSUserDefaults.standardUserDefaults().integerForKey("UserHave")
+        let UserContainer = NSUserDefaults.standardUserDefaults().integerForKey("UserContainer")
         sumInfo.text = "\(UserFavor)个收藏，\(UserCook)次制作，\(UserHave)种材料，\(UserContainer)种器具"
         userImage.image = UIImage(contentsOfFile: applicationDocumentsPath+"/myimage.png")
         userName.text = NSUserDefaults.standardUserDefaults().stringForKey("UserName")!
@@ -117,11 +117,11 @@ class UserHome: UIViewController,UIScrollViewDelegate,UITableViewDelegate,Histor
     }
     
     //写入Document中
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-        var image = info["UIImagePickerControllerOriginalImage"] as! UIImage
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        let image = info["UIImagePickerControllerOriginalImage"] as! UIImage
         userInfoBg.image = image
-        var imageData = UIImagePNGRepresentation(image)
-        imageData.writeToFile(applicationDocumentsPath+"/mybg.png", atomically: false)
+        let imageData = UIImagePNGRepresentation(image)
+        imageData!.writeToFile(applicationDocumentsPath+"/mybg.png", atomically: false)
         self.dismissViewControllerAnimated(true, completion: nil)
         if(osVersion<8 && deviceDefine != ""){
             popview.dismissPopoverAnimated(true)
@@ -130,7 +130,7 @@ class UserHome: UIViewController,UIScrollViewDelegate,UITableViewDelegate,Histor
     
     //@MARK:点击商城
     @IBAction func OnStoreClick(sender:UIButton){
-        var baike:WebView = WebView.WebViewInit()
+        let baike:WebView = WebView.WebViewInit()
         baike.myWebTitle = "商城"
         baike.WebUrl="http://www.smarthito.com"
         rootController.showOrhideToolbar(false)
@@ -161,7 +161,7 @@ class UserHome: UIViewController,UIScrollViewDelegate,UITableViewDelegate,Histor
     
     var setalpha:Bool=false
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        var off = scrollView.contentOffset.y
+        let off = scrollView.contentOffset.y
         if(off<=240 && off>0){//在区间0~240需要渐变处理
             userInfoframe.frame = CGRect(x: userInfoframe.frame.origin.x, y: -off, width: userInfoframe.frame.width, height: userInfoframe.frame.height)
             userInfoLayer.alpha = 1-off/240
@@ -192,7 +192,7 @@ class UserHome: UIViewController,UIScrollViewDelegate,UITableViewDelegate,Histor
     //告知窗口现在有多少个item需要添加
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int
     {
-        let sectionInfo = self.fetchedResultsController.sections as! [NSFetchedResultsSectionInfo]
+        let sectionInfo = self.fetchedResultsController.sections!
         let item = sectionInfo[section]
         numberOfObjects = item.numberOfObjects
         if(numberOfObjects==0){
@@ -217,7 +217,7 @@ class UserHome: UIViewController,UIScrollViewDelegate,UITableViewDelegate,Histor
             indentifier="his-addhave"
         }
         
-        var cell :HistoryCell = tableView.dequeueReusableCellWithIdentifier(indentifier) as! HistoryCell
+        let cell :HistoryCell = tableView.dequeueReusableCellWithIdentifier(indentifier) as! HistoryCell
         if(deviceDefine==""){
             cell.scroll.contentSize = CGSize(width: 380, height: 50)
         }else{
@@ -234,9 +234,9 @@ class UserHome: UIViewController,UIScrollViewDelegate,UITableViewDelegate,Histor
     var lastDayString:String!=nil
     
     func formatDateString(date:NSDate)->String{
-        var formatter = NSDateFormatter()
+        let formatter = NSDateFormatter()
         formatter.dateFormat="yyyy.MM.dd"
-        var newstring = formatter.stringFromDate(date)
+        let newstring = formatter.stringFromDate(date)
         if(newstring != lastDayString){
             lastDayString = newstring
             return lastDayString
@@ -249,13 +249,17 @@ class UserHome: UIViewController,UIScrollViewDelegate,UITableViewDelegate,Histor
     //要删除某个
     func historyCell(sender:HistoryCell){
         skipUpdate = true
-        var indexPath:NSIndexPath=self.historyTableView.indexPathForCell(sender)!
+        let indexPath:NSIndexPath=self.historyTableView.indexPathForCell(sender)!
         let item = self.fetchedResultsController.objectAtIndexPath(indexPath) as! History
-        var error: NSError? = nil
         managedObjectContext.deleteObject(item)
-        if !managedObjectContext.save(&error) {
+        do {
+            try managedObjectContext.save()
+        }catch{
             abort()
         }
+//        if !managedObjectContext.save(&error) {
+//            abort()
+//        }
         self.historyTableView?.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Top)
     }
     //选中某个需要显示
@@ -263,25 +267,25 @@ class UserHome: UIViewController,UIScrollViewDelegate,UITableViewDelegate,Histor
         
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         rootController.showOrhideToolbar(false)
-        var indexPath:NSIndexPath=self.historyTableView.indexPathForCell(sender)!
+        let indexPath:NSIndexPath=self.historyTableView.indexPathForCell(sender)!
         let item = self.fetchedResultsController.objectAtIndexPath(indexPath) as! History
         if(item.type==0||item.type==1){
-            var recipe=DataDAO.getOneRecipe(item.refid.integerValue)
+            let recipe=DataDAO.getOneRecipe(item.refid.integerValue)
             if(deviceDefine==""){
-                var recipeDetail = RecipeDetailPhone.RecipesDetailPhoneInit()
+                let recipeDetail = RecipeDetailPhone.RecipesDetailPhoneInit()
                 recipeDetail.CurrentData = recipe
                 self.navigationController?.pushViewController(recipeDetail, animated: true)
             }else{
-                var recipeDetail = RecipeDetailPad.RecipeDetailPadInit()
+                let recipeDetail = RecipeDetailPad.RecipeDetailPadInit()
                 recipeDetail.CurrentData = recipe
                 self.navigationController?.pushViewController(recipeDetail, animated: true)
             }
         }else if(item.type==2){
-            var materials = IngredientDetail.IngredientDetailInit()
+            let materials = IngredientDetail.IngredientDetailInit()
             materials.ingridient=DataDAO.getOneIngridient(item.refid.integerValue)
             self.navigationController?.pushViewController(materials, animated: true)
         }else if(item.type==3){
-            var container = ContainerDetail.ContainerDetailInit()
+            let container = ContainerDetail.ContainerDetailInit()
             container.CurrentContainer = DataDAO.getOneContainer(item.refid.integerValue)
             self.navigationController?.pushViewController(container, animated: true)
         }
@@ -289,28 +293,33 @@ class UserHome: UIViewController,UIScrollViewDelegate,UITableViewDelegate,Histor
     
     //@MARK:历史数据的添加处理
     class func addHistory(type:Int,id refId:Int,thumb imageThumb:String,name showName:String){
-        var history = NSEntityDescription.insertNewObjectForEntityForName("History", inManagedObjectContext: managedObjectContext) as! History
+        let history = NSEntityDescription.insertNewObjectForEntityForName("History", inManagedObjectContext: managedObjectContext) as! History
         history.type = type
         history.refid = refId
         history.thumb = imageThumb
         history.name = showName
         history.addtime = NSDate()
         if(type==0){
-            var usernum = NSUserDefaults.standardUserDefaults().integerForKey("UserCook")+1
+            let usernum = NSUserDefaults.standardUserDefaults().integerForKey("UserCook")+1
             NSUserDefaults.standardUserDefaults().setInteger(usernum, forKey: "UserCook")
-            var error: NSError? = nil
-            if !managedObjectContext.save(&error) {
+            do {
+                try managedObjectContext.save()
+            }catch{
                 abort()
             }
+//            var error: NSError? = nil
+//            if !managedObjectContext.save(&error) {
+//                abort()
+//            }
         }else if(type==1){
-            var usernum = NSUserDefaults.standardUserDefaults().integerForKey("UserFavor")+1
+            let usernum = NSUserDefaults.standardUserDefaults().integerForKey("UserFavor")+1
             NSUserDefaults.standardUserDefaults().setInteger(usernum, forKey: "UserFavor")
         }else if(type==2){//添加了材料的拥有
-            var usernum = NSUserDefaults.standardUserDefaults().integerForKey("UserHave")+1
+            let usernum = NSUserDefaults.standardUserDefaults().integerForKey("UserHave")+1
             NSUserDefaults.standardUserDefaults().setInteger(usernum, forKey: "UserHave")
             DataDAO.updateRecipeCoverd(refId, SetHave: true)
         }else{
-            var usernum = NSUserDefaults.standardUserDefaults().integerForKey("UserContainer")+1
+            let usernum = NSUserDefaults.standardUserDefaults().integerForKey("UserContainer")+1
             NSUserDefaults.standardUserDefaults().setInteger(usernum, forKey: "UserContainer")
         }
         
@@ -318,17 +327,17 @@ class UserHome: UIViewController,UIScrollViewDelegate,UITableViewDelegate,Histor
     //历史数据的删除
     class func removeHistory(type:Int,id refId:Int){
         if(type==0){
-            var usernum = NSUserDefaults.standardUserDefaults().integerForKey("UserCook")-1
+            let usernum = NSUserDefaults.standardUserDefaults().integerForKey("UserCook")-1
             NSUserDefaults.standardUserDefaults().setInteger(usernum, forKey: "UserCook")
         }else if(type==1){
-            var usernum = NSUserDefaults.standardUserDefaults().integerForKey("UserFavor")-1
+            let usernum = NSUserDefaults.standardUserDefaults().integerForKey("UserFavor")-1
             NSUserDefaults.standardUserDefaults().setInteger(usernum, forKey: "UserFavor")
         }else if(type==2){
-            var usernum = NSUserDefaults.standardUserDefaults().integerForKey("UserHave")-1
+            let usernum = NSUserDefaults.standardUserDefaults().integerForKey("UserHave")-1
             NSUserDefaults.standardUserDefaults().setInteger(usernum, forKey: "UserHave")
             DataDAO.updateRecipeCoverd(refId, SetHave: false)
         }else{
-            var usernum = NSUserDefaults.standardUserDefaults().integerForKey("UserContainer")-1
+            let usernum = NSUserDefaults.standardUserDefaults().integerForKey("UserContainer")-1
             NSUserDefaults.standardUserDefaults().setInteger(usernum, forKey: "UserContainer")
         }
     }
@@ -345,10 +354,15 @@ class UserHome: UIViewController,UIScrollViewDelegate,UITableViewDelegate,Histor
         let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         _fetchedResultsController = aFetchedResultsController
         _fetchedResultsController?.delegate = self
-        var error: NSError? = nil
-        if !_fetchedResultsController!.performFetch(&error) {
+        do {
+            try self.fetchedResultsController.performFetch()
+        }catch{
             abort()
         }
+//        var error: NSError? = nil
+//        if !_fetchedResultsController!.performFetch(&error) {
+//            abort()
+//        }
         return _fetchedResultsController!
     }
     

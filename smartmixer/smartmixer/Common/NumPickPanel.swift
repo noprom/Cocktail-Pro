@@ -92,7 +92,7 @@ class NumPickPanel: UIViewController {
             })
     }
     
-    override func drawLayer(layer: CALayer!, inContext ctx: CGContext!) {
+    override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
         //设置阴影颜色，透明度，偏移量
         layer.shadowColor = UIColor.grayColor().CGColor
         layer.shadowRadius = 3

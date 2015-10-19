@@ -72,10 +72,15 @@ import UIKit
             }
         }
         
-        var error: NSError? = nil
-        if !managedObjectContext.save(&error) {
+        do {
+            try managedObjectContext.save()
+        } catch {
             abort()
         }
+//        var error: NSError? = nil
+//        if !managedObjectContext.save(&error) {
+//            abort()
+//        }
     }
     
 }

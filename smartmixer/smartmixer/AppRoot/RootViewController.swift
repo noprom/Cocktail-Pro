@@ -45,14 +45,14 @@ class RootViewController: UITabBarController , ChangeTableDelegate{
         rootController = self
         
         //初始化各个部分
-        var home = Home.HomeRoot()
-        var recipes = Recipes.RecipesInit()
+        let home = Home.HomeRoot()
+        let recipes = Recipes.RecipesInit()
         rootSideMenu = SideMenuController(nibName: nil, bundle: nil)
         rootSideMenu.rootViewController = recipes
         rootSideMenu.SideView = CategoryMenu.CategoryMenuInit()
-        var ingridientController = Ingredients.IngredientsRoot()
-        var userCenterController = UserHome.UserHomeRoot()
-        var tabBarViewControllers = [home,rootSideMenu, ingridientController,userCenterController]
+        let ingridientController = Ingredients.IngredientsRoot()
+        let userCenterController = UserHome.UserHomeRoot()
+        let tabBarViewControllers = [home,rootSideMenu, ingridientController,userCenterController]
         self.setViewControllers(tabBarViewControllers, animated: false)
         
         //处理的自定义Toolbar
@@ -64,9 +64,9 @@ class RootViewController: UITabBarController , ChangeTableDelegate{
         //判断是否是第一次运行，如果是就调出欢迎界面
         if(!NSUserDefaults.standardUserDefaults().boolForKey("Launched_V1.0.0")){
             //在文档中默认加一个用户头像
-            var image = UIImage(named: "headDefault")
-            var imageData = UIImagePNGRepresentation(image)
-            imageData.writeToFile(applicationDocumentsPath+"/myimage.png", atomically: false)
+            let image = UIImage(named: "headDefault")
+            let imageData = UIImagePNGRepresentation(image!)
+            imageData!.writeToFile(applicationDocumentsPath+"/myimage.png", atomically: false)
             
             //设置一些基础的数据
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "Launched_V1.0.0")
@@ -130,15 +130,15 @@ class RootViewController: UITabBarController , ChangeTableDelegate{
         {
         case 1:
             if(self.selectedIndex == index){
-                var curent = self.selectedViewController! as! SideMenuController
-                var item:UIViewController = (curent.rootViewController as! UINavigationController).topViewController
+                let curent = self.selectedViewController! as! SideMenuController
+                let item:UIViewController = (curent.rootViewController as! UINavigationController).topViewController!
                 if(item.isKindOfClass(Recipes) == true){
                     (item as! Recipes).scrollToTop()
                 }
             }
             break
         case 4:
-            var moreViewController = Device.DeviceRoot()
+            let moreViewController = Device.DeviceRoot()
             moreViewController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
             self.view.window?.rootViewController?.presentViewController(moreViewController, animated: false, completion: nil)
         default:

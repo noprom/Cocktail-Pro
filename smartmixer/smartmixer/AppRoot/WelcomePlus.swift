@@ -27,7 +27,7 @@ class WelcomePlus: UIViewController ,UIScrollViewDelegate {
     var firstPop:Bool=true
     
     class func WelcomePlusInit()->WelcomePlus{
-        var welcomePlus = UIStoryboard(name:"Launch"+deviceDefine,bundle:nil).instantiateViewControllerWithIdentifier("welcomePlus") as! WelcomePlus
+        let welcomePlus = UIStoryboard(name:"Launch"+deviceDefine,bundle:nil).instantiateViewControllerWithIdentifier("welcomePlus") as! WelcomePlus
         return welcomePlus
     }
     
@@ -50,7 +50,7 @@ class WelcomePlus: UIViewController ,UIScrollViewDelegate {
             more = "_I"
         }
         for index in 1...5{
-            var view = UIImageView()
+            let view = UIImageView()
             view.frame = CGRect(x: rect.width*(CGFloat(index)-1), y: 0, width: rect.width, height: rect.height)
             view.image = UIImage(named: "page\(index)_center\(more).png")
             scrollview.addSubview(view)
@@ -78,23 +78,23 @@ class WelcomePlus: UIViewController ,UIScrollViewDelegate {
     
     
     //@MARK:滚动部分的处理
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView!) {
-        var offset:CGFloat!=scrollview.contentOffset.x
-        var index:Int = Int( offset / scrollview.frame.width)
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        let offset:CGFloat!=scrollview.contentOffset.x
+        let index:Int = Int( offset / scrollview.frame.width)
         self.pageControl.currentPage = index
     }
     
     @IBAction func pageControlChanged(sender: UIPageControl) {
-        var left = scrollview.frame.width * CGFloat(self.pageControl.currentPage)
-        var rect = CGRect(x:left, y: 0, width: scrollview.frame.width, height: scrollview.frame.height)
+        let left = scrollview.frame.width * CGFloat(self.pageControl.currentPage)
+        let rect = CGRect(x:left, y: 0, width: scrollview.frame.width, height: scrollview.frame.height)
         self.scrollview.scrollRectToVisible(rect, animated: true)
     }
     
     var setalpha:Bool=false
     func scrollViewDidScroll(scrollView: UIScrollView) {
         
-        var offset = scrollView.contentOffset.x
-        var diff = scrollView.contentOffset.x % rect.width
+        let offset = scrollView.contentOffset.x
+        let diff = scrollView.contentOffset.x % rect.width
         
         switch offset {
         case 0...(rect.width-1):

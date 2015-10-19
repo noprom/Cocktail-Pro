@@ -26,7 +26,7 @@ import UIKit
         }
     }
 
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if let touch: UITouch = touches as? UITouch {
             for index in 1...5 {
                 let tview = self.valueForKey("star\(index)") as! UIView!
@@ -38,21 +38,21 @@ import UIKit
         }
     }
     
-    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         dealWith(touches, withEvent: event) {
             index in
             self.refreshTo(index)
         }
     }
     
-    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         dealWith(touches, withEvent: event) {
             index in
             self.value = index
         }
     }
     
-    override func touchesCancelled(touches: Set<NSObject>, withEvent event: UIEvent!) {
+    override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
         dealWith(touches, withEvent: event) {
             index in
             self.refreshTo(index)

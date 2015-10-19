@@ -18,7 +18,7 @@ class Baike: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        var request = NSURLRequest(URL: NSURL(string: URL)!)
+        let request = NSURLRequest(URL: NSURL(string: URL)!)
         webPage.loadRequest(request)
     }
     
